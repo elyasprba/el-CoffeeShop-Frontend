@@ -1,0 +1,555 @@
+*,
+body,
+html {
+   margin: 0;
+   box-sizing: border-box;
+   font-family: 'Rubik', sans-serif;
+}
+
+.btn-signup {
+   color: #6a4029;
+   border: none;
+   border-radius: 20px;
+   background: #ffba33;
+   width: 150px;
+   height: 45px;
+}
+
+.btn-signup a {
+   color: #6a4029;
+   text-decoration: none;
+}
+
+.bg-image {
+   width: 100%;
+   height: 650px;
+   background-size: cover;
+   background-position: 50% 60%;
+   background-image: url('https://s3-alpha-sig.figma.com/img/57c5/d504/de26c540ca74fd712a0e636cd4cdc0fb?Expires=1654473600&Signature=cn1vOMdqYQIXWXUmvRdTsUKWsMrtFyNpbAiTzlkCPkbgUVjVaGzCTU7cIl3AIXpMpqld7-rvipc3meGfGfto1IEg2UQ9AJaMRUN2F1rPpmKHCQ~r-u22OkZt2Jq8RnIqOUD0gxrQYUgfpvXgtMAd8-DfabxP1VQEgb82gI5fNq1RzXQ2yt9sawG8pbzdcGFjSGx6xzENLkUzFUeNmghJ9MBN2OHvwV5xiTaHXBKO-Oidx3JFnQ5TAkdDKbIkgO1wu4Rc6SLxtbFdqCAvkIOnGbEm7JIp2~CzVtwoWARMIuf5j-3CXeEru7epp053mVYeAD0IbSvd0ewzF~HniDoxKw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA');
+}
+
+.start-your {
+   color: white;
+   font-size: 50px;
+}
+
+.btn-start {
+   width: 250px;
+   height: 60px;
+   border: none;
+   border-radius: 10px;
+   color: #6a4029;
+   background: #ffba33;
+}
+
+.info {
+   width: 80%;
+   height: 200px;
+   display: flex;
+   background-color: white;
+   position: absolute;
+   z-index: 1;
+   top: 650px;
+   left: 10%;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.info-number {
+   font-weight: 700;
+   font-size: 25px;
+   line-height: 30px;
+   color: #0b132a;
+}
+
+.info-detail {
+   font-weight: 400;
+   font-size: 20px;
+   line-height: 30px;
+   color: #4f5665;
+}
+
+.staf {
+   margin-top: 75px;
+   display: flex;
+   justify-content: center;
+}
+
+.store {
+   margin-top: 75px;
+   display: flex;
+   justify-content: center;
+}
+
+.customers {
+   margin-top: 75px;
+   display: flex;
+   justify-content: center;
+}
+
+.main-teamwork {
+   display: flex;
+   margin-top: 150px;
+}
+
+.right-team p {
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 30px;
+   color: #4f5665;
+}
+
+.list-right-team {
+   font-weight: 400;
+   font-size: 14px;
+   line-height: 30px;
+   color: #4f5665;
+}
+
+.list-right-team img {
+   margin-right: 12px;
+}
+
+.favorite {
+   background-color: #f8f8f8;
+   padding-top: 100px;
+   padding-bottom: 100px;
+   padding-left: 7.5%;
+   padding-right: 7.5%;
+}
+
+.custom-favorite-title {
+   font-family: Rubik;
+   font-size: 35px;
+   font-weight: 500;
+   line-height: 50px;
+   text-align: center;
+}
+
+.fav-description {
+   font-family: Rubik;
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 30px;
+   letter-spacing: 0em;
+   text-align: center;
+   margin-bottom: 80px;
+}
+
+.card-fav {
+   width: 330px;
+   height: 720px;
+   padding-top: 50px;
+   margin: 0px 25px;
+   background: #ffffff;
+   border: 2px solid #dddddd;
+   border-radius: 10px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.fav-picture {
+   margin-bottom: 40px;
+}
+
+.hazelnut-latte-img {
+   width: 100px;
+   height: 100px;
+   object-fit: cover;
+   border-radius: 50%;
+   object-position: 110% 90%;
+}
+
+.pinky-promise-pict {
+   width: 100px;
+   height: 100px;
+   object-fit: cover;
+   border-radius: 50%;
+   object-position: 0% 35%;
+}
+
+.chicken-wings-pict {
+   width: 100px;
+   height: 100px;
+   object-fit: cover;
+   border-radius: 50%;
+   object-position: 0% 60%;
+}
+
+.title-fav {
+   font-family: Rubik;
+   font-size: 18px;
+   font-weight: 700;
+   line-height: 30px;
+   letter-spacing: 0em;
+   text-align: center;
+   color: #0b132a;
+   margin-bottom: 30px;
+}
+
+.fav-list {
+   font-family: Rubik;
+   font-size: 14px;
+   font-weight: 400;
+   line-height: 30px;
+   letter-spacing: 0em;
+   text-align: left;
+   color: #4f5665;
+   height: 330px;
+}
+
+.fav-price {
+   font-family: Rubik;
+   font-size: 25px;
+   font-weight: 500;
+   line-height: 30px;
+   letter-spacing: 0em;
+   text-align: center;
+   color: #0b132a;
+}
+
+.btn-favorite {
+   background-color: white;
+   margin-top: 20px;
+   width: 80%;
+   height: 45px;
+   border: 2px solid #ffba33;
+   border-radius: 50px;
+   font-family: Rubik;
+   font-size: 16px;
+   font-weight: 700;
+   line-height: 19px;
+   color: #6a4029;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+}
+
+.fav-button {
+   margin-top: 20px;
+   width: 80%;
+   height: 45px;
+   background: #ffba33;
+   border-radius: 50px;
+   font-family: Rubik;
+   font-size: 16px;
+   font-weight: 700;
+   line-height: 19px;
+   letter-spacing: 0px;
+   text-align: left;
+   color: #6a4029;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+}
+
+.maps-container {
+   background-color: #f8f8f8;
+}
+
+.maps-title {
+   text-align: center;
+   padding: 100px 0px;
+}
+
+.maps-img {
+   text-align: center;
+}
+
+.maps-img img {
+   width: 100%;
+   height: 100%;
+   left: 190px;
+   top: 3022.36px;
+   opacity: 0.5;
+}
+
+.partner {
+   padding: 65px;
+   text-align: center;
+   background-color: #f8f8f8;
+   font-weight: 500;
+   font-size: 35px;
+   line-height: 30px;
+   color: #000000;
+}
+
+.partner img {
+   width: 100%;
+}
+
+.review-container {
+   background-color: #f8f8f8;
+   padding: 100px;
+   text-align: center;
+}
+
+.title-review h2 {
+   font-weight: 500;
+   font-size: 35px;
+   line-height: 50px;
+   text-align: center;
+   color: #0b132a;
+}
+
+.title-review p {
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 30px;
+   text-align: center;
+   color: #4f5665;
+   padding-bottom: 60px;
+}
+
+.review-list-item {
+   border: 2px solid #6a4029;
+   border-radius: 10px;
+   margin-left: 20px;
+}
+
+.rating {
+   margin: 10px 0px 0px 100px;
+}
+
+.review-desc {
+   padding-top: 20px;
+   text-align: left;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 30px;
+   color: #0b132a;
+}
+
+.paginasi {
+   padding: 30px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
+   background-color: #f8f8f8;
+   height: 350px;
+}
+.slide {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-left: 10%;
+}
+.button {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-right: 10%;
+   position: relative;
+   cursor: pointer;
+}
+.btn-right {
+   position: absolute;
+   top: -30px;
+   right: -150px;
+}
+
+.custom-promo {
+   width: 80%;
+   bottom: 70px;
+   height: 230px;
+   margin-left: 10%;
+   margin-right: 10%;
+   margin-bottom: -100px;
+   background-color: #ffffff;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   border-radius: 10px;
+   padding: 2.5px 2.5%;
+   position: relative;
+   z-index: 1;
+}
+
+.custom-promo-title {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.custom-promo-title-head {
+   font-family: Rubik;
+   font-size: 35px;
+   font-weight: 500;
+   line-height: 45px;
+   letter-spacing: 0em;
+   text-align: left;
+}
+
+.custom-promo-title-paragraph {
+   font-family: Rubik;
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 30px;
+   letter-spacing: 0em;
+   text-align: left;
+}
+
+.custom-see-promo-button-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.custom-see-promo-button {
+   width: 100%;
+   height: 45px;
+   background: #ffba33;
+   border-radius: 10px;
+   font-family: Rubik;
+   font-size: 16px;
+   font-weight: 500;
+   line-height: 19px;
+   letter-spacing: 0em;
+   text-align: center;
+   color: #6a4029;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+   -moz-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+   -o-user-select: none;
+}
+
+.custom-see-promo-button:hover {
+   background-color: #fcaf16;
+}
+
+.custom-see-promo-button:active {
+   background-color: #ffba33;
+}
+
+.footer {
+   background-color: #f8f8f8;
+}
+
+.footer-container {
+   margin: 7.5%;
+}
+
+.coffeeshop-logo {
+   margin: 0;
+}
+
+.coffeeshop-footer-text {
+   font-family: Rubik;
+   font-size: 16px;
+   font-weight: 500;
+   line-height: 30px;
+   letter-spacing: 0em;
+   text-align: left;
+   color: #4f5665;
+   margin-top: 20px;
+}
+
+.copyright {
+   font-family: Rubik;
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 30px;
+   letter-spacing: 0em;
+   text-align: left;
+   margin-top: 20px;
+   color: #afb5c0;
+}
+
+.footer-list-header {
+   font-family: Rubik;
+   font-size: 18px;
+   font-weight: 500;
+   line-height: 30px;
+   letter-spacing: 0em;
+   text-align: left;
+}
+
+.footer-list-item {
+   font-family: Rubik;
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 30px;
+   letter-spacing: 0em;
+   text-align: left;
+}
+
+@media (max-width: 834px) {
+   .info {
+      width: auto;
+   }
+
+   .main-teamwork {
+      flex-direction: column;
+   }
+
+   .maps-img img {
+      width: 80%;
+      height: 80%;
+   }
+
+   .review-list {
+      flex-direction: column;
+   }
+
+   .review-list-item {
+      margin-left: 0;
+      margin-bottom: 3%;
+   }
+}
+
+@media (max-width: 428px) {
+   .container-fluid .navbar-brand {
+      display: none;
+   }
+
+   .info {
+      position: static;
+      height: 500px;
+      padding-top: 50px;
+      margin: 3%;
+   }
+
+   .staf {
+      margin: 0;
+   }
+
+   .store {
+      margin: 0;
+   }
+
+   .customers {
+      margin: 0;
+      padding: 0;
+   }
+
+   .main-teamwork {
+      margin-top: 0;
+      padding: 0;
+   }
+
+   .left-team img {
+      width: 100%;
+      height: 100%;
+   }
+
+   .maps-title {
+      padding: 0;
+      margin: 5%;
+   }
+
+   .review-container {
+      padding: 7%;
+   }
+
+   .custom-promo {
+      height: 300px;
+      bottom: 150px;
+   }
+}
