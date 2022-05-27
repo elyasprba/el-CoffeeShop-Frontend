@@ -1,41 +1,40 @@
 import React, { Component } from 'react';
-import './Signup.css';
+import './Login.css';
 
-export default class Signup extends Component {
+export default class Login extends Component {
    render() {
       return (
          <>
-            <section className="container-sign">
-               <aside className="side-content">
-                  <header className="side-header">
+            <div className="container-login">
+               <aside className="side-content-login">
+                  <header className="side-header-login">
                      <img
                         src="https://s3-alpha-sig.figma.com/img/94cf/d4df/dd22d129a5bbab44da4da62471dafa2a?Expires=1653868800&Signature=JNrt7OkAJeXRlGW2SiJF9xambBFW4NyERnvxOioWUEFKwHRUut9MiHG0yUe6wV8pPUbmd5fbxLkaUSAvqPRU4Q7rr1WuLFWZLjWbKTuKhKQF14ZIQSQq4fZ9lDxzur1q-4-CsW0AK1bl36zCLD40NCMXhA-CyO2eBUWuJvAmV-jcOfnkKK5JArBDhH8~OYfRgGiso2n8YzIFsSv1qwVuCiiBQclfIUr0ZwpV~NDKs1Wo7vgeJSF46UZyCoAok~cS7P7C2dySlylTFELBGWV6Eh4xM~TG5UfHcn0VW1N1Ww5dt5KHm4RJsUonlKI19ZyngFslCc5Psg6CZpXoEKQpeQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                        alt="background-signup"
-                        className="background-signup"
+                        alt="background-login"
+                        className="background-login"
                      />
                   </header>
                </aside>
-               <section className="main-container-sign">
-                  <header className="main-header">
-                     <div className="main-header-name">
+               <div className="main-containerlogin">
+                  <header className="main-header-login">
+                     <div className="main-header-name-login">
                         <a href="../home/index.html">
-                           <img src={require('../../assets/coffee-1.png')} alt="coffee-logo" />
+                           <img src="../assets/coffee-1.png" alt="coffee-logo" />
                         </a>
-                        <p className="name-logo">el-CoffeeShop</p>
+                        <p className="name-logo-login">el-CoffeeShop</p>
                      </div>
                      <div>
-                        <p className="main-header-title">Sign Up</p>
+                        <p className="main-header-title-login">Login</p>
                      </div>
                   </header>
-                  <form className="register-form">
-                     <label htmlFor="email">Email Address :</label>
+                  <form className="register-form-login">
+                     <label for="email">Email Address :</label>
                      <input type="text" id="email" placeholder="Enter your email address" />
-                     <label htmlFor="password">Password :</label>
+                     <label for="password">Password :</label>
                      <input type="password" id="password" placeholder="Enter your password" />
-                     <label htmlFor="phone">Phone Number :</label>
-                     <input type="text" id="phone" placeholder="Enter your phone number" />
+                     <p className="forgot-password">Forget password?</p>
                      <button className="sign-up" type="submit">
-                        Sign Up
+                        Login
                      </button>
                      <button className="sign-up-google" type="submit">
                         <img
@@ -43,53 +42,53 @@ export default class Signup extends Component {
                            alt=""
                            className="img-google"
                         />
-                        Sign up with Google
+                        Login with Google
                      </button>
-                     <section className="has-account">
+                     <section className="has-account-login">
                         <div className="underline"></div>
-                        <p className="has-account-text">Already have an account?</p>
+                        <p className="has-account-text-login">Done have an account?</p>
                         <div className="underline"></div>
                      </section>
                      <button className="login" type="submit">
-                        Login Here
+                        Sign up here
                      </button>
                   </form>
-                  <footer>
-                     <div className="footer-content-signup">
-                        <div className="footer-info-signup">
-                           <div className="main-header-name">
+                  <footer className="footer-login">
+                     <div className="footer-content-login">
+                        <div className="footer-info-login">
+                           <div className="main-header-name-login">
                               <img src={require('../../assets/coffee-1.png')} alt="coffee-logo" />
-                              <p className="name-logo">el-CoffeeShop</p>
+                              <p className="name-logo-login">el-CoffeeShop</p>
                            </div>
-                           <p className="description">Coffee Shop is a store that sells some good meals, and especially coffee. We provide high quality beans</p>
-                           <div className="sosmed-img">
+                           <p className="description-login">Coffee Shop is a store that sells some good meals, and especially coffee. We provide high quality beans</p>
+                           <div className="sosmed-img-login">
                               <img src={require('../../assets/sosmed/fb-img.png')} alt="fb-img" />
                               <img src={require('../../assets/sosmed/twitter-img.png')} alt="twitter-img" />
                               <img src={require('../../assets/sosmed/ig-img.png')} alt="ig-img" />
                            </div>
-                           <p className="copy-right">@2020el-CoffeeShop</p>
+                           <p className="copy-right-login">@2020el-CoffeeShop</p>
                         </div>
-                        <div className="product-info">
-                           <p className="product-title">Product</p>
-                           <div className="product-detail-info">
-                              <div className="footer-info-sign">
+                        <div className="product-info-login">
+                           <p className="product-title-login">Product</p>
+                           <div className="product-detail-info-login">
+                              <div className="footer-info-sign-login">
                                  <p className="product-detail">Download</p>
                                  <p className="product-detail">Location</p>
                                  <p className="product-detail">Blog</p>
                               </div>
-                              <div className="footer-info-sign">
+                              <div className="footer-info-sign-login">
                                  <p className="product-detail">Pricing</p>
                                  <p className="product-detail">Countries</p>
                               </div>
                            </div>
-                           <p className="title-info">Engage</p>
-                           <div className="engage-title">
-                              <div className="footer-info-sign">
+                           <p className="title-info-login">Engage</p>
+                           <div className="engage-title-login">
+                              <div className="footer-info-sign-login">
                                  <p className="engage-detail">Coffe Shop ?</p>
                                  <p className="engage-detail">FAQ</p>
                                  <p className="engage-detail">Terms of Service</p>
                               </div>
-                              <div className="footer-info-sign">
+                              <div className="footer-info-sign-login">
                                  <p className="engage-detail">About Us</p>
                                  <p className="engage-detail">Privacy Police</p>
                               </div>
@@ -97,8 +96,8 @@ export default class Signup extends Component {
                         </div>
                      </div>
                   </footer>
-               </section>
-            </section>
+               </div>
+            </div>
          </>
       );
    }

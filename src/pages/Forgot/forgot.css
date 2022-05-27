@@ -6,3 +6,178 @@ body {
    padding: 0;
    box-sizing: border-box;
 }
+
+.container-forgot {
+   display: flex;
+}
+
+.aside-img img {
+   width: 687px;
+   height: 1370px;
+   object-fit: cover;
+}
+
+.main-container-forgot {
+   flex: 1;
+   margin: 5%;
+}
+
+.header-name-forgot {
+   text-align: center;
+}
+
+.title-forgot {
+   margin-top: 20%;
+   text-align: center;
+}
+
+.info-title {
+   font-weight: 700;
+   font-size: 40px;
+}
+
+.desc-title {
+   font-weight: 200;
+   font-size: 20px;
+}
+
+.form-forgot-password {
+   display: flex;
+   flex-direction: column;
+}
+
+#email {
+   height: 75px;
+   margin-bottom: 32px;
+   border-radius: 20px;
+   border: 1px solid #4f5665;
+}
+
+.send-forgot {
+   height: 75px;
+   margin-bottom: 26px;
+   background: #ffba33;
+   box-shadow: 0px 6px 20px rgba(255, 186, 51, 0.4);
+   border-radius: 20px;
+   border: none;
+   color: #6a4029;
+   font-size: 20px;
+   font-weight: 700;
+   text-align: center;
+}
+
+.clik-here {
+   font-weight: 300;
+   font-size: 20px;
+   line-height: 30px;
+   text-align: center;
+   margin-top: 10%;
+}
+
+.time-forgot {
+   text-align: center;
+   font-weight: 700;
+   font-size: 20px;
+}
+
+.resend-forgot {
+   height: 75px;
+   background: #6a4029;
+   box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.63);
+   border-radius: 20px;
+   border: none;
+   color: #ffffff;
+   margin-top: 42px;
+   font-weight: 700;
+   font-size: 20px;
+   line-height: 25px;
+   margin-bottom: 82px;
+}
+
+footer-forgot {
+   background: #f8f8f8;
+}
+
+#forgot-img {
+   background: #f8f8f8 !important;
+}
+
+.footer-content-forgot {
+   display: flex;
+}
+
+.footer-info-forgot-desc {
+   flex: 1;
+   margin: 5% 10% 5% 10%;
+}
+
+.footer-info-forgot {
+   flex: 1;
+}
+
+.description-forgot {
+   margin: 30px 30px 0px 0px;
+   color: #4f5665;
+   line-height: 30px;
+   font-weight: 500px;
+   font-size: 16px;
+}
+
+.sosmed-img-forgot > img {
+   margin: 15px 15px 30px 0px;
+}
+
+.copy-right-forgot {
+   color: #afb5c0;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 30px;
+}
+
+.product-info-forgot {
+   flex-direction: column;
+   padding-top: 30px;
+}
+
+.product-title-forgot {
+   font-weight: 500;
+   font-size: 18px;
+   line-height: 30px;
+   color: #0b132a;
+   font-weight: 700;
+}
+
+.product-detail-info-forgot {
+   display: flex;
+   margin: 10px 0px 20px 0px;
+   justify-content: space-between;
+}
+
+.product-detail {
+   margin-bottom: 10px;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 30px;
+   color: #4f5665;
+}
+
+.title-info-forgot {
+   font-weight: 500;
+   font-size: 18px;
+   line-height: 30px;
+   color: #0b132a;
+   font-weight: 700;
+}
+
+.engage-title-forgot {
+   display: flex;
+   margin: 10px 0px 20px 0px;
+}
+
+.engage-detail {
+   margin-bottom: 10px;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 30px;
+   color: #4f5665;
+}
