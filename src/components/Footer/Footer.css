@@ -1,0 +1,98 @@
+.main-footer {
+   background: #f8f8f8;
+}
+
+.main-footer-content {
+   display: flex;
+}
+
+.main-footer-info {
+   flex: 1;
+   margin: 2% 5% 2% 5%;
+}
+
+.main-footer-name {
+   display: flex;
+   font-size: 20px;
+   font-weight: 700;
+}
+
+.logo-image-footer {
+   width: 30px;
+   height: 30px;
+}
+
+.name-logo-footer {
+   flex: 1;
+   margin-bottom: 0;
+   margin-left: 15px;
+}
+
+.main-footer-detail-info-product {
+   flex: 1;
+   margin-left: 5%;
+}
+
+.main-footer-detail-info-engage {
+   flex: 1;
+   margin-left: 5%;
+}
+
+.description-footer {
+   margin: 30px 30px 0px 0px;
+   color: #4f5665;
+   line-height: 30px;
+   font-weight: 500px;
+   font-size: 16px;
+}
+
+.sosmed-img-footer > img {
+   margin: 15px 15px 30px 0px;
+}
+
+.copy-right-footer {
+   color: #afb5c0;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 30px;
+}
+
+.product-info-footer {
+   flex: 1;
+   display: flex;
+   padding-top: 30px;
+}
+
+.product-title-footer {
+   font-weight: 500;
+   font-size: 18px;
+   line-height: 30px;
+   color: #0b132a;
+   font-weight: 700;
+}
+
+.product-detail-info-footer {
+   display: flex;
+   margin: 10px 0px 20px 0px;
+}
+
+.product-detail-footer {
+   margin-bottom: 10px;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 30px;
+   color: #4f5665;
+}
+
+.engage-detail-info-footer {
+   display: flex;
+   margin: 10px 0px 20px 0px;
+}
+
+.engage-detail-footer {
+   margin-bottom: 10px;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 30px;
+   color: #4f5665;
+}

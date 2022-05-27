@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import './Signup.css';
 
 export default class Signup extends Component {
+   constructor() {
+      super();
+      this.state = {
+         email: '',
+         password: '',
+         phone_number: '',
+         msg: '',
+         isRegister: false,
+      };
+   }
+
    render() {
       return (
          <>

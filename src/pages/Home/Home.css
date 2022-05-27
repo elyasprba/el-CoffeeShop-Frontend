@@ -428,58 +428,6 @@ html {
    background-color: #ffba33;
 }
 
-.footer {
-   background-color: #f8f8f8;
-}
-
-.footer-container {
-   margin: 7.5%;
-}
-
-.coffeeshop-logo {
-   margin: 0;
-}
-
-.coffeeshop-footer-text {
-   font-family: Rubik;
-   font-size: 16px;
-   font-weight: 500;
-   line-height: 30px;
-   letter-spacing: 0em;
-   text-align: left;
-   color: #4f5665;
-   margin-top: 20px;
-}
-
-.copyright {
-   font-family: Rubik;
-   font-size: 16px;
-   font-weight: 400;
-   line-height: 30px;
-   letter-spacing: 0em;
-   text-align: left;
-   margin-top: 20px;
-   color: #afb5c0;
-}
-
-.footer-list-header {
-   font-family: Rubik;
-   font-size: 18px;
-   font-weight: 500;
-   line-height: 30px;
-   letter-spacing: 0em;
-   text-align: left;
-}
-
-.footer-list-item {
-   font-family: Rubik;
-   font-size: 16px;
-   font-weight: 400;
-   line-height: 30px;
-   letter-spacing: 0em;
-   text-align: left;
-}
-
 @media (max-width: 834px) {
    .info {
       width: auto;

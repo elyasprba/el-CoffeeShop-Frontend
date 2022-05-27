@@ -19,7 +19,7 @@ export default class Login extends Component {
                   <header className="main-header-login">
                      <div className="main-header-name-login">
                         <a href="../home/index.html">
-                           <img src="../assets/coffee-1.png" alt="coffee-logo" />
+                           <img src={require('../../assets/coffee-1.png')} alt="coffee-logo" />
                         </a>
                         <p className="name-logo-login">el-CoffeeShop</p>
                      </div>
@@ -53,11 +53,11 @@ export default class Login extends Component {
                         Sign up here
                      </button>
                   </form>
-                  <footer className="footer-login">
+                  <footer className="footer-login" id="footer-login">
                      <div className="footer-content-login">
                         <div className="footer-info-login">
                            <div className="main-header-name-login">
-                              <img src={require('../../assets/coffee-1.png')} alt="coffee-logo" />
+                              <img src={require('../../assets/coffee-1.png')} alt="coffee-logo" width={'30px'} height={'30px'} />
                               <p className="name-logo-login">el-CoffeeShop</p>
                            </div>
                            <p className="description-login">Coffee Shop is a store that sells some good meals, and especially coffee. We provide high quality beans</p>
