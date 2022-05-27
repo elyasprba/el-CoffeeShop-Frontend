@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Product from './pages/Product';
 import Forgot from './pages/Forgot';
+import Signup from './pages/Signup';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/product" element={<Product />} />
             <Route path="/forgot" element={<Forgot />} />
+            <Route path="/signup" element={<Signup />} />
          </Routes>
       </BrowserRouter>
    );

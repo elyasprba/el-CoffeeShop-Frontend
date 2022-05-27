@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap');
+
+*,
+*::before,
+*::after {
+   margin: 0;
+   margin-bottom: 0;
+   box-sizing: border-box;
+}
+
+.container-sign {
+   display: flex;
+   width: 100%;
+   height: 1500px;
+   font-family: 'Rubik';
+}
+
+.background-signup {
+   width: 100%;
+   height: 1620px;
+   object-fit: cover;
+}
+
+.side-header {
+   flex: 1;
+}
+
+/* main */
+.main-container-sign {
+   display: flex;
+   flex: 2;
+   flex-direction: column;
+}
+
+.main-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-left: 10%;
+   margin-right: 10%;
+   margin-top: 50px;
+}
+
+.main-header-name {
+   display: flex;
+}
+
+.name-logo {
+   margin-top: 5px;
+   margin-left: 10px;
+   font-size: 20px;
+   font-weight: 700;
+   line-height: 24px;
+   letter-spacing: 0em;
+   text-align: left;
+}
+
+.main-header-title {
+   font-size: 35px;
+   font-weight: 700;
+   line-height: 41px;
+   letter-spacing: 0em;
+   text-align: left;
+   color: #6a4029;
+}
+
+.main-header-name a img {
+   height: 30px;
+}
+
+/* form */
+.register-form {
+   display: flex;
+   padding-top: 100px;
+   margin: 0% 10% 5% 10%;
+   flex-direction: column;
+}
+
+label {
+   margin-bottom: 13px;
+   font-size: 20px;
+   font-weight: 700;
+   line-height: 24px;
+   letter-spacing: 0em;
+   text-align: left;
+   color: #4f5665;
+}
+
+input {
+   height: 75px;
+   margin-bottom: 32px;
+   border-radius: 20px;
+   border: 1px solid #4f5665;
+}
+
+input[type='text'],
+input[type='password'] {
+   font-size: 20px;
+   padding: 25px 30px;
+   font-weight: 400;
+   line-height: 27px;
+}
+
+.sign-up {
+   height: 75px;
+   margin-bottom: 26px;
+   background: #ffba33;
+   box-shadow: 0px 6px 20px rgba(255, 186, 51, 0.4);
+   border-radius: 20px;
+   border: none;
+   color: #6a4029;
+   font-size: 20px;
+   font-weight: 700;
+   text-align: center;
+}
+
+.sign-up-google {
+   height: 75px;
+   background: #ffffff;
+   box-shadow: 0px 6px 20px rgba(196, 196, 196, 0.67);
+   border-radius: 20px;
+   border: none;
+   text-align: center;
+   font-style: normal;
+   font-weight: 700;
+   font-size: 20px;
+   margin-bottom: 62px;
+}
+
+.img-google {
+   width: 20px;
+   height: 20px;
+   margin-bottom: -3px;
+}
+
+.has-account {
+   display: flex;
+   column-gap: 10px;
+   align-items: center;
+}
+
+.has-account-text {
+   flex: 2;
+   font-size: 16px;
+   font-weight: 800;
+   line-height: 30px;
+   text-align: center;
+   color: #9f9f9f;
+}
+
+.underline {
+   flex: 1;
+   height: 1px;
+   border-bottom: 2px solid #c4c4c4;
+}
+
+.login {
+   height: 75px;
+   background: #6a4029;
+   box-shadow: 0px 6px 20px rgba(106, 64, 41, 0.63);
+   border-radius: 20px;
+   border: none;
+   color: #ffffff;
+   margin-top: 42px;
+   font-weight: 700;
+   font-size: 20px;
+   line-height: 25px;
+   margin-bottom: 82px;
+}
+
+/* Footer */
+footer {
+   height: 100%;
+   width: 100%;
+   background: #f8f8f8;
+}
+
+.footer-content-signup {
+   display: flex;
+}
+
+.footer-info-signup {
+   margin: 5% 5% 5% 5%;
+}
+
+.footer-info-sign {
+   flex: 1;
+}
+
+.description {
+   margin: 30px 30px 0px 0px;
+   color: #4f5665;
+   line-height: 30px;
+   font-weight: 500px;
+   font-size: 16px;
+}
+
+.sosmed-img > img {
+   margin: 15px 15px 30px 0px;
+}
+
+.copy-right {
+   color: #afb5c0;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 30px;
+}
+
+.product-info {
+   flex-direction: column;
+   margin: 5% 5% 0% 5%;
+}
+
+.product-title {
+   font-weight: 500;
+   font-size: 18px;
+   line-height: 30px;
+   color: #0b132a;
+   font-weight: 700;
+}
+
+.product-detail-info {
+   display: flex;
+}
+
+.product-detail {
+   margin-bottom: 10px;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 30px;
+   color: #4f5665;
+}
+
+.title-info {
+   font-weight: 500;
+   font-size: 18px;
+   line-height: 30px;
+   color: #0b132a;
+   font-weight: 700;
+}
+
+.engage-title {
+   display: flex;
+   margin: 10px 0px 20px 0px;
+}
+
+.engage-detail {
+   margin-bottom: 10px;
+   font-weight: 400;
+   font-size: 16px;
+   line-height: 30px;
+   color: #4f5665;
+}
+
+@media (max-width: 834px) {
+   .container-sign {
+      flex-direction: column;
+   }
+
+   .name-logo {
+      font-size: 18px;
+   }
+
+   .background-signup {
+      width: 100%;
+      height: 200px;
+   }
+}
