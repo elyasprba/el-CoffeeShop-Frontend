@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 import './Signup.css';
 
 export default class Signup extends Component {
@@ -8,12 +10,15 @@ export default class Signup extends Component {
          email: '',
          password: '',
          phone_number: '',
-         msg: '',
-         isRegister: false,
+         errMsg: '',
+         isSuccess: false,
       };
    }
 
    render() {
+      // if (this.state.isSuccess) {
+      //    return <Navigate to="/auth/login" />;
+      // }
       return (
          <>
             <section className="container-sign">
@@ -40,14 +45,70 @@ export default class Signup extends Component {
                   </header>
                   <form className="register-form-sign">
                      <label htmlFor="email">Email Address :</label>
-                     <input type="text" id="email" placeholder="Enter your email address" />
+                     <input
+                        type="text"
+                        id="email"
+                        placeholder="Enter your email address"
+                        value={this.state.email}
+                        onChange={(e) => {
+                           this.setState({
+                              email: e.target.value,
+                           });
+                        }}
+                     />
                      <label htmlFor="password">Password :</label>
-                     <input type="password" id="password" placeholder="Enter your password" />
+                     <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        value={this.state.password}
+                        onChange={(e) => {
+                           this.setState({
+                              password: e.target.value,
+                           });
+                        }}
+                     />
                      <label htmlFor="phone">Phone Number :</label>
-                     <input type="text" id="phone" placeholder="Enter your phone number" />
-                     <button className="sign-up" type="submit">
+                     <input
+                        type="text"
+                        id="phone"
+                        placeholder="Enter your phone number"
+                        value={this.state.phone_number}
+                        onChange={(e) => {
+                           this.setState({
+                              phone_number: e.target.value,
+                           });
+                        }}
+                     />
+                     <div
+                        className="sign-up"
+                        onClick={() => {
+                           const { email, password, phone_number } = this.state;
+                           const body = {
+                              email,
+                              password,
+                              phone_number,
+                           };
+                           axios
+                              .post('http://localhost:8080/auth/register', body)
+                              .then((result) => {
+                                 alert(result.data.data.msg);
+                                 this.setState({
+                                    isRegist: true,
+                                 });
+                              })
+                              .catch((error) => {
+                                 console.log(error);
+                                 alert(error.response.data.err.msg);
+                                 // alert(err.response.data.msg);
+                                 // this.setState({
+                                 //    msg: err.response.data.err.errMsg,
+                                 // });
+                              });
+                        }}
+                     >
                         Sign Up
-                     </button>
+                     </div>
                      <button className="sign-up-google" type="submit">
                         <img
                            src="https://s3-alpha-sig.figma.com/img/f881/84c6/8dee88f348660b174d22c163e0848498?Expires=1653868800&Signature=Vg4eVgXJlLpzHb~l-hmau-AYqNsNjLgu6zHcNh2aKvADQqJOjAgBZy-jdvhP8FYt-8iZp7k2YbFNpo9mWd-e4HA~fKtfLAm5PAxAp1s-tEdZ~KnNWUHawtISfzXvkxdwIb-f-nPxZ8ggwfFrx2qB1LU1EXpyCnOgfOh~Z~pbkdgsz-8kszhk8DNcvZcFr88UGJI0Xxh6z2m0wdq1EcYrw~WIqxCCOjO~Hg4uAVt2jjjWIKZ0wGFIJUBKQFWOq1xLVYY1V0vrmRU5l3KQTuSQsd654NL5qR1kmV4rdl0YXBaEsNlTxfhnG1HZup~BwHyZt28PxSGBobSNMNxp6QeVGQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"

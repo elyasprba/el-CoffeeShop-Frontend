@@ -1,0 +1,231 @@
+.profile-main-container {
+   background-image: url('https://s3-alpha-sig.figma.com/img/9e15/a72e/b94b169a2b3bf7010f10c4fce8c1d0a1?Expires=1653868800&Signature=bbHJzyhD9Dl231BNTudPFqCW~nlRvRr8ZWLuALrjkq9VIQqYxf8fQe~zvhbBZIvrelPpkYahp7cL2eT5AvoEf3jEhfchEZzhlnJxD-0OLH65aCK9O5mxDeuJwLPMbKnJimfY2l4Gqhqaee8eoBYQBkn6zrNDGrnxW68uzG2QK~lE18iXbvVoldPZKdhUkKnYF5B7oI2QsfaNvGAR5~1LgqlZE2aNiB4X40~I5j5JW79-GjXOBOdcEUw3zAj2rm9t3esomJgWnn2Ow4z~g-OnpYfMyqaPfu3bfnXcIXVzUc9xeYamYltMqrHqldtXwDKG2IbjVaD4G7RkWxSTS0LbPA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA');
+   background-repeat: no-repeat;
+   background-size: 100%;
+   height: 1500px;
+}
+
+.profile-user {
+   color: #ffffff;
+   margin: 0px 0px 30px 130px;
+}
+
+.profile-info {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin: 45px 60px 0px 80px;
+}
+
+.profile img {
+   width: 185px;
+   height: 185px;
+   object-fit: cover;
+   border-radius: 60%;
+   object-position: 100% 20%;
+}
+
+.profile-username {
+   font-size: 20px;
+   text-align: center;
+   color: #000000;
+}
+
+.username p {
+   font-weight: 500;
+}
+
+.profile-container {
+   display: flex;
+   background-color: #f8f8f8;
+   margin: 5%;
+   border-radius: 5px;
+}
+
+.profile-detail {
+   background: #ffffff;
+   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.22);
+   border-radius: 10px;
+   padding: 5% 3% 3% 5%;
+   margin: 50px 50px 50px 0px;
+}
+
+.choose-photo {
+   height: 40px;
+   width: 100%;
+   background: #ffba33;
+   border-radius: 10px;
+   border: none;
+   color: #6a4029;
+   margin-top: 17px;
+   font-weight: bold;
+   font-size: 15px;
+   line-height: 25px;
+   margin-bottom: 11px;
+}
+
+.remove-photo {
+   height: 40px;
+   width: 100%;
+   background: #6a4029;
+   border-radius: 10px;
+   border: none;
+   color: #ffffff;
+   font-weight: bold;
+   font-size: 15px;
+   line-height: 25px;
+}
+
+.edit-password {
+   height: 40px;
+   width: 100%;
+   background: #ffffff;
+   border-radius: 10px;
+   border: 1px solid #9f9f9f;
+   color: #6a4029;
+   margin-top: 40px;
+   font-weight: bold;
+   font-size: 15px;
+   line-height: 25px;
+}
+
+.profile-button p {
+   font-weight: 700;
+   font-size: 20px;
+   line-height: 30px;
+   text-align: center;
+   color: #6a4029;
+   margin: 35px 0px;
+}
+
+.save-change {
+   height: 55px;
+   width: 100%;
+   background: #6a4029;
+   border-radius: 10px;
+   border: none;
+   color: #ffffff;
+   font-weight: bold;
+   font-size: 15px;
+   line-height: 22px;
+   margin-bottom: 22px;
+}
+
+.cancel {
+   height: 55px;
+   width: 100%;
+   background: #ffba33;
+   border-radius: 10px;
+   border: none;
+   color: #6a4029;
+   font-weight: bold;
+   font-size: 15px;
+   line-height: 25px;
+   margin-bottom: 11px;
+}
+
+.logout {
+   height: 40px;
+   width: 100%;
+   background: #ffffff;
+   border-radius: 10px;
+   border: 1px solid #9f9f9f;
+   color: #6a4029;
+   margin-top: 40px;
+   font-weight: bold;
+   font-size: 15px;
+   line-height: 25px;
+   margin-bottom: 56px;
+}
+
+.profile-detail h3 {
+   font-weight: 700;
+   font-size: 25px;
+   line-height: 38px;
+   color: #4f5665;
+}
+
+.form-contacts-profile {
+   display: flex;
+}
+
+.from-email-adress-profile {
+   display: flex;
+   flex: 1;
+   flex-direction: column;
+}
+
+.form-phone-profile {
+   display: flex;
+   flex: 1;
+   flex-direction: column;
+   margin-left: 50px;
+}
+
+label {
+   margin-top: 20px;
+   font-weight: 500;
+   font-size: 20px;
+   line-height: 30px;
+   color: #9f9f9f;
+}
+
+.details-profile {
+   font-weight: 700;
+   font-size: 25px;
+   line-height: 38px;
+   color: #4f5665;
+   padding-top: 40px;
+}
+
+.form-details {
+   display: flex;
+}
+
+.form-display-first-last {
+   display: flex;
+   flex: 1;
+   flex-direction: column;
+}
+
+.form-date-profile {
+   display: flex;
+   flex: 1;
+   flex-direction: column;
+   margin-left: 50px;
+   font-size: 25px;
+   line-height: 38px;
+   color: #4f5665;
+}
+
+@media (max-width: 834px) {
+   .profile-main-container {
+      height: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+   }
+
+   .profile-container {
+      flex-direction: column;
+   }
+
+   .profile-detail {
+      margin: 5%;
+   }
+
+   .form-contacts-profile {
+      flex-direction: column;
+   }
+
+   .form-phone-profile {
+      margin-left: 0;
+   }
+
+   .form-details {
+      flex-direction: column;
+   }
+
+   .form-date-profile {
+      margin-left: 0;
+   }
+}

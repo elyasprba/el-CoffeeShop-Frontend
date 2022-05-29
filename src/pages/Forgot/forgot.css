@@ -22,8 +22,13 @@ body {
    margin: 5%;
 }
 
+.header-forgot {
+   margin-top: 15%;
+}
+
 .header-name-forgot {
    text-align: center;
+   font-weight: 700;
 }
 
 .title-forgot {
@@ -108,7 +113,15 @@ body {
 
 .footer-info-forgot-desc {
    flex: 1;
-   margin: 5% 10% 5% 10%;
+   margin: 5% 10% 5% 5%;
+}
+
+.main-header-name-forgot {
+   display: flex;
+}
+
+.name-logo-forgot {
+   font-weight: 700;
 }
 
 .footer-info-forgot {
@@ -135,6 +148,7 @@ body {
 }
 
 .product-info-forgot {
+   flex: 1;
    flex-direction: column;
    padding-top: 30px;
 }

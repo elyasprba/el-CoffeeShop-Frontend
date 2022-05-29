@@ -37,7 +37,7 @@ export default class Forgot extends Component {
                   <div className="footer-content-forgot">
                      <div className="footer-info-forgot-desc">
                         <div className="main-header-name-forgot">
-                           <img src={require('../../assets/coffee-1.png')} alt="coffee-logo" />
+                           <img src={require('../../assets/coffee-1.png')} alt="coffee-logo" width={'30px'} height={'30px'} />
                            <p className="name-logo-forgot">el-CoffeeShop</p>
                         </div>
                         <p className="description-forgot">Coffee Shop is a store that sells some good meals, and especially coffee. We provide high quality beans</p>
