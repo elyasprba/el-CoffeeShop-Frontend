@@ -10,15 +10,14 @@ export default class Signup extends Component {
          email: '',
          password: '',
          phone_number: '',
-         errMsg: '',
          isSuccess: false,
       };
    }
 
    render() {
-      // if (this.state.isSuccess) {
-      //    return <Navigate to="/auth/login" />;
-      // }
+      if (this.state.isSuccess) {
+         return <Navigate to="/login" />;
+      }
       return (
          <>
             <section className="container-sign">
@@ -82,7 +81,8 @@ export default class Signup extends Component {
                      />
                      <div
                         className="sign-up"
-                        onClick={() => {
+                        onClick={(e) => {
+                           e.preventDefault();
                            const { email, password, phone_number } = this.state;
                            const body = {
                               email,
@@ -94,16 +94,11 @@ export default class Signup extends Component {
                               .then((result) => {
                                  alert(result.data.data.msg);
                                  this.setState({
-                                    isRegist: true,
+                                    isSuccess: true,
                                  });
                               })
                               .catch((error) => {
-                                 console.log(error);
-                                 alert(error.response.data.err.msg);
-                                 // alert(err.response.data.msg);
-                                 // this.setState({
-                                 //    msg: err.response.data.err.errMsg,
-                                 // });
+                                 alert(error.response.data.msg);
                               });
                         }}
                      >

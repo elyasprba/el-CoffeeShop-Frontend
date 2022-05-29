@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import App from './App';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
@@ -10,6 +9,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import ProductDetails from './pages/ProductDetails';
 import Profile from './pages/Profile';
+import History from './pages/History';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -24,6 +24,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/product-details" element={<ProductDetails />} />
+            <Route path="/history" element={<History />} />
          </Routes>
       </BrowserRouter>
    );
