@@ -1,10 +1,41 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Product/Header';
 import './Profile.css';
 
 export default class Profile extends Component {
+   constructor() {
+      super();
+      this.state = {
+         token: localStorage.getItem('token'),
+         profile: [],
+         isLogin: true,
+      };
+   }
+
+   componentDidMount() {
+      if (!this.state.token) {
+         this.setState({ isLogin: false });
+      }
+      const config = { headers: { Authorization: `Bearer ${this.state.token}` } };
+      axios
+         .get('http://localhost:8080/users/profile-detail', config)
+         .then((result) => {
+            console.log(result.data.data[0]);
+            this.setState({
+               profile: result.data.data[0],
+            });
+         })
+         .catch((error) => console.log(error));
+   }
+
    render() {
+      console.log(this.state.token);
+      if (!this.state.isLogin) {
+         return <Navigate to="/login" />;
+      }
       return (
          <>
             <Header />
