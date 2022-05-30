@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Product/Header';
 import './Profile.css';
@@ -11,6 +11,13 @@ export default class Profile extends Component {
       this.state = {
          token: localStorage.getItem('token'),
          profile: [],
+         email: '',
+         frist_name: '',
+         last_name: '',
+         phone_number: '',
+         address: '',
+         gender: '',
+         date: '',
          isLogin: true,
       };
    }
@@ -23,7 +30,6 @@ export default class Profile extends Component {
       axios
          .get('http://localhost:8080/users/profile-detail', config)
          .then((result) => {
-            console.log(result.data.data[0]);
             this.setState({
                profile: result.data.data[0],
             });
@@ -32,7 +38,6 @@ export default class Profile extends Component {
    }
 
    render() {
-      console.log(this.state.token);
       if (!this.state.isLogin) {
          return <Navigate to="/login" />;
       }
@@ -49,8 +54,8 @@ export default class Profile extends Component {
                            alt="profile-user"
                         />
                         <div className="profile-username">
-                           <h3>Raisa Ashalina NF</h3>
-                           <p>raisaanf@gmail.com</p>
+                           <h3>{this.state.profile.display_name}</h3>
+                           <p>{this.state.profile.email}</p>
                         </div>
                      </div>
                      <form>
@@ -65,15 +70,48 @@ export default class Profile extends Component {
                               Edit Password
                            </button>
                            <p>Do you want to save the change?</p>
-                           <button className="save-change" type="submit">
+                           <div
+                              className="save-change"
+                              type="submit"
+                              onClick={(e) => {
+                                 e.preventDefault();
+                                 const { email, frist_name, last_name, phone_number, address, date } = this.state;
+                                 const token = localStorage.getItem('token');
+                                 const config = { headers: { Authorization: `Bearer ${token}` } };
+                                 const body = {
+                                    email,
+                                    frist_name,
+                                    last_name,
+                                    phone_number,
+                                    address,
+                                    date,
+                                 };
+                                 axios
+                                    .patch('http://localhost:8080/users', body, config)
+                                    .then((result) => {
+                                       console.log(result);
+                                       alert(result.data.msg);
+                                    })
+                                    .catch((error) => {
+                                       console.log(error);
+                                    });
+                              }}
+                           >
                               Save Change
-                           </button>
-                           <button className="cancel" type="submit">
+                           </div>
+                           <button className="cancel" type="#">
                               Cencel
                            </button>
-                           <button className="logout" type="submit">
-                              Log out
-                           </button>
+                           <div className="logout" type="submit">
+                              <Link
+                                 to="/"
+                                 onClick={() => {
+                                    localStorage.removeItem('user-info');
+                                 }}
+                              >
+                                 Log Out
+                              </Link>
+                           </div>
                         </div>
                      </form>
                   </div>
@@ -83,13 +121,43 @@ export default class Profile extends Component {
                         <form className="form-contacts-profile">
                            <div className="from-email-adress-profile">
                               <label htmlFor="email">Email adress :</label>
-                              <input type="email" id="email" placeholder="Enter your email adress" />
+                              <input
+                                 type="email"
+                                 id="email"
+                                 placeholder={this.state.profile.email}
+                                 value={this.state.email}
+                                 onChange={(e) => {
+                                    this.setState({
+                                       email: e.target.value,
+                                    });
+                                 }}
+                              />
                               <label for="adres">Delivery adress :</label>
-                              <input type="text" id="adress" placeholder="Enter your delivery adress" />
+                              <input
+                                 type="text"
+                                 id="adress"
+                                 placeholder={this.state.profile.address}
+                                 value={this.state.address}
+                                 onChange={(e) => {
+                                    this.setState({
+                                       address: e.target.value,
+                                    });
+                                 }}
+                              />
                            </div>
                            <div className="form-phone-profile">
                               <label for="phone">Mobile number :</label>
-                              <input type="text" id="phone" placeholder="Enter your mobile number" />
+                              <input
+                                 type="text"
+                                 id="phone"
+                                 placeholder={this.state.profile.phone_number}
+                                 value={this.state.phone_number}
+                                 onChange={(e) => {
+                                    this.setState({
+                                       phone_number: e.target.value,
+                                    });
+                                 }}
+                              />
                            </div>
                         </form>
                      </div>
@@ -98,15 +166,55 @@ export default class Profile extends Component {
                         <form className="form-details">
                            <div className="form-display-first-last">
                               <label for="name">Display name :</label>
-                              <input type="text" id="name" placeholder="Enter your display name" />
+                              <input
+                                 type="text"
+                                 id="name"
+                                 placeholder={this.state.profile.display_name}
+                                 value={this.state.display_name}
+                                 onChange={(e) => {
+                                    this.setState({
+                                       display_name: e.target.value,
+                                    });
+                                 }}
+                              />
                               <label for="first">First name :</label>
-                              <input type="text" id="first" placeholder="Enter your first name" />
+                              <input
+                                 type="text"
+                                 id="first"
+                                 placeholder={this.state.profile.first_name}
+                                 value={this.state.first_name}
+                                 onChange={(e) => {
+                                    this.setState({
+                                       first_name: e.target.value,
+                                    });
+                                 }}
+                              />
                               <label for="last">Last name :</label>
-                              <input type="text" id="last" placeholder="Enter your last name" />
+                              <input
+                                 type="text"
+                                 id="last"
+                                 placeholder={this.state.profile.last_name}
+                                 value={this.state.last_name}
+                                 onChange={(e) => {
+                                    this.setState({
+                                       last_name: e.target.value,
+                                    });
+                                 }}
+                              />
                            </div>
                            <div className="form-date-profile">
                               <label for="date">DD/MM/YY</label>
-                              <input type="date" id="last" placeholder="Enter your birthday date" />
+                              <input
+                                 type="text"
+                                 id="last"
+                                 placeholder={this.state.profile.birthday_date}
+                                 value={this.state.date}
+                                 onChange={(e) => {
+                                    this.setState({
+                                       date: e.target.value,
+                                    });
+                                 }}
+                              />
                            </div>
                         </form>
                      </div>

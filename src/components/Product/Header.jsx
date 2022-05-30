@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Header extends Component {
    render() {
@@ -10,10 +11,18 @@ export default class Header extends Component {
                   <h2>el-Coffee Shop</h2>
                </div>
                <div class="col-sm-6 navigasi">
-                  <li>Home</li>
-                  <li>Product</li>
-                  <li>Your Chart</li>
-                  <li>History</li>
+                  <li className="nav-item">
+                     <Link to="/">Home</Link>
+                  </li>
+                  <li className="nav-item">
+                     <Link to="/product">Product</Link>
+                  </li>
+                  <li>
+                     <Link to="/payment">Your Chart</Link>
+                  </li>
+                  <li>
+                     <Link to="/history">History</Link>
+                  </li>
                </div>
                <div class="col-sm-3 auth">
                   <div class="searchIcon">
@@ -24,9 +33,9 @@ export default class Header extends Component {
                      <img src={require('../../assets/icon/chat.png')} alt="chat-img" />
                   </div>
                   <div class="profil">
-                     <a href="../profile/profile.html">
+                     <Link to="/profile">
                         <img src={require('../../assets/profile-user.png')} alt="user-img" />
-                     </a>
+                     </Link>
                   </div>
                </div>
             </aside>

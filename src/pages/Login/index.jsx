@@ -72,7 +72,7 @@ const Login = () => {
                      }}
                   />
                   <p className="forgot-password">Forget password?</p>
-                  <button className="sign-up" type="submit" onClick={login}>
+                  <button className="sign-up-login" type="submit" onClick={login}>
                      Login
                   </button>
                   <button className="sign-up-google" type="submit">

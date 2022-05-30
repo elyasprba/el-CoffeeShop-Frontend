@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import ProductDetails from './pages/ProductDetails';
 import Profile from './pages/Profile';
 import History from './pages/History';
+import Payment from './pages/Payment';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -25,6 +26,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/product-details" element={<ProductDetails />} />
             <Route path="/history" element={<History />} />
+            <Route path="/payment" element={<Payment />} />
          </Routes>
       </BrowserRouter>
    );

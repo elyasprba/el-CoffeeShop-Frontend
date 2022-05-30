@@ -109,6 +109,8 @@
    font-size: 15px;
    line-height: 22px;
    margin-bottom: 22px;
+   text-align: center;
+   padding-top: 15px;
 }
 
 .cancel {
@@ -133,6 +135,7 @@
    color: #6a4029;
    margin-top: 40px;
    font-weight: bold;
+   text-align: center;
    font-size: 15px;
    line-height: 25px;
    margin-bottom: 56px;
