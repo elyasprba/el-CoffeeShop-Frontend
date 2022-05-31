@@ -177,7 +177,7 @@ html {
    background-color: #a37860;
 }
 .terms {
-   margin-left: 55px;
+   margin-left: 40%;
 }
 .terms > h5 {
    font-size: 12px;
@@ -227,6 +227,14 @@ html {
    top: -80px;
 }
 .productName {
+   margin-top: 20px;
+   text-align: center;
    font-size: 22px;
-   font-weight: 900;
+   font-weight: 700;
+}
+
+.price-product {
+   margin-top: 25px;
+   text-align: center;
+   font-weight: 500;
 }

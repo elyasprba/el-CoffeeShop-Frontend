@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import './Login.css';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Login = () => {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
    const navigate = useNavigate();
-   const login = (even) => {
-      even.preventDefault();
+   const login = (event) => {
+      event.preventDefault();
       const body = {
          email,
          password,
@@ -19,7 +19,7 @@ const Login = () => {
             console.log(result);
             alert(result.data.data.msg);
             localStorage.setItem('token', result.data.data.token);
-            navigate('/');
+            navigate('/product');
          })
          .catch((error) => {
             console.log(error);
@@ -41,9 +41,9 @@ const Login = () => {
             <div className="main-containerlogin">
                <header className="main-header-login">
                   <div className="main-header-name-login">
-                     <a href="../home/index.html">
+                     <Link to="/">
                         <img src={require('../../assets/coffee-1.png')} alt="coffee-logo" />
-                     </a>
+                     </Link>
                      <p className="name-logo-login">el-CoffeeShop</p>
                   </div>
                   <div>

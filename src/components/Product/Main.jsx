@@ -75,12 +75,12 @@ export default class Main extends Component {
                      {this.state.product.map((product) => (
                         <div className="col-md-6  col-lg-3 d-flex flex-column productContainer">
                            <div className="d-flex flex-column align-items-center justify-content-center cardProduct">
-                              <img className="imgProduct" key={product.picture} src={`http://localhost:8080${product.picture}`} alt="product-img" />
+                              <img className="imgProduct" key={product.picture} src={`http://localhost:8080${product.pict}`} alt="product-img" />
                               <div className="productName" key={product.name}>
                                  {product.name}
                               </div>
-                              <div className="price" key={product.id}>
-                                 {product.price}
+                              <div className="price-product" key={product.id}>
+                                 IDR. {product.price}
                               </div>
                            </div>
                         </div>

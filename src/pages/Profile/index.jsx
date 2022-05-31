@@ -106,7 +106,7 @@ export default class Profile extends Component {
                               <Link
                                  to="/"
                                  onClick={() => {
-                                    localStorage.removeItem('user-info');
+                                    localStorage.removeItem('token');
                                  }}
                               >
                                  Log Out
@@ -205,7 +205,7 @@ export default class Profile extends Component {
                            <div className="form-date-profile">
                               <label for="date">DD/MM/YY</label>
                               <input
-                                 type="text"
+                                 type="date"
                                  id="last"
                                  placeholder={this.state.profile.birthday_date}
                                  value={this.state.date}
