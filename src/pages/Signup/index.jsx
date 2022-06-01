@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
+import SecondFooter from '../../components/SecondFooter';
 import './Signup.css';
 
 export default class Signup extends Component {
@@ -33,9 +34,9 @@ export default class Signup extends Component {
                <section className="main-container-sign">
                   <header className="main-header">
                      <div className="main-header-name">
-                        <a href="../home/index.html">
+                        <Link to="/">
                            <img src={require('../../assets/coffee-1.png')} alt="coffee-logo" />
-                        </a>
+                        </Link>
                         <p className="name-logo">el-CoffeeShop</p>
                      </div>
                      <div>
@@ -121,49 +122,7 @@ export default class Signup extends Component {
                         Login Here
                      </button>
                   </form>
-                  <footer className="footer-signup" id="footer-bg">
-                     <div className="footer-content-signup">
-                        <div className="footer-info-signup">
-                           <div className="main-header-name">
-                              <img src={require('../../assets/coffee-1.png')} alt="coffee-logo" />
-                              <p className="name-logo">el-CoffeeShop</p>
-                           </div>
-                           <p className="description">Coffee Shop is a store that sells some good meals, and especially coffee. We provide high quality beans</p>
-                           <div className="sosmed-img">
-                              <img src={require('../../assets/sosmed/fb-img.png')} alt="fb-img" />
-                              <img src={require('../../assets/sosmed/twitter-img.png')} alt="twitter-img" />
-                              <img src={require('../../assets/sosmed/ig-img.png')} alt="ig-img" />
-                           </div>
-                           <p className="copy-right">@2020el-CoffeeShop</p>
-                        </div>
-                        <div className="product-info">
-                           <p className="product-title">Product</p>
-                           <div className="product-detail-info">
-                              <div className="footer-info-sign">
-                                 <p className="product-detail">Download</p>
-                                 <p className="product-detail">Location</p>
-                                 <p className="product-detail">Blog</p>
-                              </div>
-                              <div className="footer-info-sign">
-                                 <p className="product-detail">Pricing</p>
-                                 <p className="product-detail">Countries</p>
-                              </div>
-                           </div>
-                           <p className="title-info">Engage</p>
-                           <div className="engage-title">
-                              <div className="footer-info-sign">
-                                 <p className="engage-detail">Coffe Shop ?</p>
-                                 <p className="engage-detail">FAQ</p>
-                                 <p className="engage-detail">Terms of Service</p>
-                              </div>
-                              <div className="footer-info-sign">
-                                 <p className="engage-detail">About Us</p>
-                                 <p className="engage-detail">Privacy Police</p>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </footer>
+                  <SecondFooter />
                </section>
             </section>
          </>

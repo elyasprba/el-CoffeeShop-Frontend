@@ -16,8 +16,8 @@
 }
 
 .background-signup {
-   width: 600px;
-   height: 1703px;
+   width: 100%;
+   height: 1622px;
    object-fit: cover;
 }
 
@@ -169,112 +169,21 @@ input[type='password'] {
    margin-bottom: 82px;
 }
 
-/* Footer */
-footer-signup {
-   height: 100%;
-   width: 100%;
-}
-
-#footer-bg {
-   background: #f8f8f8 !important;
-}
-
-.footer-content-signup {
-   display: flex;
-}
-
-.footer-info-signup {
-   margin: 5% 5% 5% 5%;
-}
-
-.footer-info-sign {
-   flex: 1;
-}
-
-.description {
-   margin: 30px 30px 0px 0px;
-   color: #4f5665;
-   line-height: 30px;
-   font-weight: 500px;
-   font-size: 16px;
-}
-
-.sosmed-img > img {
-   margin: 15px 15px 30px 0px;
-}
-
-.copy-right {
-   color: #afb5c0;
-   font-weight: 400;
-   font-size: 16px;
-   line-height: 30px;
-}
-
-.product-info {
-   flex-direction: column;
-   margin: 5% 5% 0% 5%;
-}
-
-.product-title {
-   font-weight: 500;
-   font-size: 18px;
-   line-height: 30px;
-   color: #0b132a;
-   font-weight: 700;
-}
-
-.product-detail-info {
-   display: flex;
-}
-
-.product-detail {
-   margin-bottom: 10px;
-   font-weight: 400;
-   font-size: 16px;
-   line-height: 30px;
-   color: #4f5665;
-}
-
-.title-info {
-   font-weight: 500;
-   font-size: 18px;
-   line-height: 30px;
-   color: #0b132a;
-   font-weight: 700;
-}
-
-.engage-title {
-   display: flex;
-   margin: 10px 0px 20px 0px;
-}
-
-.engage-detail {
-   margin-bottom: 10px;
-   font-weight: 400;
-   font-size: 16px;
-   line-height: 30px;
-   color: #4f5665;
-}
-
 @media (max-width: 834px) {
    .container-sign {
       flex-direction: column;
    }
 
-   .name-logo {
-      font-size: 18px;
+   .background-signup {
+      width: 100%;
+      height: 300px;
    }
 
    .register-form-sign {
-      padding-top: 10%;
+      padding-top: 30px;
    }
 
-   .background-signup {
-      width: 100%;
-      height: 200px;
-   }
-
-   label {
-      margin: 0;
+   .main-header-title {
+      font-size: 25px;
    }
 }
