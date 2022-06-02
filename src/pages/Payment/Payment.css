@@ -58,8 +58,7 @@
 
 .payment-item-img {
    display: flex;
-   justify-content: center;
-   align-items: center;
+   margin-left: 30px;
 }
 
 .payment-product-img {
@@ -427,16 +426,45 @@
 
    .payment-address-detail-section {
       margin-top: 30px;
-
       width: 50%;
    }
+
    .payment-payment-method {
       margin-top: 30px;
       margin-right: 5%;
       width: 45%;
    }
+}
 
-   .payment-payment-method-title {
-      text-align: center;
+@media (max-width: 428px) {
+   .payment-main-container {
+      padding: 20px;
+   }
+
+   .payment-item-img {
+      margin-left: 0;
+   }
+
+   .payment-right-content-card {
+      flex-direction: column;
+   }
+
+   .payment-left-content {
+      width: 100%;
+   }
+
+   /* .payment-main-container {
+      width: 100%;
+   } */
+   .payment-right-content {
+      width: 100%;
+   }
+
+   .payment-address-detail-section {
+      width: 100%;
+   }
+
+   .payment-payment-method {
+      width: 100%;
    }
 }

@@ -16,7 +16,7 @@ export default class Payment extends Component {
                      <div className="payment-all-order">
                         <div className="payment-order-item">
                            <div className="payment-item-img">
-                              <img src={''} alt="" className="payment-product-img" />
+                              <img src={require('../../assets/products/beef.png')} alt="" className="payment-product-img" />
                            </div>
                            <div className="payment-item-detail">
                               <p>Hazelnut Latte</p>
@@ -27,7 +27,7 @@ export default class Payment extends Component {
                         </div>
                         <div className="payment-order-item">
                            <div className="payment-item-img">
-                              <img src={''} alt="" className="payment-product-img" />
+                              <img src={require('../../assets/products/beef.png')} alt="" className="payment-product-img" />
                            </div>
                            <div className="payment-item-detail">
                               <p>Hazelnut Latte</p>
@@ -80,7 +80,7 @@ export default class Payment extends Component {
                               <form>
                                  <label className="payment-radio-method-container">
                                     <div className="payment-card-vector-container">
-                                       <img src={''} alt="card" className="payment-card-vector" />
+                                       <img src={require('../../assets/payment/vector-card.png')} alt="card" className="payment-card-vector" />
                                     </div>
                                     <p>Card</p>
                                     <input type="radio" name="payment-method-input" />
@@ -89,7 +89,7 @@ export default class Payment extends Component {
                                  <div className="payment-border"></div>
                                  <label className="payment-radio-method-container">
                                     <div className="payment-bank-vector-container">
-                                       <img src={''} alt="" className="payment-bank-vector" />
+                                       <img src={require('../../assets/payment/vector-bank.png')} alt="bank" className="payment-bank-vector" />
                                     </div>
                                     <p>Bank account</p>
                                     <input type="radio" name="payment-method-input" />
@@ -98,7 +98,7 @@ export default class Payment extends Component {
                                  <div className="payment-border"></div>
                                  <label className="payment-radio-method-container">
                                     <div className="payment-cod-vector-container">
-                                       <img src={''} alt="" className="payment-cod-vector" />
+                                       <img src={require('../../assets/payment/vector-delivery.png')} alt="delivery" className="payment-cod-vector" />
                                     </div>
                                     <p>Cash on Delivery</p>
                                     <input type="radio" name="payment-method-input" />

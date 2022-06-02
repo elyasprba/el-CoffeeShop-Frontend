@@ -20,7 +20,7 @@ const Login = () => {
             console.log(result);
             alert(result.data.data.msg);
             localStorage.setItem('token', result.data.data.token);
-            navigate('/product');
+            navigate('/');
          })
          .catch((error) => {
             console.log(error);

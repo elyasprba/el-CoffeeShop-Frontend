@@ -12,8 +12,8 @@ body {
 }
 
 .aside-img img {
-   width: 687px;
-   height: 1370px;
+   width: 600px;
+   height: 1365px;
    object-fit: cover;
 }
 
@@ -194,4 +194,42 @@ body {
    font-size: 16px;
    line-height: 30px;
    color: #4f5665;
+}
+
+@media (max-width: 840px) {
+   .container-forgot {
+      flex-direction: column;
+   }
+
+   .aside-img img {
+      width: 100%;
+      height: 250px;
+   }
+
+   .title-forgot {
+      margin-top: 0;
+   }
+
+   .clik-here {
+      margin-top: 20px;
+   }
+}
+
+@media (max-width: 428px) {
+   .info-title {
+      font-size: 30px;
+   }
+
+   .desc-title {
+      font-size: 15px;
+   }
+
+   .clik-here {
+      font-size: 15px;
+   }
+
+   .resend-forgot {
+      margin-top: 10px;
+      margin-bottom: 30px;
+   }
 }

@@ -10,10 +10,10 @@ export default class ProductDetails extends Component {
             <Header />
             <section className="protail">
                <section className="main-protail">
-                  <div>
-                     <p className="favpromos">Favorite & Promo Cold Brew</p>
-                  </div>
                   <aside className="info-protail">
+                     <div>
+                        <p className="favpromos">Favorite & Promo Cold Brew</p>
+                     </div>
                      <img src={require('../../assets/products/Mask Group.png')} alt="product-img" width={'400px'} />
                      <p className="info-name-protail">COLD BREW</p>
                      <p className="info-price-protail">IDR 30.000</p>
