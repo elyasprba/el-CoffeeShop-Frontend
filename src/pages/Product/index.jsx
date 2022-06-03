@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Header from '../../components/Product/Header';
 import Footer from '../../components/Footer/Footer';
-
+import { Link } from 'react-router-dom';
 import './Product.css';
 
 export default class Product extends Component {
@@ -79,11 +79,13 @@ export default class Product extends Component {
                      {this.state.product.map((product) => (
                         <div className="col-md-6  col-lg-3 d-flex flex-column productContainer">
                            <div className="d-flex flex-column align-items-center justify-content-center cardProduct">
-                              <img className="imgProduct" key={product.picture} src={`http://localhost:8080${product.pict}`} alt="product-img" />
+                              <Link to={`/product-details/${product.id}`}>
+                                 <img className="imgProduct" key={product.picture} src={`http://localhost:8080${product.pict}`} alt="product-img" />
+                              </Link>
                               <div className="productName" key={product.name}>
                                  {product.name}
                               </div>
-                              <div className="price-product" key={product.id}>
+                              <div className="price-product" key={product.price}>
                                  IDR. {product.price}
                               </div>
                            </div>
