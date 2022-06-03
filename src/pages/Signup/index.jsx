@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link, Navigate } from 'react-router-dom';
 import SecondFooter from '../../components/SecondFooter';
+import 'bootstrap';
 import './Signup.css';
 
 export default class Signup extends Component {
@@ -12,11 +13,14 @@ export default class Signup extends Component {
          password: '',
          phone_number: '',
          isSuccess: false,
+         isRegister: false,
+         successMsg: '',
+         errorMsg: '',
       };
    }
 
    render() {
-      if (this.state.isSuccess) {
+      if (this.state.isRegister) {
          return <Navigate to="/login" />;
       }
       return (
@@ -82,6 +86,8 @@ export default class Signup extends Component {
                      />
                      <div
                         className="sign-up"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
                         onClick={(e) => {
                            e.preventDefault();
                            const { email, password, phone_number } = this.state;
@@ -93,13 +99,18 @@ export default class Signup extends Component {
                            axios
                               .post('http://localhost:8080/auth/register', body)
                               .then((result) => {
-                                 alert(result.data.data.msg);
+                                 console.log(result.data.data.msg);
                                  this.setState({
                                     isSuccess: true,
+                                    successMsg: result.data.data.msg,
                                  });
                               })
                               .catch((error) => {
-                                 alert(error.response.data.msg);
+                                 console.log(error.response.data.err.msg);
+                                 this.setState({
+                                    isSuccess: false,
+                                    errorMsg: error.response.data.err.msg,
+                                 });
                               });
                         }}
                      >
@@ -123,6 +134,44 @@ export default class Signup extends Component {
                      </button>
                   </form>
                   <SecondFooter />
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                     <div class="modal-dialog">
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">
+                                 {this.state.isSuccess ? (
+                                    <p className="text-warning">
+                                       {this.state.successMsg}
+                                       {'!'}
+                                    </p>
+                                 ) : (
+                                    <p className="text-danger">{this.state.errorMsg}</p>
+                                 )}
+                              </h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                           </div>
+                           <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                 Close
+                              </button>
+                              {this.state.isSuccess ? (
+                                 <button
+                                    type="button"
+                                    class="btn btn-primary"
+                                    data-bs-dismiss="modal"
+                                    onClick={() => {
+                                       this.setState({
+                                          isRegister: true,
+                                       });
+                                    }}
+                                 >
+                                    Oke
+                                 </button>
+                              ) : null}
+                           </div>
+                        </div>
+                     </div>
+                  </div>
                </section>
             </section>
          </>
