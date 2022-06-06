@@ -6,26 +6,48 @@ import { Link } from 'react-router-dom';
 import './Product.css';
 
 export default class Product extends Component {
-   constructor() {
-      super();
+   constructor(props) {
+      super(props);
       this.state = {
          product: [],
+         isFavorite: false,
       };
    }
 
    componentDidMount() {
+      document.title = 'Product';
       axios
-         .get('http://localhost:8080/products/all')
+         .get(`${process.env.REACT_APP_HOST}/products/all`)
          .then((result) => {
+            console.log(result);
             this.setState({
                product: result.data.data,
             });
-            console.log(result);
          })
          .catch((error) => {
             console.log(error);
          });
    }
+
+   componentDidUpdate() {
+      if (this.state.isFavorite) {
+         axios
+            .get(`${process.env.REACT_APP_HOST}/products/fav`)
+            .then((result) => {
+               console.log(result);
+               this.setState({
+                  product: result.data.data,
+               });
+            })
+            .catch((error) => {
+               console.log(error);
+            });
+         this.setState({
+            isFavorite: false,
+         });
+      }
+   }
+
    render() {
       return (
          <>
@@ -69,7 +91,16 @@ export default class Product extends Component {
                </div>
                <div className="col-sm-8 content">
                   <div className="d-flex justify-content-around productHeader">
-                     <div className="headerItem">Favorit Product</div>
+                     <div
+                        className="headerItem"
+                        onClick={() => {
+                           this.setState({
+                              isFavorite: true,
+                           });
+                        }}
+                     >
+                        Favorit Product
+                     </div>
                      <div className="headerItem">Coffee</div>
                      <div className="headerItem">Non Coffee</div>
                      <div className="headerItem">Foods</div>

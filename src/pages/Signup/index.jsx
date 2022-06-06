@@ -97,7 +97,7 @@ export default class Signup extends Component {
                               phone_number,
                            };
                            axios
-                              .post('http://localhost:8080/auth/register', body)
+                              .post(`${process.env.REACT_APP_HOST}/auth/register`, body)
                               .then((result) => {
                                  console.log(result.data.data.msg);
                                  this.setState({

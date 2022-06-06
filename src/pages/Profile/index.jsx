@@ -28,7 +28,7 @@ export default class Profile extends Component {
       }
       const config = { headers: { Authorization: `Bearer ${this.state.token}` } };
       axios
-         .get('http://localhost:8080/users/profile-detail', config)
+         .get(`${process.env.REACT_APP_HOST}/users/profile-detail`, config)
          .then((result) => {
             this.setState({
                profile: result.data.data[0],

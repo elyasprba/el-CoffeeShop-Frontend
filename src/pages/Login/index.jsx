@@ -15,7 +15,7 @@ const Login = () => {
          password,
       };
       axios
-         .post('http://localhost:8080/auth/', body)
+         .post(`${process.env.REACT_APP_HOST}/auth/`, body)
          .then((result) => {
             console.log(result);
             alert(result.data.data.msg);
