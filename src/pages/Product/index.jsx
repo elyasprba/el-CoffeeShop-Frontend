@@ -104,7 +104,7 @@ export default class Product extends Component {
                      <div className="headerItem">Coffee</div>
                      <div className="headerItem">Non Coffee</div>
                      <div className="headerItem">Foods</div>
-                     <div className="headerItem">Add on</div>
+                     <div className="headerItem">Add all</div>
                   </div>
                   <div className="row favoriteProduct">
                      {this.state.product.map((product) => (

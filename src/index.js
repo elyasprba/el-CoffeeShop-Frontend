@@ -11,6 +11,7 @@ import ProductDetails from './pages/ProductDetails';
 import Profile from './pages/Profile';
 import History from './pages/History';
 import Payment from './pages/Payment';
+import PrivateElement from './components/PrivateElement';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -23,7 +24,14 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/forgot" element={<Forgot />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+               path="/profile"
+               element={
+                  <PrivateElement redirectedTo="/register" extraData={{ isAuthenticated: false }}>
+                     <Profile />
+                  </PrivateElement>
+               }
+            />
             <Route path="/product-details/:id" element={<ProductDetails />} />
             <Route path="/history" element={<History />} />
             <Route path="/payment" element={<Payment />} />
