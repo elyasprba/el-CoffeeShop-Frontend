@@ -6,11 +6,15 @@ import { Link } from 'react-router-dom';
 import './Product.css';
 
 export default class Product extends Component {
-   constructor(props) {
-      super(props);
+   constructor() {
+      super();
       this.state = {
          product: [],
          isFavorite: false,
+         isCoffee: false,
+         isNonCoffee: false,
+         isFood: false,
+         isAllProduct: false,
       };
    }
 
@@ -19,7 +23,6 @@ export default class Product extends Component {
       axios
          .get(`${process.env.REACT_APP_HOST}/products/all`)
          .then((result) => {
-            console.log(result);
             this.setState({
                product: result.data.data,
             });
@@ -34,7 +37,6 @@ export default class Product extends Component {
          axios
             .get(`${process.env.REACT_APP_HOST}/products/fav`)
             .then((result) => {
-               console.log(result);
                this.setState({
                   product: result.data.data,
                });
@@ -44,6 +46,86 @@ export default class Product extends Component {
             });
          this.setState({
             isFavorite: false,
+         });
+      }
+
+      if (this.state.isCoffee) {
+         axios
+            .get(`${process.env.REACT_APP_HOST}/products/all?category_name=coffee`)
+            .then((result) => {
+               this.setState({
+                  product: result.data.data,
+               });
+            })
+            .catch((error) => {
+               console.log(error);
+            });
+         this.setState({
+            isCoffee: false,
+         });
+      }
+
+      if (this.state.isNonCoffee) {
+         axios
+            .get(`${process.env.REACT_APP_HOST}/products/all?category_name=non coffee`)
+            .then((result) => {
+               this.setState({
+                  product: result.data.data,
+               });
+            })
+            .catch((error) => {
+               console.log(error);
+            });
+         this.setState({
+            isNonCoffee: false,
+         });
+      }
+
+      if (this.state.isFood) {
+         axios
+            .get(`${process.env.REACT_APP_HOST}/products/all?category_name=food`)
+            .then((result) => {
+               this.setState({
+                  product: result.data.data,
+               });
+            })
+            .catch((error) => {
+               console.log(error);
+            });
+         this.setState({
+            isFood: false,
+         });
+      }
+
+      if (this.state.isFood) {
+         axios
+            .get(`${process.env.REACT_APP_HOST}/products/all?category_name=food`)
+            .then((result) => {
+               this.setState({
+                  product: result.data.data,
+               });
+            })
+            .catch((error) => {
+               console.log(error);
+            });
+         this.setState({
+            isFood: false,
+         });
+      }
+
+      if (this.state.isAllProduct) {
+         axios
+            .get(`${process.env.REACT_APP_HOST}/products/all`)
+            .then((result) => {
+               this.setState({
+                  product: result.data.data,
+               });
+            })
+            .catch((error) => {
+               console.log(error);
+            });
+         this.setState({
+            isAllProduct: false,
          });
       }
    }
@@ -101,10 +183,46 @@ export default class Product extends Component {
                      >
                         Favorit Product
                      </div>
-                     <div className="headerItem">Coffee</div>
-                     <div className="headerItem">Non Coffee</div>
-                     <div className="headerItem">Foods</div>
-                     <div className="headerItem">Add all</div>
+                     <div
+                        className="headerItem"
+                        onClick={() => {
+                           this.setState({
+                              isCoffee: true,
+                           });
+                        }}
+                     >
+                        Coffee
+                     </div>
+                     <div
+                        className="headerItem"
+                        onClick={() => {
+                           this.setState({
+                              isNonCoffee: true,
+                           });
+                        }}
+                     >
+                        Non Coffee
+                     </div>
+                     <div
+                        className="headerItem"
+                        onClick={() => {
+                           this.setState({
+                              isFood: true,
+                           });
+                        }}
+                     >
+                        Foods
+                     </div>
+                     <div
+                        className="headerItem"
+                        onClick={() => {
+                           this.setState({
+                              isAllProduct: true,
+                           });
+                        }}
+                     >
+                        Add all
+                     </div>
                   </div>
                   <div className="row favoriteProduct">
                      {this.state.product.map((product) => (

@@ -3,6 +3,7 @@ import './Login.css';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import SecondFooter from '../../components/SecondFooter';
+import 'bootstrap';
 
 const Login = () => {
    const [email, setEmail] = useState('');
