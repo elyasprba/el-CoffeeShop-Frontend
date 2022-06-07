@@ -1,9 +1,39 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Product/Header';
 import './history.css';
 
 export default class History extends Component {
+   constructor() {
+      super();
+      this.state = {
+         token: localStorage.getItem('token'),
+         history: [],
+         isLogin: true,
+      };
+   }
+
+   componentDidMount() {
+      document.title = 'History';
+      if (!this.state.token) {
+         this.setState({ isLogin: false });
+      }
+      const config = { headers: { Authorization: `Bearer ${this.state.token}` } };
+
+      axios
+         .get(`${process.env.REACT_APP_HOST}/transactions`, config)
+         .then((result) => {
+            console.log(result);
+            this.setState({
+               history: result.data.data[0],
+            });
+         })
+         .catch((error) => {
+            console.log(error);
+         });
+   }
+
    render() {
       return (
          <>

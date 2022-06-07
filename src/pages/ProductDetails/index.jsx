@@ -3,7 +3,7 @@ import Header from '../../components/Product/Header';
 import Footer from '../../components/Footer/Footer';
 import './ProductDetails.css';
 import axios from 'axios';
-import withParams from '../../helper/whitParams';
+import whithParams from '../../helper/whitParams';
 
 class ProductDetails extends Component {
    constructor() {
@@ -91,4 +91,4 @@ class ProductDetails extends Component {
    }
 }
 
-export default withParams(ProductDetails);
+export default whithParams(ProductDetails);

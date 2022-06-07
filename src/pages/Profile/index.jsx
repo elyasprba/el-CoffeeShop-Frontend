@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Product/Header';
 import './Profile.css';
@@ -17,7 +17,7 @@ export default class Profile extends Component {
          phone_number: '',
          address: '',
          gender: '',
-         date: '',
+         birthday_date: '',
          isLogin: true,
       };
    }
@@ -33,14 +33,14 @@ export default class Profile extends Component {
             this.setState({
                profile: result.data.data[0],
             });
+            this.setState({
+               getBirthday: this.state.profile.birthday_date,
+            });
          })
          .catch((error) => console.log(error));
    }
 
    render() {
-      if (!this.state.isLogin) {
-         return <Navigate to="/login" />;
-      }
       return (
          <>
             <Header />
