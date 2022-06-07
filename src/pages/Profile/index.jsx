@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Product/Header';
+import Default from '../../assets/coffee-1.png';
 import './Profile.css';
 
 export default class Profile extends Component {
@@ -12,15 +13,71 @@ export default class Profile extends Component {
          token: localStorage.getItem('token'),
          profile: [],
          email: '',
-         frist_name: '',
+         display_name: '',
+         first_name: '',
          last_name: '',
          phone_number: '',
          address: '',
          gender: '',
          birthday_date: '',
+         pict: '',
+         image_src: Default,
+         use_src: true,
          isLogin: true,
+         isUpdate: false,
+         isEdit: false,
       };
+      this.inputFile = React.createRef();
    }
+
+   setData = () => {
+      let body = new FormData();
+      if (this.state.email !== '') {
+         body.append('email', this.state.email);
+      }
+      if (this.state.pict !== '') {
+         body.append('pict', this.state.pict);
+      }
+      if (this.state.address !== '') {
+         body.append('address', this.state.address);
+      }
+      if (this.state.display_name !== '') {
+         body.append('display_name', this.state.display_name);
+      }
+      if (this.state.first_name !== '') {
+         body.append('first_name', this.state.first_name);
+      }
+      if (this.state.last_name !== '') {
+         body.append('last_name', this.state.last_name);
+      }
+      if (this.state.phone_number !== '') {
+         body.append('phone_number', this.state.phone_number);
+      }
+      if (this.state.birthday_date !== '') {
+         body.append('birthday_date', this.state.birthday_date);
+      }
+      // if (this.state.gender !== "") {
+      //     body.append("gender", this.state.gender);
+      // }
+      return body;
+   };
+
+   fileChange = (event) => {
+      event.preventDefault();
+      const file = event.target.files[0];
+      const profile = { ...this.state };
+      if (file) {
+         profile.pict = file;
+         this.setState(profile);
+         const reader = new FileReader();
+         reader.onload = () => {
+            this.setState({ image_src: reader.result, use_src: false, pict: file }, () => {
+               //console.log(this.state.image_src);
+            });
+         };
+         reader.readAsDataURL(file);
+      }
+   };
 
    componentDidMount() {
       if (!this.state.token) {
@@ -40,6 +97,28 @@ export default class Profile extends Component {
          .catch((error) => console.log(error));
    }
 
+   componentDidUpdate() {
+      if (this.state.isUpdate) {
+         const config = { headers: { Authorization: `Bearer ${this.state.token}` } };
+         axios
+            .get(`${process.env.REACT_APP_HOST}/users/profile-detail`, config)
+            .then((result) => {
+               this.setState({
+                  profile: result.data.data[0],
+               });
+               this.setState({
+                  getBirthday: this.state.profile.birthday_date,
+               });
+            })
+            .catch((error) => console.log(error));
+      }
+   }
+
+   handleFile = (event) => {
+      this.inputFile.current.click();
+      event.preventDefault();
+   };
+
    render() {
       return (
          <>
@@ -49,20 +128,21 @@ export default class Profile extends Component {
                <div className="profile-container">
                   <div className="profile-info">
                      <div className="profile">
-                        <img
-                           src="https://s3-alpha-sig.figma.com/img/0ccd/b210/685819c7ff9c7e2cbb23e6190ab4ef92?Expires=1653868800&Signature=LSpxevzW2psoSS2ywTNfHZh2LXnXbF1yKT7E~eT3ScYCQjGPICL-VP8wEN7ixpkAdTTHH3V~szzSNwjZH0oI31K4iPMt~nvL4fhLPF5x3BIj8j0brWq324SbMOhb7p2tlR742WH6mEHwAMIFgQXmpC3f-8Mqkjtkt8xCW~4ZiVRaVEffS8CYE9Wr1lckaLeDjXXII2kVxvEHgsjrBpVUrsoBpxcAPGCRp-IHTXdAluMexu6NL2qBWbz9WG84r4uy5YBF-1GMgajTxBX-l9mFEdswTVQ9dOgU-5xC4tg8JZFm6KASPiEEBl1qndiLQM~8JI1WYUvwJgXDMyH9JHiKVg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                           alt="profile-user"
-                        />
+                        <img src={this.state.image_src ? `http://localhost:8000${this.state.profile.pict}` : this.state.image_src} className="img-profile" alt="img-profile" />
                         <div className="profile-username">
-                           <h3>{this.state.profile.display_name}</h3>
+                           <h3>{this.state.profile.display_name ? this.state.profile.display_name : 'Display Name'}</h3>
                            <p>{this.state.profile.email}</p>
                         </div>
                      </div>
                      <form>
                         <div className="profile-button">
-                           <button className="choose-photo" type="submit">
-                              Choose photo
+                           <input type="file" hidden name="image" ref={this.inputFile} onChange={this.fileChange} />
+                           <button type="button" className="choose-photo" onClick={this.handleFile}>
+                              Choose Photo
                            </button>
+                           {/* <button className="choose-photo" type="submit">
+                              Choose photo
+                           </button> */}
                            <button className="remove-photo" type="submit">
                               Remove photo
                            </button>
@@ -75,21 +155,16 @@ export default class Profile extends Component {
                               type="submit"
                               onClick={(e) => {
                                  e.preventDefault();
-                                 const { email, frist_name, last_name, phone_number, address, date } = this.state;
+                                 const body = this.setData();
                                  const token = localStorage.getItem('token');
-                                 const config = { headers: { Authorization: `Bearer ${token}` } };
-                                 const body = {
-                                    email,
-                                    frist_name,
-                                    last_name,
-                                    phone_number,
-                                    address,
-                                    date,
-                                 };
+                                 const config = { headers: { Authorization: `Bearer ${token}`, 'content-type': 'multipart/form-data' } };
                                  axios
                                     .patch('http://localhost:8080/users', body, config)
                                     .then((result) => {
                                        console.log(result);
+                                       this.setState({
+                                          isUpdate: true,
+                                       });
                                        alert(result.data.msg);
                                     })
                                     .catch((error) => {
@@ -118,14 +193,29 @@ export default class Profile extends Component {
                   <div className="profile-detail">
                      <div className="contacts">
                         <h3>Contacts</h3>
+                        <div
+                           className="edit-bullet"
+                           onClick={() => {
+                              this.state.isEdit
+                                 ? this.setState({
+                                      isEdit: false,
+                                   })
+                                 : this.setState({
+                                      isEdit: true,
+                                   });
+                           }}
+                        >
+                           <img src={''} alt="edit" className="edit-bullet-img" />
+                        </div>
                         <form className="form-contacts-profile">
                            <div className="from-email-adress-profile">
                               <label htmlFor="email">Email adress :</label>
                               <input
                                  type="email"
                                  id="email"
-                                 placeholder={this.state.profile.email}
-                                 value={this.state.email}
+                                 placeholder="Enter your email"
+                                 value={this.state.isEdit ? null : this.state.profile.email}
+                                 disabled={this.state.isEdit ? false : true}
                                  onChange={(e) => {
                                     this.setState({
                                        email: e.target.value,
@@ -136,8 +226,9 @@ export default class Profile extends Component {
                               <input
                                  type="text"
                                  id="adress"
-                                 placeholder={this.state.profile.address}
-                                 value={this.state.address}
+                                 placeholder="Enter email address"
+                                 value={this.state.isEdit ? null : this.state.profile.address}
+                                 disabled={this.state.isEdit ? false : true}
                                  onChange={(e) => {
                                     this.setState({
                                        address: e.target.value,
@@ -150,8 +241,9 @@ export default class Profile extends Component {
                               <input
                                  type="text"
                                  id="phone"
-                                 placeholder={this.state.profile.phone_number}
-                                 value={this.state.phone_number}
+                                 placeholder="Enter mobile number"
+                                 value={this.state.isEdit ? null : this.state.profile.phone_number}
+                                 disabled={this.state.isEdit ? false : true}
                                  onChange={(e) => {
                                     this.setState({
                                        phone_number: e.target.value,
@@ -169,8 +261,9 @@ export default class Profile extends Component {
                               <input
                                  type="text"
                                  id="name"
-                                 placeholder={this.state.profile.display_name}
-                                 value={this.state.display_name}
+                                 placeholder="name"
+                                 value={this.state.isEdit ? null : this.state.profile.display_name}
+                                 disabled={this.state.isEdit ? false : true}
                                  onChange={(e) => {
                                     this.setState({
                                        display_name: e.target.value,
@@ -181,8 +274,9 @@ export default class Profile extends Component {
                               <input
                                  type="text"
                                  id="first"
-                                 placeholder={this.state.profile.first_name}
-                                 value={this.state.first_name}
+                                 placeholder="first name"
+                                 value={this.state.isEdit ? null : this.state.profile.first_name}
+                                 disabled={this.state.isEdit ? false : true}
                                  onChange={(e) => {
                                     this.setState({
                                        first_name: e.target.value,
@@ -193,8 +287,9 @@ export default class Profile extends Component {
                               <input
                                  type="text"
                                  id="last"
-                                 placeholder={this.state.profile.last_name}
-                                 value={this.state.last_name}
+                                 placeholder="last"
+                                 value={this.state.isEdit ? null : this.state.profile.last_name}
+                                 disabled={this.state.isEdit ? false : true}
                                  onChange={(e) => {
                                     this.setState({
                                        last_name: e.target.value,
@@ -207,8 +302,9 @@ export default class Profile extends Component {
                               <input
                                  type="date"
                                  id="last"
-                                 placeholder={this.state.profile.birthday_date}
-                                 value={this.state.date}
+                                 placeholder="birthday-date"
+                                 value={this.state.isEdit ? null : this.state.profile.birthday_date}
+                                 disabled={this.state.isEdit ? false : true}
                                  onChange={(e) => {
                                     this.setState({
                                        date: e.target.value,
