@@ -12,8 +12,8 @@ export default function CardProduct(props) {
                <div className="productName" key={props.name}>
                   {props.name}
                </div>
-               <div className="price-props" key={props.price}>
-                  IDR. {props.price}
+               <div className="price-props" key={props.total}>
+                  IDR. {props.total}
                </div>
             </div>
          </div>
