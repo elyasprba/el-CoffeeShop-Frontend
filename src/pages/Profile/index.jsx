@@ -120,6 +120,7 @@ export default class Profile extends Component {
    };
 
    render() {
+      document.title = 'Profile';
       return (
          <>
             <Header />

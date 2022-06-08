@@ -29,6 +29,7 @@ class ProductDetails extends Component {
    }
 
    render() {
+      document.title = 'Products Detail';
       return (
          <>
             <Header />

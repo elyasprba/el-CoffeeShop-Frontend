@@ -20,6 +20,7 @@ export default class Signup extends Component {
    }
 
    render() {
+      document.title = 'Sign Up';
       if (this.state.isRegister) {
          return <Navigate to="/login" />;
       }
@@ -121,7 +122,7 @@ export default class Signup extends Component {
                            src="https://s3-alpha-sig.figma.com/img/f881/84c6/8dee88f348660b174d22c163e0848498?Expires=1653868800&Signature=Vg4eVgXJlLpzHb~l-hmau-AYqNsNjLgu6zHcNh2aKvADQqJOjAgBZy-jdvhP8FYt-8iZp7k2YbFNpo9mWd-e4HA~fKtfLAm5PAxAp1s-tEdZ~KnNWUHawtISfzXvkxdwIb-f-nPxZ8ggwfFrx2qB1LU1EXpyCnOgfOh~Z~pbkdgsz-8kszhk8DNcvZcFr88UGJI0Xxh6z2m0wdq1EcYrw~WIqxCCOjO~Hg4uAVt2jjjWIKZ0wGFIJUBKQFWOq1xLVYY1V0vrmRU5l3KQTuSQsd654NL5qR1kmV4rdl0YXBaEsNlTxfhnG1HZup~BwHyZt28PxSGBobSNMNxp6QeVGQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
                            alt=""
                            className="img-google"
-                        />
+                        />{' '}
                         Sign up with Google
                      </button>
                      <section className="has-account">
@@ -129,9 +130,11 @@ export default class Signup extends Component {
                         <p className="has-account-text">Already have an account?</p>
                         <div className="underline"></div>
                      </section>
-                     <button className="login" type="submit">
-                        Login Here
-                     </button>
+                     <Link to={'/login'}>
+                        <button className="login" type="submit">
+                           Login Here
+                        </button>
+                     </Link>
                   </form>
                   <SecondFooter />
                   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

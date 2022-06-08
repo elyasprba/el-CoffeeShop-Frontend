@@ -5,6 +5,7 @@ import './Payment.css';
 
 export default class Payment extends Component {
    render() {
+      document.title = 'Payment';
       return (
          <>
             <Header />

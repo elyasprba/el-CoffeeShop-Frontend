@@ -28,6 +28,8 @@ const Login = () => {
             alert(error.response.data.err.msg);
          });
    };
+
+   document.title = 'Login';
    return (
       <>
          <div className="container-login">
@@ -90,9 +92,11 @@ const Login = () => {
                      <p className="has-account-text-login">Done have an account?</p>
                      <div className="underline"></div>
                   </section>
-                  <button className="login" type="submit">
-                     Sign up here
-                  </button>
+                  <Link to={'/signup'}>
+                     <button className="login" type="submit">
+                        Sign up here
+                     </button>
+                  </Link>
                </form>
                <SecondFooter />
             </div>

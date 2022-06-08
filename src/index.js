@@ -33,7 +33,14 @@ function App() {
                }
             />
             <Route path="/product-details/:id" element={<ProductDetails />} />
-            <Route path="/history" element={<History />} />
+            <Route
+               path="/history"
+               element={
+                  <PrivateElement redirectedTo="/login" extraData={{ isAuthenticated: false }}>
+                     <History />
+                  </PrivateElement>
+               }
+            />
             <Route path="/payment" element={<Payment />} />
          </Routes>
       </BrowserRouter>
