@@ -16,6 +16,7 @@ class Product extends Component {
          isNonCoffee: false,
          isFood: false,
          isAllProduct: false,
+         isActive: '',
          setSearchParams: this.props.setSearchParams.bind(this),
       };
    }
@@ -165,54 +166,59 @@ class Product extends Component {
                <div className="col-sm-8 content">
                   <div className="d-flex justify-content-around productHeader">
                      <div
-                        className="headerItem"
+                        className={this.state.isActive === 'favorite' ? 'headerItem-active' : 'headerItem'}
                         onClick={() => {
                            this.setState({
                               isFavorite: true,
+                              isActive: 'favorite',
                            });
                         }}
                      >
                         Favorit Product
                      </div>
                      <div
-                        className="headerItem"
+                        className={this.state.isActive === 'coffee' ? 'headerItem-active' : 'headerItem'}
                         onClick={() => {
                            this.setState({
                               isCoffee: true,
+                              isActive: 'coffee',
                            });
                         }}
                      >
                         Coffee
                      </div>
                      <div
-                        className="headerItem"
+                        className={this.state.isActive === 'non-coffee' ? 'headerItem-active' : 'headerItem'}
                         onClick={() => {
                            this.setState({
                               isNonCoffee: true,
+                              isActive: 'non-coffee',
                            });
                         }}
                      >
                         Non Coffee
                      </div>
                      <div
-                        className="headerItem"
+                        className={this.state.isActive === 'foods' ? 'headerItem-active' : 'headerItem'}
                         onClick={() => {
                            this.setState({
                               isFood: true,
+                              isActive: 'foods',
                            });
                         }}
                      >
                         Foods
                      </div>
                      <div
-                        className="headerItem"
+                        className={this.state.isActive === 'all' ? 'headerItem-active' : 'headerItem'}
                         onClick={() => {
                            this.setState({
                               isAllProduct: true,
+                              isActive: 'all',
                            });
                         }}
                      >
-                        Add all
+                        All
                      </div>
                   </div>
                   <div className="row favoriteProduct">

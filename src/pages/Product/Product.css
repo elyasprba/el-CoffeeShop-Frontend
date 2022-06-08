@@ -131,11 +131,17 @@ html {
    color: #9f9f9f;
    cursor: pointer;
 }
-.headerItem:active {
+
+.headerItem {
+   color: #6a4029;
+}
+
+.headerItem-active {
    font-weight: 700;
    text-decoration: underline;
    color: #6a4029;
 }
+
 .favoriteProduct {
    padding: 30px;
 }
