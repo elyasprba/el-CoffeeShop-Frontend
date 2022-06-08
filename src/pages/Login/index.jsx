@@ -36,7 +36,7 @@ const Login = () => {
             <aside className="side-content-login">
                <header className="side-header-login">
                   <img
-                     src="https://s3-alpha-sig.figma.com/img/94cf/d4df/dd22d129a5bbab44da4da62471dafa2a?Expires=1653868800&Signature=JNrt7OkAJeXRlGW2SiJF9xambBFW4NyERnvxOioWUEFKwHRUut9MiHG0yUe6wV8pPUbmd5fbxLkaUSAvqPRU4Q7rr1WuLFWZLjWbKTuKhKQF14ZIQSQq4fZ9lDxzur1q-4-CsW0AK1bl36zCLD40NCMXhA-CyO2eBUWuJvAmV-jcOfnkKK5JArBDhH8~OYfRgGiso2n8YzIFsSv1qwVuCiiBQclfIUr0ZwpV~NDKs1Wo7vgeJSF46UZyCoAok~cS7P7C2dySlylTFELBGWV6Eh4xM~TG5UfHcn0VW1N1Ww5dt5KHm4RJsUonlKI19ZyngFslCc5Psg6CZpXoEKQpeQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                     src="https://s3-alpha-sig.figma.com/img/94cf/d4df/dd22d129a5bbab44da4da62471dafa2a?Expires=1655683200&Signature=g~uQOPz~NhQcU0zA3WxEQpfJ3hbzifq-A6DDFo2qE4oYvApLtSP5Eh5ElOskIRBvhno4pTi7BkqasaJKS~ZKqQCMK0d5I2tVvEHzI6Ud-lyiJ8ozqBUzDAQp~YJ~~dx5tFSiEVWtCfcOwrbFd5f8uizu8msy6jFZVTvulm20J5DSxZhNiGSCX-paYuRFMgPiXfxQtzjy5PXCHl8B0Qi8BO-9tkuDIggkTs37ErTO9naYzrH2WKMeTVEg3Lls2ZFEtT3JCKNcTnhjcLtGlLuUkcOxkPkEmg8fpNaLjEgwJRac7Cd9oyep01rJ9Baf~C7qcVUr0YLbdci-aGy~ZVJ0dg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
                      alt="background-login"
                      className="background-login"
                   />

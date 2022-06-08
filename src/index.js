@@ -27,7 +27,7 @@ function App() {
             <Route
                path="/profile"
                element={
-                  <PrivateElement redirectedTo="/" extraData={{ isAuthenticated: false }}>
+                  <PrivateElement redirectedTo="/login" extraData={{ isAuthenticated: false }}>
                      <Profile />
                   </PrivateElement>
                }

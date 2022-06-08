@@ -4,10 +4,11 @@ import Header from '../../components/Product/Header';
 import Footer from '../../components/Footer/Footer';
 import { Link } from 'react-router-dom';
 import './Product.css';
+import withSearchParams from '../../helper/withSerchParams';
 
-export default class Product extends Component {
-   constructor() {
-      super();
+class Product extends Component {
+   constructor(props) {
+      super(props);
       this.state = {
          product: [],
          isFavorite: false,
@@ -15,11 +16,13 @@ export default class Product extends Component {
          isNonCoffee: false,
          isFood: false,
          isAllProduct: false,
+         setSearchParams: this.props.setSearchParams.bind(this),
       };
    }
 
    componentDidMount() {
       document.title = 'Product';
+      this.state.setSearchParams('');
       axios
          .get(`${process.env.REACT_APP_HOST}/products/all`)
          .then((result) => {
@@ -34,6 +37,7 @@ export default class Product extends Component {
 
    componentDidUpdate() {
       if (this.state.isFavorite) {
+         this.state.setSearchParams('category=favorite');
          axios
             .get(`${process.env.REACT_APP_HOST}/products/fav`)
             .then((result) => {
@@ -48,8 +52,8 @@ export default class Product extends Component {
             isFavorite: false,
          });
       }
-
       if (this.state.isCoffee) {
+         this.state.setSearchParams('category_name=coffee');
          axios
             .get(`${process.env.REACT_APP_HOST}/products/all?category_name=coffee`)
             .then((result) => {
@@ -66,6 +70,7 @@ export default class Product extends Component {
       }
 
       if (this.state.isNonCoffee) {
+         this.state.setSearchParams('category_name=non coffee');
          axios
             .get(`${process.env.REACT_APP_HOST}/products/all?category_name=non coffee`)
             .then((result) => {
@@ -82,22 +87,7 @@ export default class Product extends Component {
       }
 
       if (this.state.isFood) {
-         axios
-            .get(`${process.env.REACT_APP_HOST}/products/all?category_name=food`)
-            .then((result) => {
-               this.setState({
-                  product: result.data.data,
-               });
-            })
-            .catch((error) => {
-               console.log(error);
-            });
-         this.setState({
-            isFood: false,
-         });
-      }
-
-      if (this.state.isFood) {
+         this.state.setSearchParams('category_name=food');
          axios
             .get(`${process.env.REACT_APP_HOST}/products/all?category_name=food`)
             .then((result) => {
@@ -114,6 +104,7 @@ export default class Product extends Component {
       }
 
       if (this.state.isAllProduct) {
+         this.state.setSearchParams('');
          axios
             .get(`${process.env.REACT_APP_HOST}/products/all`)
             .then((result) => {
@@ -248,3 +239,5 @@ export default class Product extends Component {
       );
    }
 }
+
+export default withSearchParams(Product);
