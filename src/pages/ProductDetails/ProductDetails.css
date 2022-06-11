@@ -231,6 +231,28 @@
    outline: none;
 }
 
+.main-bulet {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex: 2;
+}
+
+.bulet-protail {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: #e7aa3685;
+   height: 50px;
+   width: 50px;
+   border-radius: 50%;
+}
+
+.bulet-angka {
+   margin: 0px 10px;
+   font-weight: 700;
+}
+
 .checkout-protail {
    display: flex;
    justify-content: center;
@@ -240,13 +262,13 @@
 }
 
 .checkout-info-protail {
-   display: flex;
    background-color: #ffffff;
    border-radius: 10px;
    width: 40%;
    height: 168px;
+   display: flex;
    margin-right: 100px;
-   justify-content: start;
+   /* justify-content: start; */
    text-align: center;
 }
 

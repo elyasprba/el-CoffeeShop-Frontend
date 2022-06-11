@@ -17,6 +17,7 @@ class Product extends Component {
          isFood: false,
          isAllProduct: false,
          isActive: '',
+         // isSort: false,
          setSearchParams: this.props.setSearchParams.bind(this),
       };
    }
@@ -38,7 +39,7 @@ class Product extends Component {
 
    componentDidUpdate() {
       if (this.state.isFavorite) {
-         this.state.setSearchParams('category=favorite');
+         this.state.setSearchParams('favorite?');
          axios
             .get(`${process.env.REACT_APP_HOST}/products/fav`)
             .then((result) => {
@@ -53,6 +54,7 @@ class Product extends Component {
             isFavorite: false,
          });
       }
+
       if (this.state.isCoffee) {
          this.state.setSearchParams('category_name=coffee');
          axios
@@ -120,6 +122,23 @@ class Product extends Component {
             isAllProduct: false,
          });
       }
+
+      // if (this.state.isSort) {
+      //    let url = `${process.env.REACT_APP_HOST}/products/all`;
+      //    if (this.state.isAllProduct) {
+
+      //    }
+      //    axios
+      //       .get(url)
+      //       .then((result) => {
+      //          this.setState({
+      //             product: result.data.data,
+      //          });
+      //       })
+      //       .catch((error) => {
+      //          console.log(error);
+      //       });
+      // }
    }
 
    render() {

@@ -1,35 +1,33 @@
 import React, { useState } from 'react';
 import './Login.css';
-import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import SecondFooter from '../../components/SecondFooter';
 import 'bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginAction, logoutAction } from '../../Redux/actionCreator/login';
 
 const Login = () => {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
+   const { isLoading, err, isSuccess } = useSelector((state) => state.auth.user);
    const navigate = useNavigate();
+   const dispatch = useDispatch();
    const login = (event) => {
       event.preventDefault();
       const body = {
          email,
          password,
       };
-      axios
-         .post(`${process.env.REACT_APP_HOST}/auth/`, body)
-         .then((result) => {
-            console.log(result);
-            alert(result.data.data.msg);
-            localStorage.setItem('token', result.data.data.token);
-            navigate('/');
-         })
-         .catch((error) => {
-            console.log(error);
-            alert(error.response.data.err.msg);
-         });
+      dispatch(loginAction(body));
    };
 
+   if (isSuccess) {
+      navigate('/');
+      dispatch(logoutAction());
+   }
+
    document.title = 'Login';
+
    return (
       <>
          <div className="container-login">
@@ -79,6 +77,8 @@ const Login = () => {
                   <button className="sign-up-login" type="submit" onClick={login}>
                      Login
                   </button>
+                  {isLoading ? <div>Loading...</div> : <></>}
+                  {err ? <div>{err}</div> : <></>}
                   <button className="sign-up-google-login" type="submit">
                      <img
                         src="https://s3-alpha-sig.figma.com/img/f881/84c6/8dee88f348660b174d22c163e0848498?Expires=1653868800&Signature=Vg4eVgXJlLpzHb~l-hmau-AYqNsNjLgu6zHcNh2aKvADQqJOjAgBZy-jdvhP8FYt-8iZp7k2YbFNpo9mWd-e4HA~fKtfLAm5PAxAp1s-tEdZ~KnNWUHawtISfzXvkxdwIb-f-nPxZ8ggwfFrx2qB1LU1EXpyCnOgfOh~Z~pbkdgsz-8kszhk8DNcvZcFr88UGJI0Xxh6z2m0wdq1EcYrw~WIqxCCOjO~Hg4uAVt2jjjWIKZ0wGFIJUBKQFWOq1xLVYY1V0vrmRU5l3KQTuSQsd654NL5qR1kmV4rdl0YXBaEsNlTxfhnG1HZup~BwHyZt28PxSGBobSNMNxp6QeVGQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"

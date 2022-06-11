@@ -80,6 +80,11 @@ class ProductDetails extends Component {
                         <p className="checkout-size-product-protail">x1 (Large)</p>
                         <p className="checkout-size-product-protail">x1 (Large)</p>
                      </div>
+                     <div className="main-bulet">
+                        <div className="bulet-protail">-</div>
+                        <p className="bulet-angka">0</p>
+                        <div className="bulet-protail">+</div>
+                     </div>
                   </section>
                   <section className="checkout-button-protail">
                      <button className="checkout">Checkout</button>
