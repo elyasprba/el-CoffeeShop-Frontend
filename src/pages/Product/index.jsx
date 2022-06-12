@@ -7,8 +7,6 @@ import './Product.css';
 import withSearchParams from '../../helper/withSerchParams';
 import { FilterSquare, FilterSquareFill, ArrowLeftCircle, ArrowRightCircle } from 'react-bootstrap-icons';
 
-// ,
-
 class Product extends Component {
    constructor(props) {
       super(props);
@@ -93,7 +91,6 @@ class Product extends Component {
    }
 
    render() {
-      console.log(this.state.meta);
       return (
          <>
             <Header />
@@ -226,9 +223,23 @@ class Product extends Component {
                         </div>
                      ))}
                      <section className="paginasi-product">
-                        <ArrowLeftCircle className="paginasi-product-icon" />
+                        <ArrowLeftCircle
+                           className="paginasi-product-icon"
+                           onClick={() => {
+                              this.setState({
+                                 baseUrl: `${process.env.REACT_APP_HOST}${this.state.meta.prev}`,
+                              });
+                           }}
+                        />
                         <div> </div>
-                        <ArrowRightCircle className="paginasi-product-icon" />
+                        <ArrowRightCircle
+                           className="paginasi-product-icon"
+                           onClick={() => {
+                              this.setState({
+                                 baseUrl: `${process.env.REACT_APP_HOST}${this.state.meta.next}`,
+                              });
+                           }}
+                        />
                      </section>
                   </div>
                </div>

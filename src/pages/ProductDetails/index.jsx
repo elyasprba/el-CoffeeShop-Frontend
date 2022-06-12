@@ -4,13 +4,27 @@ import Footer from '../../components/Footer/Footer';
 import './ProductDetails.css';
 import axios from 'axios';
 import withParams from '../../helper/withParams';
+import { addToCart } from '../../Redux/actionCreator/cart';
+import { connect } from 'react-redux';
 
 class ProductDetails extends Component {
-   constructor() {
-      super();
+   constructor(props) {
+      super(props);
       this.state = {
          product: [],
+         size: '',
+         qty: 0,
       };
+   }
+
+   cartHandler() {
+      const { addToCart } = this.props;
+      const items = {
+         product: this.state.product,
+         size: this.state.size,
+         qty: this.state.qty,
+      };
+      addToCart(items);
    }
 
    componentDidMount() {
@@ -18,7 +32,6 @@ class ProductDetails extends Component {
       axios
          .get(`http://localhost:8080/products/${params.id}`)
          .then((result) => {
-            console.log(result);
             this.setState({
                product: result.data.data[0],
             });
@@ -42,7 +55,9 @@ class ProductDetails extends Component {
                      <img src={`http://localhost:8080${this.state.product.pict}`} alt="product-img" width={'400px'} />
                      <p className="info-name-protail">{this.state.product.name}</p>
                      <p className="info-price-protail">IDR. {this.state.product.price}</p>
-                     <button className="add-to-cart">Add to Cart</button>
+                     <button className="add-to-cart" onClick={this.cartHandler()}>
+                        Add to Cart
+                     </button>
                      <button className="ask-a-staff">Ask a Staff</button>
                   </aside>
                   <div>
@@ -51,9 +66,36 @@ class ProductDetails extends Component {
                         <p className="detail-desc-protail">{this.state.product.description}</p>
                         <p className="size-protail">Choose a size</p>
                         <div className="detail-size-protail">
-                           <div className="title-size">R</div>
-                           <div className="title-size">L</div>
-                           <div className="title-size">XL</div>
+                           <div
+                              className="title-size"
+                              onClick={() => {
+                                 this.setState({
+                                    size: 'Regular',
+                                 });
+                              }}
+                           >
+                              R
+                           </div>
+                           <div
+                              className="title-size"
+                              onClick={() => {
+                                 this.setState({
+                                    size: 'Large',
+                                 });
+                              }}
+                           >
+                              L
+                           </div>
+                           <div
+                              className="title-size"
+                              onClick={() => {
+                                 this.setState({
+                                    size: 'Extra Large',
+                                 });
+                              }}
+                           >
+                              XL
+                           </div>
                         </div>
                      </section>
                      <section className="delivery-methods-protail">
@@ -76,14 +118,33 @@ class ProductDetails extends Component {
                         <img src={require('../../assets/products/Mask Group.png')} alt="product-img" width={'120px'} height={'120px'} />
                      </div>
                      <div className="checkout-name-size">
-                        <p className="checkout-name-product-protail">COLD BREW</p>
-                        <p className="checkout-size-product-protail">x1 (Large)</p>
-                        <p className="checkout-size-product-protail">x1 (Large)</p>
+                        <p className="checkout-name-product-protail">{this.state.product.name}</p>
+                        <p className="checkout-size-product-protail">
+                           {this.state.qty} X ({this.state.size})
+                        </p>
                      </div>
                      <div className="main-bulet">
-                        <div className="bulet-protail">-</div>
-                        <p className="bulet-angka">0</p>
-                        <div className="bulet-protail">+</div>
+                        <div
+                           className="bulet-protail"
+                           onClick={() => {
+                              this.setState({
+                                 qty: this.state.qty <= 0 ? 0 : this.state.qty - 1,
+                              });
+                           }}
+                        >
+                           -
+                        </div>
+                        <p className="bulet-angka">{this.state.qty}</p>
+                        <div
+                           className="bulet-protail"
+                           onClick={() => {
+                              this.setState({
+                                 qty: this.state.qty + 1,
+                              });
+                           }}
+                        >
+                           +
+                        </div>
                      </div>
                   </section>
                   <section className="checkout-button-protail">
@@ -97,4 +158,4 @@ class ProductDetails extends Component {
    }
 }
 
-export default withParams(ProductDetails);
+export default connect(null, { addToCart })(withParams(ProductDetails));

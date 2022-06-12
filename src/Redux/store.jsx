@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage';
 import loginReducer, { userTokenReducer } from './reducer/login';
 import { combineReducers } from 'redux';
 import thunk from 'redux-thunk';
+import { addToCartReducer } from './reducer/cartReducer';
 
 const persistConfig = {
    key: 'root',
@@ -13,6 +14,7 @@ const persistConfig = {
 
 const reducer = combineReducers({
    userInfo: userTokenReducer,
+   cartInfo: addToCartReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);

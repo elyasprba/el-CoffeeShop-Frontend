@@ -8,3 +8,6 @@ export const RESET_LOGIN = 'RESET_LOGIN';
 
 export const ADD_USER_INFO = 'ADD_USER_INFO';
 export const DELETE_USER_INFO = 'DELETE_USER_INFO';
+
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const REMOVE_CART = 'REMOVE_CART';
