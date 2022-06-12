@@ -4,12 +4,12 @@ import { useNavigate, Link } from 'react-router-dom';
 import SecondFooter from '../../components/SecondFooter';
 import 'bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginAction, logoutAction } from '../../Redux/actionCreator/login';
+import { loginAction, resetLogin } from '../../Redux/actionCreator/login';
 
 const Login = () => {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
-   const { isLoading, err, isSuccess } = useSelector((state) => state.auth.user);
+   const { isLoading, err, isSuccess } = useSelector((state) => state.userLogin);
    const navigate = useNavigate();
    const dispatch = useDispatch();
    const login = (event) => {
@@ -23,7 +23,7 @@ const Login = () => {
 
    if (isSuccess) {
       navigate('/');
-      dispatch(logoutAction());
+      dispatch(resetLogin());
    }
 
    document.title = 'Login';

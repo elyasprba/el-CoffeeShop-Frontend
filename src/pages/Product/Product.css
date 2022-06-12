@@ -143,7 +143,7 @@ html {
 }
 
 .favoriteProduct {
-   padding: 30px;
+   padding: 15px 30px;
 }
 .productContainer {
    display: flex;
@@ -178,4 +178,21 @@ html {
    margin-top: 25px;
    text-align: center;
    font-weight: 500;
+}
+
+.paginasi-product {
+   display: flex;
+   justify-content: center;
+}
+
+.paginasi-product-icon {
+   position: relative;
+   height: 30px;
+   width: 30px;
+}
+
+.paginasi-product-icon {
+   position: relative;
+   height: 30px;
+   width: 30px;
 }

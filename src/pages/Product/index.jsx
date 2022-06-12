@@ -5,6 +5,9 @@ import Footer from '../../components/Footer/Footer';
 import { Link } from 'react-router-dom';
 import './Product.css';
 import withSearchParams from '../../helper/withSerchParams';
+import { FilterSquare, FilterSquareFill, ArrowLeftCircle, ArrowRightCircle } from 'react-bootstrap-icons';
+
+// ,
 
 class Product extends Component {
    constructor(props) {
@@ -17,131 +20,80 @@ class Product extends Component {
          isFood: false,
          isAllProduct: false,
          isActive: '',
-         // isSort: false,
+         sort: '',
          setSearchParams: this.props.setSearchParams.bind(this),
+         baseUrl: null,
+         meta: '',
       };
    }
 
    componentDidMount() {
       document.title = 'Product';
       this.state.setSearchParams('');
-      axios
-         .get(`${process.env.REACT_APP_HOST}/products/all`)
-         .then((result) => {
-            this.setState({
-               product: result.data.data,
-            });
-         })
-         .catch((error) => {
-            console.log(error);
-         });
+      this.setState({
+         baseUrl: `${process.env.REACT_APP_HOST}/products/all`,
+      });
    }
 
    componentDidUpdate() {
       if (this.state.isFavorite) {
-         this.state.setSearchParams('favorite?');
-         axios
-            .get(`${process.env.REACT_APP_HOST}/products/fav`)
-            .then((result) => {
-               this.setState({
-                  product: result.data.data,
-               });
-            })
-            .catch((error) => {
-               console.log(error);
-            });
+         this.state.setSearchParams('favorite');
          this.setState({
+            baseUrl: `${process.env.REACT_APP_HOST}/products/all`.replace('all', 'favorite'),
             isFavorite: false,
          });
       }
 
       if (this.state.isCoffee) {
          this.state.setSearchParams('category_name=coffee');
-         axios
-            .get(`${process.env.REACT_APP_HOST}/products/all?category_name=coffee`)
-            .then((result) => {
-               this.setState({
-                  product: result.data.data,
-               });
-            })
-            .catch((error) => {
-               console.log(error);
-            });
          this.setState({
+            baseUrl: `${process.env.REACT_APP_HOST}/products/all?category_name=coffee`,
             isCoffee: false,
          });
       }
 
       if (this.state.isNonCoffee) {
          this.state.setSearchParams('category_name=non coffee');
-         axios
-            .get(`${process.env.REACT_APP_HOST}/products/all?category_name=non coffee`)
-            .then((result) => {
-               this.setState({
-                  product: result.data.data,
-               });
-            })
-            .catch((error) => {
-               console.log(error);
-            });
          this.setState({
+            baseUrl: `${process.env.REACT_APP_HOST}/products/all?category_name=non coffee`,
             isNonCoffee: false,
          });
       }
 
       if (this.state.isFood) {
          this.state.setSearchParams('category_name=food');
-         axios
-            .get(`${process.env.REACT_APP_HOST}/products/all?category_name=food`)
-            .then((result) => {
-               this.setState({
-                  product: result.data.data,
-               });
-            })
-            .catch((error) => {
-               console.log(error);
-            });
          this.setState({
+            baseUrl: `${process.env.REACT_APP_HOST}/products/all?category_name=food`,
             isFood: false,
          });
       }
 
       if (this.state.isAllProduct) {
          this.state.setSearchParams('');
+         this.setState({
+            baseUrl: `${process.env.REACT_APP_HOST}/products/all`,
+            isAllProduct: false,
+         });
+      }
+
+      if (this.state.baseUrl) {
          axios
-            .get(`${process.env.REACT_APP_HOST}/products/all`)
+            .get(this.state.baseUrl)
             .then((result) => {
                this.setState({
                   product: result.data.data,
+                  baseUrl: null,
+                  meta: result.data.meta,
                });
             })
             .catch((error) => {
                console.log(error);
             });
-         this.setState({
-            isAllProduct: false,
-         });
       }
-
-      // if (this.state.isSort) {
-      //    let url = `${process.env.REACT_APP_HOST}/products/all`;
-      //    if (this.state.isAllProduct) {
-
-      //    }
-      //    axios
-      //       .get(url)
-      //       .then((result) => {
-      //          this.setState({
-      //             product: result.data.data,
-      //          });
-      //       })
-      //       .catch((error) => {
-      //          console.log(error);
-      //       });
-      // }
    }
 
    render() {
+      console.log(this.state.meta);
       return (
          <>
             <Header />
@@ -239,26 +191,49 @@ class Product extends Component {
                      >
                         All
                      </div>
+                     <div>
+                        {this.state.sort === 'asc' ? (
+                           <FilterSquare
+                              onClick={() => {
+                                 this.setState({
+                                    sort: 'desc',
+                                    baseUrl: `${process.env.REACT_APP_HOST}/products/all?sort=price&order=asc`,
+                                 });
+                              }}
+                           />
+                        ) : (
+                           <FilterSquareFill
+                              onClick={() => {
+                                 this.setState({
+                                    sort: 'asc',
+                                    baseUrl: `${process.env.REACT_APP_HOST}/products/all?sort=price&order=desc`,
+                                 });
+                              }}
+                           />
+                        )}
+                     </div>
                   </div>
                   <div className="row favoriteProduct">
                      {this.state.product.map((product) => (
                         <div className="col-md-6  col-lg-3 d-flex flex-column productContainer">
                            <div className="d-flex flex-column align-items-center justify-content-center cardProduct">
                               <Link to={`/product-details/${product.id}`}>
-                                 <img className="imgProduct" key={product.picture} src={`http://localhost:8080${product.pict}`} alt="product-img" />
+                                 <img className="imgProduct" src={`http://localhost:8080${product.pict}`} alt="product-img" />
                               </Link>
-                              <div className="productName" key={product.name}>
-                                 {product.name}
-                              </div>
-                              <div className="price-product" key={product.price}>
-                                 IDR. {product.price}
-                              </div>
+                              <div className="productName">{product.name}</div>
+                              <div className="price-product">IDR. {product.price}</div>
                            </div>
                         </div>
                      ))}
+                     <section className="paginasi-product">
+                        <ArrowLeftCircle className="paginasi-product-icon" />
+                        <div> </div>
+                        <ArrowRightCircle className="paginasi-product-icon" />
+                     </section>
                   </div>
                </div>
             </main>
+
             <Footer />
          </>
       );

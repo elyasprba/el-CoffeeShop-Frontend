@@ -5,13 +5,15 @@ import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Product/Header';
 import Default from '../../assets/coffee-1.png';
 import './Profile.css';
+import { connect } from 'react-redux';
+import mapStateWithProps from '../../helper/mapStateWithProps';
 
-export default class Profile extends Component {
-   constructor() {
-      super();
+class Profile extends Component {
+   constructor(props) {
+      super(props);
       this.state = {
-         token: localStorage.getItem('token'),
-         profile: [],
+         token: this.props.userInfo.token,
+         profile: {},
          email: '',
          display_name: '',
          first_name: '',
@@ -129,7 +131,7 @@ export default class Profile extends Component {
                <div className="profile-container">
                   <div className="profile-info">
                      <div className="profile">
-                        <img src={this.state.image_src ? `http://localhost:8000${this.state.profile.pict}` : this.state.image_src} className="img-profile" alt="img-profile" />
+                        <img src={this.state.image_src ? this.state.image_src : `http://localhost:8000${this.state.profile.pict}`} className="img-profile" alt="img-profile" />
                         <div className="profile-username">
                            <h3>{this.state.profile.display_name ? this.state.profile.display_name : 'Display Name'}</h3>
                            <p>{this.state.profile.email}</p>
@@ -157,8 +159,7 @@ export default class Profile extends Component {
                               onClick={(e) => {
                                  e.preventDefault();
                                  const body = this.setData();
-                                 const token = localStorage.getItem('token');
-                                 const config = { headers: { Authorization: `Bearer ${token}`, 'content-type': 'multipart/form-data' } };
+                                 const config = { headers: { Authorization: `Bearer ${this.state.token}`, 'content-type': 'multipart/form-data' } };
                                  axios
                                     .patch('http://localhost:8080/users', body, config)
                                     .then((result) => {
@@ -323,3 +324,5 @@ export default class Profile extends Component {
       );
    }
 }
+
+export default connect(mapStateWithProps)(Profile);

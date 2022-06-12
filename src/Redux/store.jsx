@@ -2,7 +2,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import { configureStore } from '@reduxjs/toolkit';
 import { createLogger } from 'redux-logger';
 import storage from 'redux-persist/lib/storage';
-import loginReducer from './reducer/login';
+import loginReducer, { userTokenReducer } from './reducer/login';
 import { combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
@@ -12,7 +12,7 @@ const persistConfig = {
 };
 
 const reducer = combineReducers({
-   user: loginReducer,
+   userInfo: userTokenReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);
@@ -24,6 +24,7 @@ const middleware = [thunk, logger];
 export let store = configureStore({
    reducer: {
       auth: persistedReducer,
+      userLogin: loginReducer,
    },
    middleware,
 });
