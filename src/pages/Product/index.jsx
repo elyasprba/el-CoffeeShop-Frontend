@@ -192,6 +192,7 @@ class Product extends Component {
                         {this.state.sort === 'asc' ? (
                            <FilterSquare
                               onClick={() => {
+                                 this.state.setSearchParams('sort=price&order=asc');
                                  this.setState({
                                     sort: 'desc',
                                     baseUrl: `${process.env.REACT_APP_HOST}/products/all?sort=price&order=asc`,
@@ -201,6 +202,7 @@ class Product extends Component {
                         ) : (
                            <FilterSquareFill
                               onClick={() => {
+                                 this.state.setSearchParams('sort=price&order=desc');
                                  this.setState({
                                     sort: 'asc',
                                     baseUrl: `${process.env.REACT_APP_HOST}/products/all?sort=price&order=desc`,
