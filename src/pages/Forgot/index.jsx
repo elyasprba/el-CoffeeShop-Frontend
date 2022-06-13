@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Forgot.css';
+import './forgot.css';
 
 export default class Forgot extends Component {
    render() {
