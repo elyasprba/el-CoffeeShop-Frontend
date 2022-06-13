@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Product/Header';
-import Default from '../../assets/coffee-1.png';
+import Default from '../../assets/icon/default-profile.jpg';
 import './Profile.css';
 import { connect } from 'react-redux';
 import mapStateWithProps from '../../helper/mapStateWithProps';
@@ -193,22 +193,23 @@ class Profile extends Component {
                      </form>
                   </div>
                   <div className="profile-detail">
+                     <div
+                        className="edit-bullet"
+                        onClick={() => {
+                           this.state.isEdit
+                              ? this.setState({
+                                   isEdit: false,
+                                })
+                              : this.setState({
+                                   isEdit: true,
+                                });
+                        }}
+                     >
+                        <img src={require('../../assets/icon/edit.png')} alt="edit" className="edit-bullet-img" />
+                     </div>
                      <div className="contacts">
                         <h3>Contacts</h3>
-                        <div
-                           className="edit-bullet"
-                           onClick={() => {
-                              this.state.isEdit
-                                 ? this.setState({
-                                      isEdit: false,
-                                   })
-                                 : this.setState({
-                                      isEdit: true,
-                                   });
-                           }}
-                        >
-                           <img src={''} alt="edit" className="edit-bullet-img" />
-                        </div>
+
                         <form className="form-contacts-profile">
                            <div className="from-email-adress-profile">
                               <label htmlFor="email">Email adress :</label>

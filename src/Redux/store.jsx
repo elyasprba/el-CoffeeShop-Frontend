@@ -6,6 +6,7 @@ import loginReducer, { userTokenReducer } from './reducer/login';
 import { combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { addToCartReducer } from './reducer/cartReducer';
+import paymentReducer from './reducer/paymentReducer';
 
 const persistConfig = {
    key: 'root',
@@ -27,6 +28,7 @@ export let store = configureStore({
    reducer: {
       auth: persistedReducer,
       userLogin: loginReducer,
+      userPayment: paymentReducer,
    },
    middleware,
 });

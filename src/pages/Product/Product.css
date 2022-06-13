@@ -186,13 +186,8 @@ html {
 }
 
 .paginasi-product-icon {
-   position: relative;
+   justify-content: space-between;
    height: 30px;
    width: 30px;
-}
-
-.paginasi-product-icon {
-   position: relative;
-   height: 30px;
-   width: 30px;
+   cursor: pointer;
 }

@@ -108,7 +108,7 @@
 
 .title-size {
    margin: 5% 10%;
-   background-color: #ffba33;
+   background-color: #ededed;
    height: 70px;
    width: 70px;
    border-radius: 50%;
@@ -120,6 +120,11 @@
    line-height: 45px;
    letter-spacing: 0em;
    text-align: center;
+   cursor: pointer;
+}
+
+.title-size:active {
+   background-color: #ffba33;
 }
 
 .delivery-methods-protail {

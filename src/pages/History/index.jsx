@@ -4,12 +4,14 @@ import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Product/Header';
 import './history.css';
 import { CardHistory } from '../../components/CardHistory/CardHistory';
+import { connect } from 'react-redux';
+import mapStateWithProps from '../../helper/mapStateWithProps';
 
-export default class History extends Component {
-   constructor() {
-      super();
+class History extends Component {
+   constructor(props) {
+      super(props);
       this.state = {
-         token: localStorage.getItem('token'),
+         token: this.props.userInfo.token,
          history: [],
          isLogin: true,
       };
@@ -20,6 +22,7 @@ export default class History extends Component {
       if (!this.state.token) {
          this.setState({ isLogin: false });
       }
+
       const config = { headers: { Authorization: `Bearer ${this.state.token}` } };
 
       axios
@@ -56,3 +59,5 @@ export default class History extends Component {
       );
    }
 }
+
+export default connect(mapStateWithProps)(History);

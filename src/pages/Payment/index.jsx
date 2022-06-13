@@ -4,12 +4,13 @@ import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Product/Header';
 import './Payment.css';
 import mapStateWithProps from '../../helper/mapStateWithProps';
+import { paymentAction } from '../../Redux/actionCreator/payment';
 
 class Payment extends Component {
    constructor(props) {
       super(props);
       this.state = {
-         name: this.props.cartInfo.product.name,
+         id: this.props.cartInfo.product.id,
          pict: this.props.cartInfo.product.pict,
          qty: this.props.cartInfo.qty,
          size: this.props.cartInfo.size,
@@ -19,7 +20,24 @@ class Payment extends Component {
          phone: this.props.userInfo.payload.phone_number,
          tax: 10000,
          shipping: 10000,
+         isPayment: false,
+         user_id: this.props.userInfo.payload.id,
       };
+   }
+
+   paymenHandler() {
+      const { paymentAction } = this.props;
+      const body = {
+         name_products: this.state.id,
+         qty: this.state.qty,
+         size: this.state.size,
+         subtotal: parseInt(this.state.qty) * parseInt(this.state.price),
+         tax: this.state.tax,
+         shipping: this.state.shipping,
+         total: parseInt(this.state.qty * parseInt(this.state.price)) + this.state.tax + this.state.shipping,
+         users_id: this.state.user_id,
+      };
+      paymentAction(body);
    }
 
    render() {
@@ -35,10 +53,10 @@ class Payment extends Component {
                      <div className="payment-all-order">
                         <div className="payment-order-item">
                            <div className="payment-item-img">
-                              <img src={`${process.env.REACT_APP_HOST}${this.state.pict}`} alt="" className="payment-product-img" />
+                              <img src={`${process.env.REACT_APP_HOST}${this.state.pict}`} alt="product-pict" className="payment-product-img" />
                            </div>
                            <div className="payment-item-detail">
-                              <p>{this.state.name}</p>
+                              <p>{this.props.cartInfo.product.name}</p>
                               <p>{this.state.qty}</p>
                               <p>{this.state.size}</p>
                            </div>
@@ -55,7 +73,6 @@ class Payment extends Component {
                            <div className="payment-info">TAX {'&'} FEES</div>
                            <div className="payment-price">IDR {this.state.tax}</div>
                         </div>
-                        x
                         <div className="payment-shipping">
                            <div className="payment-info">SHIPPING</div>
                            <div className="payment-price">IDR {this.state.shipping}</div>
@@ -117,7 +134,14 @@ class Payment extends Component {
                            </div>
                         </div>
                      </div>
-                     <div className="payment-confirm-button">Confirm and Pay</div>
+                     <div
+                        className="payment-confirm-button"
+                        onClick={() => {
+                           this.paymenHandler();
+                        }}
+                     >
+                        Confirm and Pay
+                     </div>
                   </section>
                </section>
             </main>
@@ -127,4 +151,4 @@ class Payment extends Component {
    }
 }
 
-export default connect(mapStateWithProps)(Payment);
+export default connect(mapStateWithProps, { paymentAction })(Payment);

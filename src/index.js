@@ -12,6 +12,7 @@ import Profile from './pages/Profile';
 import History from './pages/History';
 import Payment from './pages/Payment';
 import PrivateElement from './components/PrivateElement';
+import Dashboard from './pages/Dasboard';
 import { Provider } from 'react-redux';
 import { store, persistor } from './Redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -44,7 +45,15 @@ function App() {
                   </PrivateElement>
                }
             />
-            <Route path="/payment" element={<Payment />} />
+            <Route
+               path="/payment"
+               element={
+                  <PrivateElement redirectedTo="/login" extraData={{ isAuthenticated: false }}>
+                     <Payment />
+                  </PrivateElement>
+               }
+            />
+            <Route path="/dashboard" element={<Dashboard />} />
          </Routes>
       </BrowserRouter>
    );

@@ -16,7 +16,7 @@ export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_CART = 'REMOVE_CART';
 
 // Payment
-
 export const PAYMENT_PENDING = 'PAYMENT_PENDING';
 export const PAYMENT_FULLFILLED = 'PAYMENT_FULLFILLED';
 export const PAYMNET_REJECTED = 'PAYMNET_REJECTED';
+export const RESET_PAYMENT = 'RESET_PAYMENT';

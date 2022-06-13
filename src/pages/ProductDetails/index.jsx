@@ -55,7 +55,12 @@ class ProductDetails extends Component {
                      <img src={`http://localhost:8080${this.state.product.pict}`} alt="product-img" width={'400px'} />
                      <p className="info-name-protail">{this.state.product.name}</p>
                      <p className="info-price-protail">IDR. {this.state.product.price}</p>
-                     <button className="add-to-cart" onClick={this.cartHandler()}>
+                     <button
+                        className="add-to-cart"
+                        onClick={() => {
+                           this.cartHandler();
+                        }}
+                     >
                         Add to Cart
                      </button>
                      <button className="ask-a-staff">Ask a Staff</button>
