@@ -5,16 +5,17 @@ import Header from '../../components/Product/Header';
 import './Payment.css';
 import mapStateWithProps from '../../helper/mapStateWithProps';
 import { paymentAction } from '../../Redux/actionCreator/payment';
+import { removeCart } from '../../Redux/actionCreator/cart';
 
 class Payment extends Component {
    constructor(props) {
       super(props);
       this.state = {
-         id: this.props.cartInfo.product.id,
-         pict: this.props.cartInfo.product.pict,
+         id: this.props.cartInfo.product ? this.props.cartInfo.product.id : null,
+         pict: this.props.cartInfo.product ? this.props.cartInfo.product.pict : null,
          qty: this.props.cartInfo.qty,
          size: this.props.cartInfo.size,
-         price: this.props.cartInfo.product.price,
+         price: this.props.cartInfo.product ? this.props.cartInfo.product.price : null,
          display_name: this.props.userInfo.payload.name,
          address: this.props.userInfo.payload.address,
          phone: this.props.userInfo.payload.phone_number,
@@ -26,7 +27,7 @@ class Payment extends Component {
    }
 
    paymenHandler() {
-      const { paymentAction } = this.props;
+      const { paymentAction, removeCart } = this.props;
       const body = {
          name_products: this.state.id,
          qty: this.state.qty,
@@ -38,6 +39,7 @@ class Payment extends Component {
          users_id: this.state.user_id,
       };
       paymentAction(body);
+      removeCart();
    }
 
    render() {
@@ -50,38 +52,45 @@ class Payment extends Component {
                <section className="payment-main-content">
                   <section className="payment-left-content">
                      <div className="payment-order-summary">Order Summary</div>
-                     <div className="payment-all-order">
-                        <div className="payment-order-item">
-                           <div className="payment-item-img">
-                              <img src={`${process.env.REACT_APP_HOST}${this.state.pict}`} alt="product-pict" className="payment-product-img" />
+                     {!this.state.id ? (
+                        <h3>TES</h3>
+                     ) : (
+                        <>
+                           {' '}
+                           <div className="payment-all-order">
+                              <div className="payment-order-item">
+                                 <div className="payment-item-img">
+                                    <img src={`${process.env.REACT_APP_HOST}${this.state.pict}`} alt="product-pict" className="payment-product-img" />
+                                 </div>
+                                 <div className="payment-item-detail">
+                                    <p>{this.props.cartInfo.product.name}</p>
+                                    <p>{this.state.qty}</p>
+                                    <p>{this.state.size}</p>
+                                 </div>
+                                 <div className="payment-item-price">IDR. {this.state.price}</div>
+                              </div>
                            </div>
-                           <div className="payment-item-detail">
-                              <p>{this.props.cartInfo.product.name}</p>
-                              <p>{this.state.qty}</p>
-                              <p>{this.state.size}</p>
+                           <div className="payment-border"></div>
+                           <div className="payment-all-order-info">
+                              <div className="payment-subtotal">
+                                 <div className="payment-info">SUBTOTAL</div>
+                                 <div className="payment-price">IDR {`${parseInt(this.state.qty * parseInt(this.state.price))}`}</div>
+                              </div>
+                              <div className="payment-tax">
+                                 <div className="payment-info">TAX {'&'} FEES</div>
+                                 <div className="payment-price">IDR {this.state.tax}</div>
+                              </div>
+                              <div className="payment-shipping">
+                                 <div className="payment-info">SHIPPING</div>
+                                 <div className="payment-price">IDR {this.state.shipping}</div>
+                              </div>
                            </div>
-                           <div className="payment-item-price">IDR. {this.state.price}</div>
-                        </div>
-                     </div>
-                     <div className="payment-border"></div>
-                     <div className="payment-all-order-info">
-                        <div className="payment-subtotal">
-                           <div className="payment-info">SUBTOTAL</div>
-                           <div className="payment-price">IDR {`${parseInt(this.state.qty * parseInt(this.state.price))}`}</div>
-                        </div>
-                        <div className="payment-tax">
-                           <div className="payment-info">TAX {'&'} FEES</div>
-                           <div className="payment-price">IDR {this.state.tax}</div>
-                        </div>
-                        <div className="payment-shipping">
-                           <div className="payment-info">SHIPPING</div>
-                           <div className="payment-price">IDR {this.state.shipping}</div>
-                        </div>
-                     </div>
-                     <div className="payment-total-order-price">
-                        <div className="payment-total-info-title">TOTAL</div>
-                        <div className="payment-total-info-price">IDR {`${parseInt(this.state.qty * parseInt(this.state.price)) + this.state.tax + this.state.shipping}`}</div>
-                     </div>
+                           <div className="payment-total-order-price">
+                              <div className="payment-total-info-title">TOTAL</div>
+                              <div className="payment-total-info-price">IDR {`${parseInt(this.state.qty * parseInt(this.state.price)) + this.state.tax + this.state.shipping}`}</div>
+                           </div>{' '}
+                        </>
+                     )}
                   </section>
                   <section className="payment-right-content">
                      <div className="payment-right-content-card">
@@ -151,4 +160,4 @@ class Payment extends Component {
    }
 }
 
-export default connect(mapStateWithProps, { paymentAction })(Payment);
+export default connect(mapStateWithProps, { paymentAction, removeCart })(Payment);
