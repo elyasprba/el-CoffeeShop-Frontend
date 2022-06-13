@@ -1,9 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Product/Header';
 import './Payment.css';
+import mapStateWithProps from '../../helper/mapStateWithProps';
 
-export default class Payment extends Component {
+class Payment extends Component {
+   constructor(props) {
+      super(props);
+      this.state = {
+         name: this.props.cartInfo.product.name,
+         pict: this.props.cartInfo.product.pict,
+         qty: this.props.cartInfo.qty,
+         size: this.props.cartInfo.size,
+         price: this.props.cartInfo.product.price,
+         display_name: this.props.userInfo.payload.name,
+         address: this.props.userInfo.payload.address,
+         phone: this.props.userInfo.payload.phone_number,
+         tax: 10000,
+         shipping: 10000,
+      };
+   }
+
    render() {
       document.title = 'Payment';
       return (
@@ -17,45 +35,35 @@ export default class Payment extends Component {
                      <div className="payment-all-order">
                         <div className="payment-order-item">
                            <div className="payment-item-img">
-                              <img src={require('../../assets/products/beef.png')} alt="" className="payment-product-img" />
+                              <img src={`${process.env.REACT_APP_HOST}${this.state.pict}`} alt="" className="payment-product-img" />
                            </div>
                            <div className="payment-item-detail">
-                              <p>Hazelnut Latte</p>
-                              <p>x 1</p>
-                              <p>Regular</p>
+                              <p>{this.state.name}</p>
+                              <p>{this.state.qty}</p>
+                              <p>{this.state.size}</p>
                            </div>
-                           <div className="payment-item-price">IDR 24.0</div>
-                        </div>
-                        <div className="payment-order-item">
-                           <div className="payment-item-img">
-                              <img src={require('../../assets/products/beef.png')} alt="" className="payment-product-img" />
-                           </div>
-                           <div className="payment-item-detail">
-                              <p>Hazelnut Latte</p>
-                              <p>x 1</p>
-                              <p>Regular</p>
-                           </div>
-                           <div className="payment-item-price">IDR 24.0</div>
+                           <div className="payment-item-price">IDR. {this.state.price}</div>
                         </div>
                      </div>
                      <div className="payment-border"></div>
                      <div className="payment-all-order-info">
                         <div className="payment-subtotal">
                            <div className="payment-info">SUBTOTAL</div>
-                           <div className="payment-price">IDR 120.000</div>
+                           <div className="payment-price">IDR {`${parseInt(this.state.qty * parseInt(this.state.price))}`}</div>
                         </div>
                         <div className="payment-tax">
                            <div className="payment-info">TAX {'&'} FEES</div>
-                           <div className="payment-price">IDR 20.000</div>
+                           <div className="payment-price">IDR {this.state.tax}</div>
                         </div>
+                        x
                         <div className="payment-shipping">
                            <div className="payment-info">SHIPPING</div>
-                           <div className="payment-price">IDR 10.000</div>
+                           <div className="payment-price">IDR {this.state.shipping}</div>
                         </div>
                      </div>
                      <div className="payment-total-order-price">
                         <div className="payment-total-info-title">TOTAL</div>
-                        <div className="payment-total-info-price">IDR 150.000</div>
+                        <div className="payment-total-info-price">IDR {`${parseInt(this.state.qty * parseInt(this.state.price)) + this.state.tax + this.state.shipping}`}</div>
                      </div>
                   </section>
                   <section className="payment-right-content">
@@ -67,12 +75,12 @@ export default class Payment extends Component {
                            </div>
                            <div className="address-detail-card">
                               <div className="payment-address-detail">
-                                 <span>Delivery to</span> Iskandar Street
+                                 <span>Delivery to</span> {this.state.display_name}
                               </div>
                               <div className="payment-border"></div>
-                              <div className="payment-address-detail">Km 5 refinery road oppsite re public road, effurun, Jakarta</div>
+                              <div className="payment-address-detail">{this.state.address}</div>
                               <div className="payment-border"></div>
-                              <div className="payment-address-detail">+62 81348287878</div>
+                              <div className="payment-address-detail">{this.state.phone}</div>
                            </div>
                         </div>
                         <div className="payment-payment-method">
@@ -118,3 +126,5 @@ export default class Payment extends Component {
       );
    }
 }
+
+export default connect(mapStateWithProps)(Payment);

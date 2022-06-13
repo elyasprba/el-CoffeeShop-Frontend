@@ -190,7 +190,7 @@ class Product extends Component {
                      </div>
                      <div>
                         {this.state.sort === 'asc' ? (
-                           <FilterSquare
+                           <FilterSquareFill
                               onClick={() => {
                                  this.state.setSearchParams('sort=price&order=asc');
                                  this.setState({
@@ -200,7 +200,7 @@ class Product extends Component {
                               }}
                            />
                         ) : (
-                           <FilterSquareFill
+                           <FilterSquare
                               onClick={() => {
                                  this.state.setSearchParams('sort=price&order=desc');
                                  this.setState({
