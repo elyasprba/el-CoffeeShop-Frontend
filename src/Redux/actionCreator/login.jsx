@@ -18,6 +18,7 @@ export const loginAction = (body) => (dispatch) => {
             payload: result.data.data,
          });
       })
+
       .catch((error) => {
          dispatch({
             type: LOGIN_REJECTED,

@@ -6,6 +6,7 @@ import './Payment.css';
 import mapStateWithProps from '../../helper/mapStateWithProps';
 import { paymentAction } from '../../Redux/actionCreator/payment';
 import { removeCart } from '../../Redux/actionCreator/cart';
+import { Link } from 'react-router-dom';
 
 class Payment extends Component {
    constructor(props) {
@@ -53,7 +54,7 @@ class Payment extends Component {
                   <section className="payment-left-content">
                      <div className="payment-order-summary">Order Summary</div>
                      {!this.state.id ? (
-                        <h3>TES</h3>
+                        <h3>Please add to cart your products</h3>
                      ) : (
                         <>
                            {' '}
@@ -143,14 +144,16 @@ class Payment extends Component {
                            </div>
                         </div>
                      </div>
-                     <div
-                        className="payment-confirm-button"
-                        onClick={() => {
-                           this.paymenHandler();
-                        }}
-                     >
-                        Confirm and Pay
-                     </div>
+                     <Link to={'/history'}>
+                        <div
+                           className="payment-confirm-button"
+                           onClick={() => {
+                              this.paymenHandler();
+                           }}
+                        >
+                           Confirm and Pay
+                        </div>
+                     </Link>
                   </section>
                </section>
             </main>

@@ -161,7 +161,7 @@ class Profile extends Component {
                                  const body = this.setData();
                                  const config = { headers: { Authorization: `Bearer ${this.state.token}`, 'content-type': 'multipart/form-data' } };
                                  axios
-                                    .patch('http://localhost:8080/users', body, config)
+                                    .patch(`${process.env.REACT_APP_HOST}/users`, body, config)
                                     .then((result) => {
                                        console.log(result);
                                        this.setState({
@@ -183,7 +183,7 @@ class Profile extends Component {
                               <Link
                                  to="/"
                                  onClick={() => {
-                                    localStorage.removeItem('token');
+                                    this.props.userInfo.token.removeItem('token');
                                  }}
                               >
                                  Log Out

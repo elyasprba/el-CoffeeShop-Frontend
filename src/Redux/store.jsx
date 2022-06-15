@@ -32,4 +32,5 @@ export let store = configureStore({
    },
    middleware,
 });
+
 export let persistor = persistStore(store);

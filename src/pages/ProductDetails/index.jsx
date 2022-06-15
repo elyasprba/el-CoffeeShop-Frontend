@@ -6,6 +6,7 @@ import axios from 'axios';
 import withParams from '../../helper/withParams';
 import { addToCart } from '../../Redux/actionCreator/cart';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class ProductDetails extends Component {
    constructor(props) {
@@ -30,7 +31,7 @@ class ProductDetails extends Component {
    componentDidMount() {
       const { params } = this.props;
       axios
-         .get(`http://localhost:8080/products/${params.id}`)
+         .get(`${process.env.REACT_APP_HOST}/products/${params.id}`)
          .then((result) => {
             this.setState({
                product: result.data.data[0],
@@ -120,7 +121,7 @@ class ProductDetails extends Component {
                <section className="checkout-protail">
                   <section className="checkout-info-protail">
                      <div className="checkout-img-protail">
-                        <img src={require('../../assets/products/Mask Group.png')} alt="product-img" width={'120px'} height={'120px'} />
+                        <img src={`http://localhost:8080${this.state.product.pict}`} alt="product-img" width={'120px'} height={'120px'} />
                      </div>
                      <div className="checkout-name-size">
                         <p className="checkout-name-product-protail">{this.state.product.name}</p>
@@ -153,7 +154,9 @@ class ProductDetails extends Component {
                      </div>
                   </section>
                   <section className="checkout-button-protail">
-                     <button className="checkout">Checkout</button>
+                     <Link to={'/payment'}>
+                        <button className="checkout"> Checkout</button>
+                     </Link>
                   </section>
                </section>
             </section>

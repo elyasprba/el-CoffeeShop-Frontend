@@ -217,7 +217,7 @@ class Product extends Component {
                         <div className="col-md-6  col-lg-3 d-flex flex-column productContainer">
                            <div className="d-flex flex-column align-items-center justify-content-center cardProduct">
                               <Link to={`/product-details/${product.id}`}>
-                                 <img className="imgProduct" src={`http://localhost:8080${product.pict}`} alt="product-img" />
+                                 <img className="imgProduct" src={`${process.env.REACT_APP_HOST}${product.pict}`} alt="product-img" />
                               </Link>
                               <div className="productName">{product.name}</div>
                               <div className="price-product">IDR. {product.price}</div>
@@ -246,7 +246,6 @@ class Product extends Component {
                   </div>
                </div>
             </main>
-
             <Footer />
          </>
       );
