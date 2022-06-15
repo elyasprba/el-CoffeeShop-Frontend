@@ -127,7 +127,7 @@ class Payment extends Component {
                                     <div className="payment-bank-vector-container">
                                        <img src={require('../../assets/payment/vector-bank.png')} alt="bank" className="payment-bank-vector" />
                                     </div>
-                                    <p>Bank account</p>
+                                    <p>Bank account.</p>
                                     <input type="radio" name="payment-method-input" />
                                     <span className="checkmark"></span>
                                  </label>
