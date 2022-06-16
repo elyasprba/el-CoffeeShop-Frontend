@@ -5,10 +5,12 @@ import SecondFooter from '../../components/SecondFooter';
 import 'bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginAction, resetLogin } from '../../Redux/actionCreator/login';
+import { Eye, EyeSlashFill } from 'react-bootstrap-icons';
 
 const Login = () => {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
+   const [showPass, setShowPass] = useState(false);
    const { isLoading, err, isSuccess } = useSelector((state) => state.userLogin);
    const navigate = useNavigate();
    const dispatch = useDispatch();
@@ -27,7 +29,6 @@ const Login = () => {
    }
 
    document.title = 'Login';
-
    return (
       <>
          <div className="container-login">
@@ -64,15 +65,26 @@ const Login = () => {
                      }}
                   />
                   <label for="password">Password :</label>
-                  <input
-                     type="password"
-                     id="password"
-                     placeholder="Enter your password"
-                     value={password}
-                     onChange={(even) => {
-                        setPassword(even.target.value);
-                     }}
-                  />
+                  <div className="icon-password">
+                     <input
+                        type={`${showPass ? 'text' : 'password'}`}
+                        id="password"
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={(even) => {
+                           setPassword(even.target.value);
+                        }}
+                     />
+                     <div
+                        className="icons-eye"
+                        value={showPass}
+                        onClick={() => {
+                           setShowPass(!showPass);
+                        }}
+                     >
+                        {showPass ? <Eye size={30} /> : <EyeSlashFill size={30} />}
+                     </div>
+                  </div>
                   <p className="forgot-password-login">Forgot password?</p>
                   <button className="sign-up-login" type="submit" onClick={login}>
                      Login

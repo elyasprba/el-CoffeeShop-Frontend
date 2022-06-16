@@ -4,6 +4,7 @@ import { Link, Navigate } from 'react-router-dom';
 import SecondFooter from '../../components/SecondFooter';
 import 'bootstrap';
 import './Signup.css';
+import { Eye, EyeSlashFill } from 'react-bootstrap-icons';
 
 export default class Signup extends Component {
    constructor() {
@@ -15,7 +16,7 @@ export default class Signup extends Component {
          isSuccess: false,
          isRegister: false,
          successMsg: '',
-         errorMsg: '',
+         errorMsg: 'Failed Registration',
          isPasswordShown: false,
       };
    }
@@ -63,29 +64,29 @@ export default class Signup extends Component {
                         }}
                      />
                      <label htmlFor="password">Password :</label>
-                     <input
-                        type={`${this.state.isPasswordShown ? 'text' : 'password'}`}
-                        id="password"
-                        placeholder="Enter your password"
-                        value={this.state.password}
-                        onChange={(e) => {
-                           this.setState({
-                              password: e.target.value,
-                           });
-                        }}
-                     />
-                     <label>
+                     <div className="icon-password">
                         <input
-                           type="checkbox"
-                           value={this.state.isPasswordShown}
-                           onChange={() => {
+                           type={`${this.state.isPasswordShown ? 'text' : 'password'}`}
+                           id="password"
+                           placeholder="Enter your password"
+                           value={this.state.password}
+                           onChange={(e) => {
+                              this.setState({
+                                 password: e.target.value,
+                              });
+                           }}
+                        />
+                        <div
+                           className="icons-eye"
+                           onClick={() => {
                               this.setState({
                                  isPasswordShown: !this.state.isPasswordShown,
                               });
                            }}
-                        />
-                        Show Password
-                     </label>
+                        >
+                           {this.state.isPasswordShown ? <Eye size={30} /> : <EyeSlashFill size={30} />}
+                        </div>
+                     </div>
                      <label htmlFor="phone">Phone Number :</label>
                      <input
                         type="text"
