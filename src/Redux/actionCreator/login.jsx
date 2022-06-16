@@ -1,4 +1,4 @@
-import { LOGIN_PENDING, LOGIN_REJECTED, LOGIN_FULFILLED, RESET_LOGIN, ADD_USER_INFO } from './string/actionSring';
+import { LOGIN_PENDING, LOGIN_REJECTED, LOGIN_FULFILLED, RESET_LOGIN, ADD_USER_INFO, DELETE_USER_INFO } from './string/actionSring';
 import axios from 'axios';
 
 export const loginAction = (body) => (dispatch) => {
@@ -29,4 +29,10 @@ export const loginAction = (body) => (dispatch) => {
 
 export const resetLogin = () => (dispatch) => {
    dispatch({ type: RESET_LOGIN });
+};
+
+export const logoutAction = () => (dispatch) => {
+   dispatch({
+      type: DELETE_USER_INFO,
+   });
 };

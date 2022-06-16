@@ -7,6 +7,7 @@ import Default from '../../assets/icon/default-profile.jpg';
 import './Profile.css';
 import { connect } from 'react-redux';
 import mapStateWithProps from '../../helper/mapStateWithProps';
+import { logoutAction } from '../../Redux/actionCreator/login';
 
 class Profile extends Component {
    constructor(props) {
@@ -30,6 +31,11 @@ class Profile extends Component {
          isEdit: false,
       };
       this.inputFile = React.createRef();
+   }
+
+   logoutHandler() {
+      const { logoutAction } = this.props;
+      logoutAction();
    }
 
    setData = () => {
@@ -183,7 +189,7 @@ class Profile extends Component {
                               <Link
                                  to="/"
                                  onClick={() => {
-                                    this.props.userInfo.token.removeItem('token');
+                                    this.logoutHandler();
                                  }}
                               >
                                  Log Out
@@ -326,4 +332,4 @@ class Profile extends Component {
    }
 }
 
-export default connect(mapStateWithProps)(Profile);
+export default connect(mapStateWithProps, { logoutAction })(Profile);
