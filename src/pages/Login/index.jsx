@@ -6,11 +6,13 @@ import 'bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginAction, resetLogin } from '../../Redux/actionCreator/login';
 import { Eye, EyeSlashFill } from 'react-bootstrap-icons';
+import { Button, Modal } from 'react-bootstrap';
 
 const Login = () => {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
    const [showPass, setShowPass] = useState(false);
+   const [show, setShow] = useState(false);
    const { isLoading, err, isSuccess } = useSelector((state) => state.userLogin);
    const navigate = useNavigate();
    const dispatch = useDispatch();
@@ -22,6 +24,9 @@ const Login = () => {
       };
       dispatch(loginAction(body));
    };
+
+   const handleClose = () => setShow(false);
+   const handleShow = () => setShow(true);
 
    if (isSuccess) {
       navigate('/');
@@ -82,11 +87,16 @@ const Login = () => {
                      </div>
                   </div>
                   <p className="forgot-password-login">Forgot password?</p>
-                  <button className="sign-up-login" type="submit" onClick={login}>
-                     Login
-                  </button>
-                  {isLoading ? <div>Loading...</div> : <></>}
-                  {err ? <div>{err}</div> : <></>}
+                  {/* <Button variant="primary" onClick={handleShow}>
+                     Launch demo modal
+                  </Button>
+                   */}
+                  <div className="sign-up-button" onClick={handleShow}>
+                     <button className="sign-up-login" type="submit" onClick={login}>
+                        Login
+                     </button>
+                  </div>
+
                   <button className="sign-up-google-login" type="submit">
                      <img src={require('../../assets/icon/google.png')} alt="icon-google" className="img-google-login" /> Login with Google
                   </button>
@@ -104,6 +114,22 @@ const Login = () => {
                <SecondFooter />
             </div>
          </div>
+         <Modal show={show} onHide={handleClose}>
+            <Modal.Header>
+               <Modal.Title>
+                  {isLoading ? <div className="text-primary">Login Success, Loading...</div> : <></>}
+                  {err ? <div className="text-danger">{err}</div> : <></>}
+               </Modal.Title>
+            </Modal.Header>
+            <Modal.Footer>
+               {/* <Button variant="secondary" onClick={handleClose}>
+                  Close
+               </Button> */}
+               <Button variant="primary" onClick={handleClose}>
+                  Oke
+               </Button>
+            </Modal.Footer>
+         </Modal>
       </>
    );
 };

@@ -31,11 +31,7 @@ export default class Signup extends Component {
             <section className="container-sign">
                <aside className="side-content">
                   <header className="side-header">
-                     <img
-                        src={require('../../assets/bg-login.png')}
-                        alt="background-signup"
-                        className="background-signup"
-                     />
+                     <img src={require('../../assets/bg-login.png')} alt="background-signup" className="background-signup" />
                   </header>
                </aside>
                <section className="main-container-sign">
@@ -152,7 +148,7 @@ export default class Signup extends Component {
                            <div class="modal-header">
                               <h5 class="modal-title" id="exampleModalLabel">
                                  {this.state.isSuccess ? (
-                                    <p className="text-warning">
+                                    <p className="text-primary">
                                        {this.state.successMsg}
                                        {'!'}
                                     </p>
