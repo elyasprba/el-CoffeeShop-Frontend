@@ -191,3 +191,9 @@ html {
    width: 30px;
    cursor: pointer;
 }
+
+.page-number {
+   font-weight: 500;
+   font-size: 20px;
+   margin: 0px 20px;
+}

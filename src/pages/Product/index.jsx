@@ -12,85 +12,95 @@ class Product extends Component {
       super(props);
       this.state = {
          product: [],
-         isFavorite: false,
-         isCoffee: false,
-         isNonCoffee: false,
-         isFood: false,
-         isAllProduct: false,
-         isActive: '',
-         sort: '',
+         categoryActive: 'all',
+         doAxios: false,
+         sort: 'price',
+         order: 'asc',
+         page: 1,
+         limit: '12',
+         totalPage: '1',
+         searchName: '',
          setSearchParams: this.props.setSearchParams.bind(this),
-         baseUrl: null,
-         meta: '',
+         error: false,
+         errMsg: '',
       };
    }
+
+   // setSearchName = (props) => {
+   //    this.state({
+   //       searchName: props,
+   //    });
+   // };
 
    componentDidMount() {
       document.title = 'Product';
       this.state.setSearchParams('');
-      this.setState({
-         baseUrl: `${process.env.REACT_APP_HOST}/products/all`,
-      });
+      axios
+         .get(`${process.env.REACT_APP_HOST}/products`)
+         .then((result) => {
+            this.setState({
+               product: result.data.data,
+               totalPage: result.data.meta.totalPage,
+            });
+         })
+         .catch((error) => {
+            console.log(error);
+         });
    }
 
    componentDidUpdate() {
-      if (this.state.isFavorite) {
-         this.state.setSearchParams('favorite');
-         this.setState({
-            baseUrl: `${process.env.REACT_APP_HOST}/products/all`.replace('all', 'favorite'),
-            isFavorite: false,
-         });
-      }
+      if (this.state.doAxios) {
+         let params = '';
+         let url = `${process.env.REACT_APP_HOST}/products`;
+         if (this.state.categoryActive === 'all') {
+            url += `?page=${this.state.page}&limit=${this.state.limit}&`;
+            params += `page=${this.state.page}&limit=${this.state.limit}&`;
+         }
 
-      if (this.state.isCoffee) {
-         this.state.setSearchParams('category_name=coffee');
-         this.setState({
-            baseUrl: `${process.env.REACT_APP_HOST}/products/all?category_name=coffee`,
-            isCoffee: false,
-         });
-      }
+         if (this.state.categoryActive === 'favorite') {
+            url += `/favorite?`;
+            params += 'category=favorite&';
+         }
 
-      if (this.state.isNonCoffee) {
-         this.state.setSearchParams('category_name=non coffee');
-         this.setState({
-            baseUrl: `${process.env.REACT_APP_HOST}/products/all?category_name=non coffee`,
-            isNonCoffee: false,
-         });
-      }
+         if (this.state.categoryActive !== 'all' && this.state.categoryActive !== 'favorite') {
+            url += `?category_name=${this.state.categoryActive}&page=${this.state.page}&limit=${this.state.limit}&`;
+            params += `category=${this.state.categoryActive}&page=${this.state.page}&limit=${this.state.limit}&`;
+         }
 
-      if (this.state.isFood) {
-         this.state.setSearchParams('category_name=food');
-         this.setState({
-            baseUrl: `${process.env.REACT_APP_HOST}/products/all?category_name=food`,
-            isFood: false,
-         });
-      }
+         if (this.state.searchName !== '') {
+            url += `name=${this.state.searchName}&`;
+            params += `name=${this.state.searchName}&`;
+         }
 
-      if (this.state.isAllProduct) {
-         this.state.setSearchParams('');
-         this.setState({
-            baseUrl: `${process.env.REACT_APP_HOST}/products/all`,
-            isAllProduct: false,
-         });
-      }
+         url += `sort=${this.state.sort}&order=${this.state.order}`;
+         params += `sort=${this.state.sort}&order=${this.state.order}`;
+         this.state.setSearchParams(params);
 
-      if (this.state.baseUrl) {
          axios
-            .get(this.state.baseUrl)
+            .get(url)
             .then((result) => {
                this.setState({
                   product: result.data.data,
-                  baseUrl: null,
-                  meta: result.data.meta,
+                  totalPage: !result.data.meta ? '1' : result.data.meta.totalPage,
+                  error: false,
+                  errMsg: '',
                });
             })
             .catch((error) => {
                console.log(error);
+               this.setState({
+                  error: true,
+                  errMsg: error.response.data.err,
+               });
             });
+         this.setState({
+            doAxios: false,
+         });
       }
    }
 
    render() {
+      console.log(this.state.totalPage);
       return (
          <>
             <Header />
@@ -134,84 +144,100 @@ class Product extends Component {
                <div className="col-sm-8 content">
                   <div className="d-flex justify-content-around productHeader">
                      <div
-                        className={this.state.isActive === 'favorite' ? 'headerItem-active' : 'headerItem'}
+                        className={this.state.categoryActive === 'favorite' ? 'headerItem-active' : 'headerItem'}
                         onClick={() => {
                            this.setState({
-                              isFavorite: true,
-                              isActive: 'favorite',
+                              doAxios: true,
+                              categoryActive: 'favorite',
                            });
                         }}
                      >
                         Favorit Product
                      </div>
                      <div
-                        className={this.state.isActive === 'coffee' ? 'headerItem-active' : 'headerItem'}
+                        className={this.state.categoryActive === 'coffee' ? 'headerItem-active' : 'headerItem'}
                         onClick={() => {
                            this.setState({
-                              isCoffee: true,
-                              isActive: 'coffee',
+                              doAxios: true,
+                              categoryActive: 'coffee',
                            });
                         }}
                      >
                         Coffee
                      </div>
                      <div
-                        className={this.state.isActive === 'non-coffee' ? 'headerItem-active' : 'headerItem'}
+                        className={this.state.categoryActive === 'non coffee' ? 'headerItem-active' : 'headerItem'}
                         onClick={() => {
                            this.setState({
-                              isNonCoffee: true,
-                              isActive: 'non-coffee',
+                              doAxios: true,
+                              categoryActive: 'non coffee',
                            });
                         }}
                      >
                         Non Coffee
                      </div>
                      <div
-                        className={this.state.isActive === 'foods' ? 'headerItem-active' : 'headerItem'}
+                        className={this.state.categoryActive === 'food' ? 'headerItem-active' : 'headerItem'}
                         onClick={() => {
                            this.setState({
-                              isFood: true,
-                              isActive: 'foods',
+                              doAxios: true,
+                              categoryActive: 'food',
                            });
                         }}
                      >
                         Foods
                      </div>
                      <div
-                        className={this.state.isActive === 'all' ? 'headerItem-active' : 'headerItem'}
+                        className={this.state.categoryActive === 'all' ? 'headerItem-active' : 'headerItem'}
                         onClick={() => {
                            this.setState({
-                              isAllProduct: true,
-                              isActive: 'all',
+                              doAxios: true,
+                              categoryActive: 'all',
                            });
                         }}
                      >
                         All
                      </div>
+                     <div className="dropdown-filter">
+                        <label for="cars"></label>
+                        <select
+                           name="cars"
+                           id="cars"
+                           onClick={(e) => {
+                              this.setState({
+                                 sort: e.target.value,
+                                 doAxios: true,
+                              });
+                           }}
+                        >
+                           <option value="price">Price</option>
+                           <option value="category_name">Category</option>
+                           <option value="name">Name</option>
+                        </select>
+                     </div>
                      <div>
-                        {this.state.sort === 'asc' ? (
-                           <FilterSquareFill
+                        {this.state.order === 'asc' ? (
+                           <FilterSquare
                               onClick={() => {
-                                 this.state.setSearchParams('sort=price&order=asc');
                                  this.setState({
-                                    sort: 'desc',
-                                    baseUrl: `${process.env.REACT_APP_HOST}/products/all?sort=price&order=asc`,
+                                    order: 'desc',
+                                    doAxios: true,
                                  });
                               }}
                            />
                         ) : (
-                           <FilterSquare
+                           <FilterSquareFill
                               onClick={() => {
-                                 this.state.setSearchParams('sort=price&order=desc');
                                  this.setState({
-                                    sort: 'asc',
-                                    baseUrl: `${process.env.REACT_APP_HOST}/products/all?sort=price&order=desc`,
+                                    order: 'asc',
+                                    doAxios: true,
                                  });
                               }}
                            />
                         )}
                      </div>
                   </div>
+
                   <div className="row favoriteProduct">
                      {this.state.product.map((product) => (
                         <div className="col-md-6  col-lg-3 d-flex flex-column productContainer">
@@ -228,17 +254,21 @@ class Product extends Component {
                         <ArrowLeftCircle
                            className="paginasi-product-icon"
                            onClick={() => {
+                              window.scroll(0, 0);
                               this.setState({
-                                 baseUrl: `${process.env.REACT_APP_HOST}${this.state.meta.prev}`,
+                                 page: this.state.page <= 1 ? 1 : this.state.page - 1,
+                                 doAxios: true,
                               });
                            }}
                         />
-                        <div> </div>
+                        <div className="page-number">{this.state.page}</div>
                         <ArrowRightCircle
                            className="paginasi-product-icon"
                            onClick={() => {
+                              window.scroll(0, 0);
                               this.setState({
-                                 baseUrl: `${process.env.REACT_APP_HOST}${this.state.meta.next}`,
+                                 page: this.state.page + 1,
+                                 doAxios: true,
                               });
                            }}
                         />

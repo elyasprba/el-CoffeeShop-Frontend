@@ -32,7 +32,7 @@ export default class Signup extends Component {
                <aside className="side-content">
                   <header className="side-header">
                      <img
-                        src="https://s3-alpha-sig.figma.com/img/94cf/d4df/dd22d129a5bbab44da4da62471dafa2a?Expires=1655683200&Signature=g~uQOPz~NhQcU0zA3WxEQpfJ3hbzifq-A6DDFo2qE4oYvApLtSP5Eh5ElOskIRBvhno4pTi7BkqasaJKS~ZKqQCMK0d5I2tVvEHzI6Ud-lyiJ8ozqBUzDAQp~YJ~~dx5tFSiEVWtCfcOwrbFd5f8uizu8msy6jFZVTvulm20J5DSxZhNiGSCX-paYuRFMgPiXfxQtzjy5PXCHl8B0Qi8BO-9tkuDIggkTs37ErTO9naYzrH2WKMeTVEg3Lls2ZFEtT3JCKNcTnhjcLtGlLuUkcOxkPkEmg8fpNaLjEgwJRac7Cd9oyep01rJ9Baf~C7qcVUr0YLbdci-aGy~ZVJ0dg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+                        src={require('../../assets/bg-login.png')}
                         alt="background-signup"
                         className="background-signup"
                      />
@@ -132,12 +132,7 @@ export default class Signup extends Component {
                         Sign Up
                      </div>
                      <button className="sign-up-google" type="submit">
-                        <img
-                           src="https://s3-alpha-sig.figma.com/img/f881/84c6/8dee88f348660b174d22c163e0848498?Expires=1653868800&Signature=Vg4eVgXJlLpzHb~l-hmau-AYqNsNjLgu6zHcNh2aKvADQqJOjAgBZy-jdvhP8FYt-8iZp7k2YbFNpo9mWd-e4HA~fKtfLAm5PAxAp1s-tEdZ~KnNWUHawtISfzXvkxdwIb-f-nPxZ8ggwfFrx2qB1LU1EXpyCnOgfOh~Z~pbkdgsz-8kszhk8DNcvZcFr88UGJI0Xxh6z2m0wdq1EcYrw~WIqxCCOjO~Hg4uAVt2jjjWIKZ0wGFIJUBKQFWOq1xLVYY1V0vrmRU5l3KQTuSQsd654NL5qR1kmV4rdl0YXBaEsNlTxfhnG1HZup~BwHyZt28PxSGBobSNMNxp6QeVGQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                           alt=""
-                           className="img-google"
-                        />{' '}
-                        Sign up with Google
+                        <img src={require('../../assets/icon/google.png')} alt="icon-google" className="img-google" /> Sign up with Google
                      </button>
                      <section className="has-account">
                         <div className="underline"></div>

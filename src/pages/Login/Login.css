@@ -15,7 +15,7 @@
 }
 
 .background-login {
-   width: 100%;
+   width: 650px;
    height: 1400px;
    object-fit: cover;
 }
@@ -27,7 +27,7 @@
 /* main */
 .main-container-login {
    display: flex;
-   flex: 2;
+   flex: 1;
    flex-direction: column;
 }
 

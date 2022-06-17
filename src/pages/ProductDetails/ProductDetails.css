@@ -27,9 +27,15 @@
    flex-direction: column;
 }
 
+.info-protail img {
+   border-radius: 50%;
+   width: 340px;
+}
+
 .info-name-protail {
+   margin-top: 20px;
    font-weight: 700;
-   font-size: 65px;
+   font-size: 50px;
    line-height: 50px;
    text-align: center;
 }
@@ -279,6 +285,10 @@
 
 .checkout-img-protail {
    margin-top: 25px;
+}
+
+.checkout-img-protail img {
+   border-radius: 50%;
 }
 
 .checkout-name-product-protail {

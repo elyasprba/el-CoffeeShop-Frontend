@@ -14,7 +14,7 @@ class ProductDetails extends Component {
       this.state = {
          product: [],
          size: '',
-         qty: 0,
+         qty: 1,
       };
    }
 
@@ -53,7 +53,7 @@ class ProductDetails extends Component {
                      <div>
                         <p className="favpromos">Favorite & Promo {this.state.product.name}</p>
                      </div>
-                     <img src={`http://localhost:8080${this.state.product.pict}`} alt="product-img" width={'400px'} />
+                     <img src={`http://localhost:8080${this.state.product.pict}`} alt="product-img" />
                      <p className="info-name-protail">{this.state.product.name}</p>
                      <p className="info-price-protail">IDR. {this.state.product.price}</p>
                      <button
