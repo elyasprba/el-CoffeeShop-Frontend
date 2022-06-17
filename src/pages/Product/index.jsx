@@ -100,7 +100,6 @@ class Product extends Component {
    }
 
    render() {
-      console.log(this.state.totalPage);
       return (
          <>
             <Header />
