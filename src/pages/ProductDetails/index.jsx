@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Header from '../../components/Product/Header';
 import Footer from '../../components/Footer/Footer';
-import './ProductDetails.css';
 import axios from 'axios';
 import withParams from '../../helper/withParams';
 import { addToCart } from '../../Redux/actionCreator/cart';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Modal, Button } from 'react-bootstrap';
+
+import './ProductDetails.css';
 
 class ProductDetails extends Component {
    constructor(props) {
@@ -15,8 +17,12 @@ class ProductDetails extends Component {
          product: [],
          size: '',
          qty: 1,
+         isOpen: false,
       };
    }
+
+   openModal = () => this.setState({ isOpen: true });
+   closeModal = () => this.setState({ isOpen: false });
 
    cartHandler() {
       const { addToCart } = this.props;
@@ -60,6 +66,7 @@ class ProductDetails extends Component {
                         className="add-to-cart"
                         onClick={() => {
                            this.cartHandler();
+                           this.openModal();
                         }}
                      >
                         Add to Cart
@@ -155,12 +162,31 @@ class ProductDetails extends Component {
                   </section>
                   <section className="checkout-button-protail">
                      <Link to={'/payment'}>
-                        <button className="checkout"> Checkout</button>
+                        <button
+                           className="checkout"
+                           onClick={() => {
+                              this.cartHandler();
+                           }}
+                        >
+                           {' '}
+                           Checkout
+                        </button>
                      </Link>
                   </section>
                </section>
             </section>
             <Footer />
+            <Modal show={this.state.isOpen} onHide={this.closeModal}>
+               <Modal.Header closeButton>
+                  <Modal.Title>Cart successfully added</Modal.Title>
+               </Modal.Header>
+               <Modal.Body>Please checkout and make payment</Modal.Body>
+               <Modal.Footer>
+                  <Button variant="secondary" onClick={this.closeModal}>
+                     Close
+                  </Button>
+               </Modal.Footer>
+            </Modal>
          </>
       );
    }

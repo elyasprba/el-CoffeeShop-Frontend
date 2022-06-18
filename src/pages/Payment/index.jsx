@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Product/Header';
-import './Payment.css';
 import mapStateWithProps from '../../helper/mapStateWithProps';
 import { paymentAction } from '../../Redux/actionCreator/payment';
 import { removeCart } from '../../Redux/actionCreator/cart';
 import { Link } from 'react-router-dom';
+import { Modal, Button } from 'react-bootstrap';
+
+import './Payment.css';
 
 class Payment extends Component {
    constructor(props) {
@@ -24,6 +26,7 @@ class Payment extends Component {
          shipping: 10000,
          isPayment: false,
          user_id: this.props.userInfo.payload.id,
+         isOpen: false,
       };
    }
 
@@ -43,6 +46,8 @@ class Payment extends Component {
       removeCart();
    }
 
+   openModal = () => this.setState({ isOpen: true });
+   closeModal = () => this.setState({ isOpen: false });
    render() {
       document.title = 'Payment';
       return (
@@ -144,20 +149,30 @@ class Payment extends Component {
                            </div>
                         </div>
                      </div>
-                     <Link to={'/history'}>
-                        <div
-                           className="payment-confirm-button"
-                           onClick={() => {
-                              this.paymenHandler();
-                           }}
-                        >
-                           Confirm and Pay
-                        </div>
-                     </Link>
+
+                     <div
+                        className="payment-confirm-button"
+                        onClick={() => {
+                           this.paymenHandler();
+                           this.openModal();
+                        }}
+                     >
+                        Confirm and Pay
+                     </div>
                   </section>
                </section>
             </main>
             <Footer />
+            <Modal show={this.state.isOpen} onHide={this.closeModal}>
+               <Modal.Header closeButton>
+                  <Modal.Title>Payment Successfull</Modal.Title>
+               </Modal.Header>
+               <Modal.Footer>
+                  <Button variant="secondary" onClick={this.closeModal}>
+                     <Link to={'/history'}>Close</Link>
+                  </Button>
+               </Modal.Footer>
+            </Modal>
          </>
       );
    }

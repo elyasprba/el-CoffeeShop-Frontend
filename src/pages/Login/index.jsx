@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import './Login.css';
 import { useNavigate, Link } from 'react-router-dom';
 import SecondFooter from '../../components/SecondFooter';
-import 'bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginAction, resetLogin } from '../../Redux/actionCreator/login';
 import { Eye, EyeSlashFill } from 'react-bootstrap-icons';
 import { Button, Modal } from 'react-bootstrap';
+
+import 'bootstrap';
+import './Login.css';
 
 const Login = () => {
    const [email, setEmail] = useState('');
@@ -117,15 +118,12 @@ const Login = () => {
          <Modal show={show} onHide={handleClose}>
             <Modal.Header>
                <Modal.Title>
-                  {isLoading ? <div className="text-primary">Login Success, Loading...</div> : <></>}
+                  {isLoading ? <p>Login Success, Loading...</p> : <></>}
                   {err ? <div className="text-danger">{err}</div> : <></>}
                </Modal.Title>
             </Modal.Header>
             <Modal.Footer>
-               {/* <Button variant="secondary" onClick={handleClose}>
-                  Close
-               </Button> */}
-               <Button variant="primary" onClick={handleClose}>
+               <Button variant="secondary" onClick={handleClose}>
                   Oke
                </Button>
             </Modal.Footer>

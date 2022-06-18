@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Product/Header';
 import Default from '../../assets/icon/default-profile.jpg';
-import './Profile.css';
 import { connect } from 'react-redux';
 import mapStateWithProps from '../../helper/mapStateWithProps';
 import { logoutAction } from '../../Redux/actionCreator/login';
+import { Modal, Button } from 'react-bootstrap';
+
+import './Profile.css';
 
 class Profile extends Component {
    constructor(props) {
@@ -32,6 +33,9 @@ class Profile extends Component {
       };
       this.inputFile = React.createRef();
    }
+
+   openModal = () => this.setState({ isOpen: true });
+   closeModal = () => this.setState({ isOpen: false });
 
    logoutHandler() {
       const { logoutAction } = this.props;
@@ -185,15 +189,14 @@ class Profile extends Component {
                            <button className="cancel" type="#">
                               Cencel
                            </button>
-                           <div className="logout" type="submit">
-                              <Link
-                                 to="/"
-                                 onClick={() => {
-                                    this.logoutHandler();
-                                 }}
-                              >
-                                 Log Out
-                              </Link>
+                           <div
+                              className="logout"
+                              type="submit"
+                              onClick={() => {
+                                 this.openModal();
+                              }}
+                           >
+                              Log Out
                            </div>
                         </div>
                      </form>
@@ -327,6 +330,26 @@ class Profile extends Component {
                </div>
             </main>
             <Footer />
+            <Modal show={this.state.isOpen} onHide={this.closeModal}>
+               <Modal.Header closeButton>
+                  <Modal.Title>Sign Out</Modal.Title>
+               </Modal.Header>
+               <Modal.Body>Are your sure that you want to sign out?</Modal.Body>
+               <Modal.Footer>
+                  <Button
+                     variant="primary"
+                     onClick={() => {
+                        this.logoutHandler();
+                        this.closeModal();
+                     }}
+                  >
+                     Oke
+                  </Button>
+                  <Button variant="secondary" onClick={this.closeModal}>
+                     Close
+                  </Button>
+               </Modal.Footer>
+            </Modal>
          </>
       );
    }
