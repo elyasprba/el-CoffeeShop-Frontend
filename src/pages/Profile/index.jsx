@@ -141,7 +141,7 @@ class Profile extends Component {
                <div className="profile-container">
                   <div className="profile-info">
                      <div className="profile">
-                        <img src={this.state.image_src ? `${process.env.REACT_APP_HOST}${this.state.profile.pict}` : this.state.image_src} className="img-profile" alt="img-profile" />
+                        <img src={this.state.image_src ? `${this.state.profile.pict}` : this.state.image_src} className="img-profile" alt="img-profile" />
                         <div className="profile-username">
                            <h3>{this.state.profile.display_name ? this.state.profile.display_name : 'Display Name'}</h3>
                            <p>{this.state.profile.email}</p>
@@ -173,7 +173,6 @@ class Profile extends Component {
                                  axios
                                     .patch(`${process.env.REACT_APP_HOST}/users`, body, config)
                                     .then((result) => {
-                                       console.log(result);
                                        this.setState({
                                           isUpdate: true,
                                        });

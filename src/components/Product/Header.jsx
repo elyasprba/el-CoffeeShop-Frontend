@@ -9,11 +9,13 @@ class Header extends Component {
       super(props);
       this.state = {
          token: this.props.userInfo.token,
+         profile: this.props.userInfo.payload.pict,
          isSearch: true,
       };
    }
 
    render() {
+      // console.log(this.state.profile);
       return (
          <>
             {this.state.token ? (
@@ -58,7 +60,7 @@ class Header extends Component {
                      </div>
                      <div class="profil">
                         <Link to="/profile">
-                           <img src={require('../../assets/profile-user.png')} alt="user-img" />
+                           <img src={this.state.profile} alt="user-img" style={{ borderRadius: '50%', width: '40px', height: '40px' }} />
                         </Link>
                      </div>
                   </div>
