@@ -22,9 +22,7 @@ class History extends Component {
       if (!this.state.token) {
          this.setState({ isLogin: false });
       }
-
       const config = { headers: { Authorization: `Bearer ${this.state.token}` } };
-
       axios
          .get(`${process.env.REACT_APP_HOST}/transactions`, config)
          .then((result) => {

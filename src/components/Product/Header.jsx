@@ -14,7 +14,7 @@ class Header extends Component {
    }
 
    render() {
-      // console.log(this.state.profile);
+      // console.log(this.state.role);
       return (
          <>
             {this.state.token ? (
@@ -23,20 +23,37 @@ class Header extends Component {
                      <img src={require('../../assets/coffee-1.png')} alt="logo-img" />
                      <h2>el-Coffee Shop</h2>
                   </div>
-                  <div class="col-sm-6 navigasi">
-                     <li className="nav-item">
-                        <Link to="/">Home</Link>
-                     </li>
-                     <li className="nav-item">
-                        <Link to="/product">Product</Link>
-                     </li>
-                     <li className="nav-item">
-                        <Link to="/payment">Your Chart</Link>
-                     </li>
-                     <li className="nav-item">
-                        <Link to="/history">History</Link>
-                     </li>
-                  </div>
+                  {this.props.userInfo.payload.role !== 'admin' ? (
+                     <div class="col-sm-6 navigasi">
+                        <li className="nav-item">
+                           <Link to="/">Home</Link>
+                        </li>
+                        <li className="nav-item">
+                           <Link to="/product">Product</Link>
+                        </li>
+                        <li className="nav-item">
+                           <Link to="/payment">Your Chart</Link>
+                        </li>
+                        <li className="nav-item">
+                           <Link to="/history">History</Link>
+                        </li>
+                     </div>
+                  ) : (
+                     <div class="col-sm-6 navigasi">
+                        <li className="nav-item">
+                           <Link to="/">Home</Link>
+                        </li>
+                        <li className="nav-item">
+                           <Link to="/product">Product</Link>
+                        </li>
+                        <li className="nav-item">
+                           <Link to="#">Order</Link>
+                        </li>
+                        <li className="nav-item">
+                           <Link to="/dashboard">Dashboard</Link>
+                        </li>
+                     </div>
+                  )}
                   <div class="col-sm-3 auth">
                      <div class="searchIcon">
                         {this.state.isSearch ? (

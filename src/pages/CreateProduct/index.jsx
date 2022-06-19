@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
+import mapStateWithProps from '../../helper/mapStateWithProps';
+import { connect } from 'react-redux';
+import axios from 'axios';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Product/Header';
 
 import './createproduct.css';
 
-export default class CreateProduct extends Component {
+class CreateProduct extends Component {
+   constructor() {
+      super();
+      this.state = {
+         token: '',
+         name: '',
+         price: '',
+         desciption: '',
+         isSuccess: false,
+         successMsg: '',
+      };
+   }
    render() {
       return (
          <>
@@ -46,15 +60,51 @@ export default class CreateProduct extends Component {
                      <label htmlFor="name" className="name-prod">
                         Name :
                      </label>
-                     <input type="text" name="name" id="name" placeholder="Input product name" className="text-newprod" />
+                     <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Input product name"
+                        className="text-newprod"
+                        value={this.state.name}
+                        onChange={(e) => {
+                           this.setState({
+                              name: e.target.value,
+                           });
+                        }}
+                     />
                      <label htmlFor="price" className="new-label">
                         Price :
                      </label>
-                     <input type="text" name="price" id="price" placeholder="Input price" className="text-newprod" />
+                     <input
+                        type="text"
+                        name="price"
+                        id="price"
+                        placeholder="Input price"
+                        className="text-newprod"
+                        value={this.state.price}
+                        onChange={(e) => {
+                           this.setState({
+                              price: e.target.value,
+                           });
+                        }}
+                     />
                      <label htmlFor="description" className="new-label">
                         Description :
                      </label>
-                     <input type="text" name="description" id="description" placeholder="Describe your product min. 150 characters" className="text-newprod" />
+                     <input
+                        type="text"
+                        name="description"
+                        id="description"
+                        placeholder="Describe your product min. 150 characters"
+                        className="text-newprod"
+                        value={this.state.desciption}
+                        onChange={(e) => {
+                           this.setState({
+                              desciption: e.target.value,
+                           });
+                        }}
+                     />
                   </div>
                   <div className="input-size-newprod">
                      <p className="input-product-size">Input product size :</p>
@@ -81,7 +131,28 @@ export default class CreateProduct extends Component {
                      </button>
                   </div>
                   <div className="save-cancel-newprod">
-                     <button type="button" className="save-product-delivery">
+                     <button
+                        type="button"
+                        className="save-product-delivery"
+                        onClick={(e) => {
+                           e.preventDefault();
+                           const { name, price, desciption } = this.state;
+                           const body = {
+                              name,
+                              price,
+                              desciption,
+                           };
+                           const { token } = this.props.userInfo.token;
+                           axios
+                              .post(`${process.env.REACT_APP_HOST}/products/`, body, { headers: { Authorization: `Bearer ${token}` } })
+                              .then((result) => {
+                                 console.log(result);
+                              })
+                              .catch((error) => {
+                                 console.log(error);
+                              });
+                        }}
+                     >
                         Save Product
                      </button>
                      <button type="button" className="cancel-delivery">
@@ -96,3 +167,5 @@ export default class CreateProduct extends Component {
       );
    }
 }
+
+export default connect(mapStateWithProps)(CreateProduct);
