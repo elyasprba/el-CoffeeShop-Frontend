@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+<p align="center">
+  <img src="./src/assets/coffee-1.png" alt="logo-coffe" width="100px">
+</p>
+<div align="center">
+<h1>el-Coffee Shop</h1>
+<p>el-Coffee Shop is a cool place to hang out with a cup of coffee.</p>
+<br>
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📍 About
 
-## Available Scripts
+Repository Frontend - el-Coffee Shop
 
-In the project directory, you can run:
+<br>
 
-### `npm start`
+## 📌 How To Install?
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-  Clone This Repo
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+git clone https://github.com/elyasprba/el-CoffeeShop-Frontend.git
+```
 
-### `npm test`
+-  Go To Folder Repo
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+cd el-coffeeshop
+```
 
-### `npm run build`
+-  Install Module
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-  Type `npm run start` To Start The Project
+-  Set file .env `http://localhost:8080` from backend
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br>
 
-### `npm run eject`
+## ⛏️ Built Using
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+-  [Axios](https://www.npmjs.com/package/axios)
+-  [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+-  [React](https://reactjs.org/docs/getting-started.html)
+-  [React-Bootstrap](https://www.npmjs.com/package/react-bootstrap)
+-  [React-DOM](https://www.npmjs.com/package/react-dom)
+-  [React-Icons](https://www.npmjs.com/package/react-icons)
+-  [React-Redux](https://www.npmjs.com/package/react-redux)
+-  [React-Router-Dom](https://www.npmjs.com/package/react-router-dom)
+-  [Redux](https://www.npmjs.com/package/redux)
+-  [Redux-Logger](https://www.npmjs.com/package/redux-logger)
+-  [Redux-Promise-Middleware](https://www.npmjs.com/package/redux-promise-middleware)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🔎 Preview Pages
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  <span>
+	<img src="./src/assets/screenshot/login-page.png" alt="login-page" width="415">
+	<img src="./src/assets/screenshot/regis-page.png"alt="regis-page" width="415">
+  <img src="./src/assets/screenshot/home-page.png"alt="home-page" width="415">
+  <img src="./src/assets/screenshot/product-page.png"alt="product-page" width="415">
+  <img src="./src/assets/screenshot/payment-page.png"alt="payment-page" width="415">
+    <br/>
+  </span>
 
-## Learn More
+<br>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## ✍️ el-CoffeeShop - Backend Link
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+https://github.com/elyasprba/el-coffeShop-backend.git
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<br>
