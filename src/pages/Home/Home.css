@@ -330,7 +330,7 @@ html {
    justify-content: space-between;
    width: 100%;
    background-color: #f8f8f8;
-   height: 350px;
+   height: 125px;
 }
 .slide {
    display: flex;
@@ -354,11 +354,11 @@ html {
 
 .custom-promo {
    width: 80%;
-   bottom: 70px;
+   bottom: 150px;
    height: 230px;
    margin-left: 10%;
    margin-right: 10%;
-   margin-bottom: -100px;
+   margin-bottom: -230px;
    background-color: #ffffff;
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
    border-radius: 10px;

@@ -86,11 +86,7 @@ class Home extends Component {
                   <div className="custom-favorite-menu row">
                      <div className="card-fav col">
                         <div className="fav-picture">
-                           <img
-                              src="https://s3-alpha-sig.figma.com/img/b8f7/0e2a/0d98dd6a1ea259209e5b715734ee5a22?Expires=1653868800&Signature=MY~Ls5FR2QCHCNv4hF7wQaNTOvEjbXcV84ffnRwsbhlsaQyciHvFyV9FsLq415uH2x5B5JfzvCDIAIox9hqX5Gxd6iD9YgTRuxUZ6GPEFnfs-534pbe-yVei0uU44leTGQe4JrCtU~oMd2d5W4vqg-MOh-oMJMpCCDCluIOD4TY4~0sGaHJHeJ8STOzxGhvNWXqcxg3VmRjmswrlMjVla1Y0jepIqJemfnkXmBnmoXo6Sr87jnSbYhiX5MOHfp6X6Iv2J5vBsl2tg1cu8c1UqlX~kOwXY1LNQBESmzgO1yOEcO3N9xpitZ1~xcJn9XHMAQDo8RtobOC4M1RNlhIMcA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                              alt="hazelnut-latte"
-                              className="hazelnut-latte-img"
-                           />
+                           <img src={require('../../assets/products/hazelnut.png')} alt="hazelnut-latte" className="hazelnut-latte-img" />
                         </div>
                         <h1 className="title-fav">Hazelnut Latte</h1>
                         <div className="fav-list">
@@ -116,11 +112,7 @@ class Home extends Component {
                      </div>
                      <div className="card-fav col">
                         <div className="fav-picture">
-                           <img
-                              src="https://s3-alpha-sig.figma.com/img/1195/e3b7/a63f096d3edcb57b0bc937039acae071?Expires=1653868800&Signature=Zd~gwc-473VFDds9EFsYwEPK0j0DmZ0Gf6ORbB-hNu3fddLK2RMVGyN4kuY9qnwqYT7aKPm6zrO9SkMoM6H1AmAJm9H1Oz8eD9WCB8jjnobkQdkQBSeFeyHhCmDY78fn9HCrRSUWjQz854R8VDTg4mVUPR8ijRFgT3x8CL6PkbbjmZxgN4qu0U~qDnMmp1pd5DutO2J8KbQDhf3gUTrRtvn3oR68lFU9QV~ukF3FbQeJluoujthaWgx~lbuJamVCffXQ1kw2xm1pqsHjsTMakxHlP5vLtAmrrwnEfCUpXTa1QWIQhJDNcGBlqZxSuBegkyrUgeL-NUgpPyvIdwnBuw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                              alt="pinky-promise"
-                              className="pinky-promise-pict"
-                           />
+                           <img src={require('../../assets/products/drum.png')} alt="img-products" className="pinky-promise-pict" />
                         </div>
                         <h1 className="title-fav">Pinky Promise</h1>
                         <div className="fav-list">
@@ -149,11 +141,7 @@ class Home extends Component {
                      </div>
                      <div className="card-fav col">
                         <div className="fav-picture">
-                           <img
-                              src="https://s3-alpha-sig.figma.com/img/01c2/516d/130f4255d3fd6c5a42948d74ac2a14f4?Expires=1653868800&Signature=UVNXhvfL9gyOpKOCkpHG9uR~YgGw0mi~T8nBvb1h1qStaBbPEwUJA7sPzhr3-zdy1g4YRFkE9VaY62i68Jmyncih0yfKFVh1BvZh20VgR5W5TSTKk5xt8gCqoypfEWkUH4awbp-6iv45w~ABinwjPZ8jxmtO8hcN-RD5~VqBjJ9THLWhWqG~vE6Zip9a8lCuZEwfXrUdSKEcbglfxQnUFYfcRZLnkH2JTy2R9Nft~jDGheV9d9xOjbUnYPjiUjsIdD~iuW88a0gvLXbs8DIH21jLxG4uvrz6RLwNXwhO41L5zMrhGlLR4-d~wxjLpdZSGx8dCp~IMlflF-ZEZH5c2Q__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                              alt="chicken-wings"
-                              className="chicken-wings-pict"
-                           />
+                           <img src={require('../../assets/products/veggie.png')} alt="chicken-wings" className="chicken-wings-pict" />
                         </div>
                         <h1 className="title-fav">Chicken Wings</h1>
                         <div className="fav-list">

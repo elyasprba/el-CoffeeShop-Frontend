@@ -87,7 +87,11 @@ const Login = () => {
                         {showPass ? <Eye size={30} /> : <EyeSlashFill size={30} />}
                      </div>
                   </div>
-                  <p className="forgot-password-login">Forgot password?</p>
+                  <p className="forgot-password-login">
+                     <Link to={'/forgot'} className="forgot-password-login">
+                        Forgot password?
+                     </Link>
+                  </p>
                   {/* <Button variant="primary" onClick={handleShow}>
                      Launch demo modal
                   </Button>
