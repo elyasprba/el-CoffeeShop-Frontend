@@ -123,6 +123,10 @@ class Profile extends Component {
                });
             })
             .catch((error) => console.log(error));
+            
+         this.setState({
+            isUpdate: false,
+         });
       }
    }
 
@@ -153,9 +157,6 @@ class Profile extends Component {
                            <button type="button" className="choose-photo" onClick={this.handleFile}>
                               Choose Photo
                            </button>
-                           {/* <button className="choose-photo" type="submit">
-                              Choose photo
-                           </button> */}
                            <button className="remove-photo" type="submit">
                               Remove photo
                            </button>

@@ -28,7 +28,6 @@ class History extends Component {
       axios
          .get(`${process.env.REACT_APP_HOST}/transactions`, config)
          .then((result) => {
-            console.log(result);
             this.setState({
                history: result.data.data,
             });

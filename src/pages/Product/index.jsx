@@ -198,7 +198,7 @@ class Product extends Component {
                         All
                      </div>
                      <div className="dropdown-filter">
-                        <label for="cars"></label>
+                        {/* <label for="cars"></label> */}
                         <select
                            name="cars"
                            id="cars"

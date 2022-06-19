@@ -1,0 +1,135 @@
+.title-newprod {
+   margin: 5% 10%;
+}
+
+.main-newprod {
+   display: flex;
+   margin: 5% 10%;
+}
+
+.left-newprod {
+   flex: 1;
+}
+
+.img-newprod {
+   border-radius: 50%;
+   height: 300px;
+   width: 300px;
+}
+
+.button-newprod {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.delivery-hour {
+   margin-top: 100px;
+}
+
+.name-delivery {
+   margin-bottom: 30px;
+}
+
+.take-picture {
+   height: 70px;
+   width: 100%;
+   background: #0b132a;
+   border-radius: 10px;
+   border: none;
+   color: white;
+   margin-top: 17px;
+   font-weight: bold;
+   font-size: 15px;
+   line-height: 25px;
+   margin-top: 30px;
+   margin-bottom: 15px;
+}
+
+.choose-from-gallery {
+   height: 70px;
+   width: 100%;
+   background: #ffba33;
+   border-radius: 10px;
+   border: none;
+   color: #6a4029;
+   margin-top: 17px;
+   font-weight: bold;
+   font-size: 15px;
+   line-height: 25px;
+   margin-bottom: 11px;
+}
+
+.form-date-delivery {
+   display: flex;
+   flex-direction: column;
+}
+
+.input-stock {
+   display: flex;
+   flex-direction: column;
+}
+
+.input-stock label {
+   margin-top: 10px;
+   margin-bottom: 20px;
+}
+
+.input-stock-newprod {
+   height: 50px;
+   border-radius: 10px;
+}
+
+/* right-content */
+.right-newprod {
+   margin-left: 10%;
+   flex: 2;
+}
+
+.input-desc-newprod {
+   display: flex;
+   flex-direction: column;
+}
+
+.home-delivery {
+   margin: 0px 10px;
+   height: 50px;
+   width: 30%;
+   background: #ffba33;
+   border-radius: 10px;
+   border: none;
+   color: #6a4029;
+   margin-top: 17px;
+   font-weight: bold;
+   font-size: 15px;
+   line-height: 25px;
+   margin-bottom: 11px;
+}
+
+.save-product-delivery {
+   height: 70px;
+   width: 100%;
+   background: #6a4029;
+   border-radius: 10px;
+   border: none;
+   color: white;
+   margin-top: 50px;
+   font-weight: bold;
+   font-size: 15px;
+   line-height: 25px;
+   margin-bottom: 11px;
+}
+
+.cancel-delivery {
+   height: 70px;
+   width: 100%;
+   background: #bababa;
+   border-radius: 10px;
+   border: none;
+   color: #4f5665;
+   margin-top: 50px;
+   font-weight: bold;
+   font-size: 15px;
+   line-height: 25px;
+   margin-bottom: 11px;
+}
