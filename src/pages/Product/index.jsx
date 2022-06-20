@@ -230,7 +230,6 @@ class Product extends Component {
                         )}
                      </div>
                   </div>
-
                   <div className="row favoriteProduct">
                      {this.state.product.map((product) => (
                         <div className="col-md-6  col-lg-3 d-flex flex-column productContainer">

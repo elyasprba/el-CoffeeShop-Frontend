@@ -19,7 +19,7 @@ class CreateProduct extends Component {
          size: '',
          stock: 0,
          category: '',
-         picture: null,
+         pict: null,
          file: null,
       };
    }
@@ -30,27 +30,30 @@ class CreateProduct extends Component {
             <p className="title-newprod">Favorite & Promo {'>'} Add new product</p>
             <section className="main-newprod">
                <aside className="left-newprod">
-                  <div className="img-newprod-content">{this.state.file ? <img src={this.state.file} alt="img-products" className="img-newprod" /> : <img src={require('../../assets/products/beef.png')} alt="img-products" className="img-newprod" />}</div>
+                  <div className="img-newprod-content">{this.state.file ? <img src={this.state.file} alt="img-products" className="img-newprod" /> : <img src={require('../../assets/products/products-default.png')} alt="img-products" className="img-newprod" />}</div>
                   <div className="button-newprod">
                      <button type="button" className="take-picture">
                         Take picture
                      </button>
-                     <button
-                        className="choose-from-gallery"
-                        type="submit"
-                        onChange={(e) => {
-                           const file = e.target.files[0];
-                           if (file) {
-                              const reader = new FileReader();
-                              reader.onload = () => {
-                                 this.setState({ file: reader.result, picture: file });
-                              };
-                              reader.readAsDataURL(file);
-                           }
-                        }}
-                     >
-                        Choose from gallery
-                     </button>
+                     <label htmlFor="image-upload" className="choose-from-gallery">
+                        <input
+                           type="file"
+                           hidden
+                           name="image-upload"
+                           id="image-upload"
+                           onChange={(e) => {
+                              const file = e.target.files[0];
+                              if (file) {
+                                 const reader = new FileReader();
+                                 reader.onload = () => {
+                                    this.setState({ file: reader.result, pict: file });
+                                 };
+                                 reader.readAsDataURL(file);
+                              }
+                           }}
+                        />
+                        <div className="input-choose"> Choose from gallery </div>
+                     </label>
                   </div>
                   <div className="detail-size-protail">
                      <div
@@ -219,21 +222,26 @@ class CreateProduct extends Component {
                         className="save-product-delivery"
                         onClick={(e) => {
                            e.preventDefault();
-                           const { name, price, description, size, stock, category } = this.state;
-                           const body = {
-                              name,
-                              price,
-                              description,
-                              size,
-                              stock,
-                              category,
-                           };
+                           const { name, price, description, size, stock, category, pict } = this.state;
+                           const body = new FormData();
+                           body.append('name', name);
+                           body.append('price', price);
+                           body.append('description', description);
+                           body.append('size', size);
+                           body.append('stock', stock);
+                           body.append('category', category);
+                           body.append('pict', pict);
+
                            const { token } = this.props.userInfo.token;
+                           const config = { headers: { Authorization: `Bearer ${token}`, 'content-type': 'multipart/form-data' } };
+
                            axios
-                              .post(`${process.env.REACT_APP_HOST}/products/`, body, { headers: { Authorization: `Bearer ${token}` } })
+                              .post(`${process.env.REACT_APP_HOST}/products/`, body, config)
                               .then((result) => {
-                                 console.log(result);
                                  alert(result.data.msg);
+                                 this.setState({
+                                    product: result.data.data,
+                                 });
                               })
                               .catch((error) => {
                                  console.log(error);
@@ -251,7 +259,7 @@ class CreateProduct extends Component {
                               price: '',
                               description: '',
                               category: '',
-                              picture: '',
+                              pict: '',
                               size: '',
                               stock: '',
                               file: null,

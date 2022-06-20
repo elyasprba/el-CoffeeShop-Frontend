@@ -58,6 +58,17 @@
    font-size: 15px;
    line-height: 25px;
    margin-bottom: 40px;
+   cursor: pointer;
+}
+
+.choose-from-gallery:hover {
+   background: #0b132a;
+   color: #ededed;
+}
+
+.input-choose {
+   text-align: center;
+   margin-top: 20px;
 }
 
 .category-non {
@@ -148,6 +159,10 @@
    margin-bottom: 11px;
 }
 
+.save-product-delivery:hover {
+   background: #4f5665;
+}
+
 .cancel-delivery {
    height: 70px;
    width: 100%;
@@ -160,4 +175,8 @@
    font-size: 15px;
    line-height: 25px;
    margin-bottom: 11px;
+}
+
+.cancel-delivery:hover {
+   background-color: #ffba33;
 }
