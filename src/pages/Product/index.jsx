@@ -5,7 +5,9 @@ import Footer from '../../components/Footer/Footer';
 import { Link } from 'react-router-dom';
 import './Product.css';
 import withSearchParams from '../../helper/withSerchParams';
+import mapStateWithProps from '../../helper/mapStateWithProps';
 import { FilterSquare, FilterSquareFill, ArrowLeftCircle, ArrowRightCircle } from 'react-bootstrap-icons';
+import { connect } from 'react-redux';
 
 class Product extends Component {
    constructor(props) {
@@ -23,6 +25,7 @@ class Product extends Component {
          setSearchParams: this.props.setSearchParams.bind(this),
          error: false,
          errMsg: '',
+         role: this.props.userInfo.payload.role,
       };
    }
 
@@ -94,6 +97,7 @@ class Product extends Component {
    }
 
    render() {
+      console.log(this.state.role);
       return (
          <>
             <Header />
@@ -235,6 +239,9 @@ class Product extends Component {
                      {this.state.product.map((product) => (
                         <div className="col-md-6  col-lg-3 d-flex flex-column productContainer">
                            <div className="d-flex flex-column align-items-center justify-content-center cardProduct">
+                              <Link to={`/edit-product/${product.id}`} className="img-edit-product">
+                                 <img src={require('../../assets/icon/edit.png')} alt="edit-png" className="img-edit-product" />
+                              </Link>
                               <Link to={`/product-details/${product.id}`}>
                                  <img className="imgProduct" src={`${process.env.REACT_APP_HOST}${product.pict}`} alt="product-img" />
                               </Link>
@@ -267,11 +274,15 @@ class Product extends Component {
                         />
                      </section>
                   </div>
-                  <button type="button" className="create-newprod">
-                     <Link to={'/new-product'} className="link-newprod">
-                        Create Product
-                     </Link>
-                  </button>
+                  {this.state.role !== 'admin' ? (
+                     <></>
+                  ) : (
+                     <button type="button" className="create-newprod">
+                        <Link to={'/new-product'} className="link-newprod">
+                           Create Product
+                        </Link>
+                     </button>
+                  )}
                </div>
             </main>
 
@@ -281,4 +292,4 @@ class Product extends Component {
    }
 }
 
-export default withSearchParams(Product);
+export default connect(mapStateWithProps)(withSearchParams(Product));

@@ -221,3 +221,15 @@ html {
 .link-newprod:hover {
    color: #ffffff;
 }
+
+.img-edit-product {
+   border-radius: 50%;
+   z-index: 1;
+   justify-content: end;
+   text-align: end;
+   margin-bottom: 300px;
+   margin-left: 25px;
+   position: absolute;
+   width: 35px;
+   height: 35px;
+}

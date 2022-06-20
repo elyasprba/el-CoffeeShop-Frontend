@@ -14,6 +14,8 @@ import Payment from './pages/Payment';
 import PrivateElement from './components/PrivateElement';
 import Dashboard from './pages/Dasboard';
 import CreateProduct from './pages/CreateProduct';
+import EditProduct from './pages/EditProduct';
+
 import { Provider } from 'react-redux';
 import { store, persistor } from './Redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -56,6 +58,7 @@ function App() {
             />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/new-product" element={<CreateProduct />} />
+            <Route path="/edit-product/:id" element={<EditProduct />} />
          </Routes>
       </BrowserRouter>
    );
