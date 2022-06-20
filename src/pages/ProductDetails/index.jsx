@@ -80,7 +80,7 @@ class ProductDetails extends Component {
                         <p className="size-protail">Choose a size</p>
                         <div className="detail-size-protail">
                            <div
-                              className="title-size"
+                              className={this.state.size === 'Regular' ? 'title-size-active' : 'title-size'}
                               onClick={() => {
                                  this.setState({
                                     size: 'Regular',
@@ -90,7 +90,7 @@ class ProductDetails extends Component {
                               R
                            </div>
                            <div
-                              className="title-size"
+                              className={this.state.size === 'Large' ? 'title-size-active' : 'title-size'}
                               onClick={() => {
                                  this.setState({
                                     size: 'Large',
@@ -100,7 +100,7 @@ class ProductDetails extends Component {
                               L
                            </div>
                            <div
-                              className="title-size"
+                              className={this.state.size === 'Extra Large' ? 'title-size-active' : 'title-size'}
                               onClick={() => {
                                  this.setState({
                                     size: 'Extra Large',

@@ -24,7 +24,7 @@
 }
 
 .delivery-hour {
-   margin-top: 100px;
+   margin-top: 20px;
 }
 
 .name-delivery {
@@ -57,7 +57,35 @@
    font-weight: bold;
    font-size: 15px;
    line-height: 25px;
-   margin-bottom: 11px;
+   margin-bottom: 40px;
+}
+
+.category-non {
+   margin: 3% 3%;
+   background-color: #ededed;
+   height: 50px;
+   width: 50%;
+   border-radius: 15px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 15px;
+   text-align: center;
+   cursor: pointer;
+}
+
+.category-active {
+   background-color: #ffba33;
+   margin: 3% 3%;
+   height: 50px;
+   width: 50%;
+   border-radius: 15px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 15px;
+   text-align: center;
+   cursor: pointer;
 }
 
 .form-date-delivery {
@@ -113,7 +141,7 @@
    border-radius: 10px;
    border: none;
    color: white;
-   margin-top: 50px;
+   margin-top: 40px;
    font-weight: bold;
    font-size: 15px;
    line-height: 25px;
@@ -127,7 +155,7 @@
    border-radius: 10px;
    border: none;
    color: #4f5665;
-   margin-top: 50px;
+   margin-top: 40px;
    font-weight: bold;
    font-size: 15px;
    line-height: 25px;

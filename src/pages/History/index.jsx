@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Product/Header';
-import './history.css';
 import { CardHistory } from '../../components/CardHistory/CardHistory';
 import { connect } from 'react-redux';
 import mapStateWithProps from '../../helper/mapStateWithProps';
+
+import './history.css';
 
 class History extends Component {
    constructor(props) {

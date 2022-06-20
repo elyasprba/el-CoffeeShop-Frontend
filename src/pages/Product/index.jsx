@@ -26,12 +26,6 @@ class Product extends Component {
       };
    }
 
-   // setSearchName = (props) => {
-   //    this.state({
-   //       searchName: props,
-   //    });
-   // };
-
    componentDidMount() {
       document.title = 'Product';
       this.state.setSearchParams('');

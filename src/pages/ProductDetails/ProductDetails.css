@@ -129,8 +129,21 @@
    cursor: pointer;
 }
 
-.title-size:active {
+.title-size-active {
    background-color: #ffba33;
+   margin: 5% 10%;
+   height: 70px;
+   width: 70px;
+   border-radius: 50%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 25px;
+   font-weight: 700;
+   line-height: 45px;
+   letter-spacing: 0em;
+   text-align: center;
+   cursor: pointer;
 }
 
 .delivery-methods-protail {

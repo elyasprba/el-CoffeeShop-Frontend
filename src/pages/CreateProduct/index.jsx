@@ -12,11 +12,15 @@ class CreateProduct extends Component {
       super();
       this.state = {
          token: '',
+         product: [],
          name: '',
          price: '',
-         desciption: '',
-         isSuccess: false,
-         successMsg: '',
+         description: '',
+         size: '',
+         stock: 0,
+         category: '',
+         picture: null,
+         file: null,
       };
    }
    render() {
@@ -26,17 +30,61 @@ class CreateProduct extends Component {
             <p className="title-newprod">Favorite & Promo {'>'} Add new product</p>
             <section className="main-newprod">
                <aside className="left-newprod">
-                  <div className="img-newprod-content">
-                     <img src={require('../../assets/products/beef.png')} alt="img-products" className="img-newprod" />
-                  </div>
+                  <div className="img-newprod-content">{this.state.file ? <img src={this.state.file} alt="img-products" className="img-newprod" /> : <img src={require('../../assets/products/beef.png')} alt="img-products" className="img-newprod" />}</div>
                   <div className="button-newprod">
                      <button type="button" className="take-picture">
                         Take picture
                      </button>
-                     <button className="choose-from-gallery" type="submit">
+                     <button
+                        className="choose-from-gallery"
+                        type="submit"
+                        onChange={(e) => {
+                           const file = e.target.files[0];
+                           if (file) {
+                              const reader = new FileReader();
+                              reader.onload = () => {
+                                 this.setState({ file: reader.result, picture: file });
+                              };
+                              reader.readAsDataURL(file);
+                           }
+                        }}
+                     >
                         Choose from gallery
                      </button>
                   </div>
+                  <div className="detail-size-protail">
+                     <div
+                        className={this.state.category === '1' ? 'category-active' : 'category-non'}
+                        onClick={() => {
+                           this.setState({
+                              category: '1',
+                           });
+                        }}
+                     >
+                        Food
+                     </div>
+                     <div
+                        className={this.state.category === '2' ? 'category-active' : 'category-non'}
+                        onClick={() => {
+                           this.setState({
+                              category: '2',
+                           });
+                        }}
+                     >
+                        Coffee
+                     </div>
+                     <div
+                        className={this.state.category === '3' ? 'category-active' : 'category-non'}
+                        onClick={() => {
+                           this.setState({
+                              category: '3',
+                           });
+                        }}
+                     >
+                        Non Coffee
+                     </div>
+                  </div>
+
                   <div className="delivery-hour">
                      <div className="form-date-delivery">
                         <label for="date" className="name-delivery">
@@ -47,12 +95,20 @@ class CreateProduct extends Component {
                      </div>
                   </div>
                   <div className="input-stock">
-                     <label for="cars">Input stock</label>
-                     <select name="cars" id="cars" className="input-stock-newprod">
-                        <option value="price">1</option>
-                        <option value="category_name">3</option>
-                        <option value="name">5</option>
-                     </select>
+                     <label for="cars">Input stock :</label>
+                     <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Input stock"
+                        className="text-newprod"
+                        value={this.state.stock}
+                        onChange={(e) => {
+                           this.setState({
+                              stock: e.target.value,
+                           });
+                        }}
+                     />
                   </div>
                </aside>
                <section className="right-newprod">
@@ -98,10 +154,10 @@ class CreateProduct extends Component {
                         id="description"
                         placeholder="Describe your product min. 150 characters"
                         className="text-newprod"
-                        value={this.state.desciption}
+                        value={this.state.description}
                         onChange={(e) => {
                            this.setState({
-                              desciption: e.target.value,
+                              description: e.target.value,
                            });
                         }}
                      />
@@ -111,9 +167,36 @@ class CreateProduct extends Component {
                      <p className="info-size-newprod">Click size you want to use for this product</p>
                   </div>
                   <div className="detail-size-protail">
-                     <div className="title-size">R</div>
-                     <div className="title-size">L</div>
-                     <div className="title-size">XL</div>
+                     <div
+                        className={this.state.size === 'Regular' ? 'title-size-active' : 'title-size'}
+                        onClick={() => {
+                           this.setState({
+                              size: 'Regular',
+                           });
+                        }}
+                     >
+                        R
+                     </div>
+                     <div
+                        className={this.state.size === 'Large' ? 'title-size-active' : 'title-size'}
+                        onClick={() => {
+                           this.setState({
+                              size: 'Large',
+                           });
+                        }}
+                     >
+                        L
+                     </div>
+                     <div
+                        className={this.state.size === 'Extra Large' ? 'title-size-active' : 'title-size'}
+                        onClick={() => {
+                           this.setState({
+                              size: 'Extra Large',
+                           });
+                        }}
+                     >
+                        XL
+                     </div>
                   </div>
                   <div className="input-delivery-methods">
                      <p className="input-product-size">Input delivery methods :</p>
@@ -136,17 +219,21 @@ class CreateProduct extends Component {
                         className="save-product-delivery"
                         onClick={(e) => {
                            e.preventDefault();
-                           const { name, price, desciption } = this.state;
+                           const { name, price, description, size, stock, category } = this.state;
                            const body = {
                               name,
                               price,
-                              desciption,
+                              description,
+                              size,
+                              stock,
+                              category,
                            };
                            const { token } = this.props.userInfo.token;
                            axios
                               .post(`${process.env.REACT_APP_HOST}/products/`, body, { headers: { Authorization: `Bearer ${token}` } })
                               .then((result) => {
                                  console.log(result);
+                                 alert(result.data.msg);
                               })
                               .catch((error) => {
                                  console.log(error);
@@ -155,7 +242,22 @@ class CreateProduct extends Component {
                      >
                         Save Product
                      </button>
-                     <button type="button" className="cancel-delivery">
+                     <button
+                        type="button"
+                        className="cancel-delivery"
+                        onClick={() => {
+                           this.setState({
+                              name: '',
+                              price: '',
+                              description: '',
+                              category: '',
+                              picture: '',
+                              size: '',
+                              stock: '',
+                              file: null,
+                           });
+                        }}
+                     >
                         Cancel
                      </button>
                   </div>
