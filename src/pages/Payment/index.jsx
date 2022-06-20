@@ -66,7 +66,7 @@ class Payment extends Component {
                            <div className="payment-all-order">
                               <div className="payment-order-item">
                                  <div className="payment-item-img">
-                                    <img src={`${process.env.REACT_APP_HOST}${this.state.pict}`} alt="product-pict" className="payment-product-img" />
+                                    <img src={`${this.state.pict}`} alt="product-pict" className="payment-product-img" style={{ borderRadius: '50%', width: '70px', height: '70px' }} />
                                  </div>
                                  <div className="payment-item-detail">
                                     <p>{this.props.cartInfo.product.name}</p>

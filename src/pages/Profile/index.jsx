@@ -123,7 +123,7 @@ class Profile extends Component {
                });
             })
             .catch((error) => console.log(error));
-            
+
          this.setState({
             isUpdate: false,
          });
@@ -145,7 +145,7 @@ class Profile extends Component {
                <div className="profile-container">
                   <div className="profile-info">
                      <div className="profile">
-                        <img src={this.state.image_src ? `${this.state.profile.pict}` : this.state.image_src} className="img-profile" alt="img-profile" />
+                        <img src={this.state.profile.pict ? `${this.state.profile.pict}` : this.state.image_src} className="img-profile" alt="img-profile" />
                         <div className="profile-username">
                            <h3>{this.state.profile.display_name ? this.state.profile.display_name : 'Display Name'}</h3>
                            <p>{this.state.profile.email}</p>
@@ -167,8 +167,7 @@ class Profile extends Component {
                            <div
                               className="save-change"
                               type="submit"
-                              onClick={(e) => {
-                                 e.preventDefault();
+                              onClick={() => {
                                  const body = this.setData();
                                  const config = { headers: { Authorization: `Bearer ${this.state.token}`, 'content-type': 'multipart/form-data' } };
                                  axios

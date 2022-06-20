@@ -20,7 +20,7 @@ class CreateProduct extends Component {
          size: '',
          stock: 0,
          category: '',
-         pict: null,
+         pict: '',
          file: null,
       };
    }
@@ -227,8 +227,7 @@ class CreateProduct extends Component {
                      <button
                         type="button"
                         className="save-product-delivery"
-                        onClick={(e) => {
-                           e.preventDefault();
+                        onClick={() => {
                            const { name, price, description, size, stock, category, pict } = this.state;
                            const body = new FormData();
                            body.append('name', name);

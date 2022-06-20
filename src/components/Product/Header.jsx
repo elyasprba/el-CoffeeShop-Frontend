@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import mapStateWithProps from '../../helper/mapStateWithProps';
+import Default from '../../assets/profile-user.png';
 import './Header.css';
 
 class Header extends Component {
@@ -11,11 +12,11 @@ class Header extends Component {
          token: this.props.userInfo.token,
          setSearchName: props,
          isSearch: true,
+         picture: Default,
       };
    }
 
    render() {
-      // console.log(this.state.role);
       return (
          <>
             {this.state.token ? (
@@ -55,21 +56,9 @@ class Header extends Component {
                         </li>
                      </div>
                   )}
-                  <div class="col-sm-3 auth">
+                  <div class="col-sm-2 auth">
                      <div class="searchIcon">
-                        {this.state.isSearch ? (
-                           <img
-                              src={require('../../assets/icon/search.png')}
-                              alt="search-img"
-                              onClick={() => {
-                                 this.setState({
-                                    isSearch: false,
-                                 });
-                              }}
-                           />
-                        ) : (
-                           <input type="text" id="header-search" name="search" className="header-search" placeholder="Search" style={{ borderRadius: '30px', width: '50%', height: '15px' }} onChange={(e) => this.props.setSearchName(e.target.value)} />
-                        )}
+                        <input type="text" id="header-search" name="search" className="header-search" placeholder="Search" style={{ borderRadius: '30px', width: '70%', height: '15px' }} onChange={(e) => this.props.setSearchName(e.target.value)} />
                         <img
                            src={require('../../assets/icon/ceklis.png')}
                            alt="ceklis-png"
@@ -83,9 +72,19 @@ class Header extends Component {
                         <img src={require('../../assets/icon/chat.png')} alt="chat-img" />
                      </div>
                      <div class="profil">
-                        <Link to="/profile">
-                           <img src={this.props.userInfo.payload.pict} alt="user-img" style={{ borderRadius: '50%', width: '40px', height: '40px' }} />
-                        </Link>
+                        {this.props.userInfo.payload.pict ? (
+                           <div>
+                              <Link to="/profile">
+                                 <img src={this.props.userInfo.payload.pict} alt="profile-img" style={{ borderRadius: '50%', width: '40px', height: '40px' }} />
+                              </Link>
+                           </div>
+                        ) : (
+                           <>
+                              <Link to="/profile">
+                                 <img src={this.state.picture} alt="user-img" style={{ borderRadius: '50%', width: '40px', height: '40px' }} />
+                              </Link>
+                           </>
+                        )}
                      </div>
                   </div>
                </aside>

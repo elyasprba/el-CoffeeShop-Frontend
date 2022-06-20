@@ -251,9 +251,20 @@ class Product extends Component {
                      {this.state.product.map((product) => (
                         <div className="col-md-6  col-lg-3 d-flex flex-column productContainer">
                            <div className="d-flex flex-column align-items-center justify-content-center cardProduct">
-                              <Link to={`/edit-product/${product.id}`} className="img-edit-product">
-                                 <img src={require('../../assets/icon/edit.png')} alt="edit-png" className="img-edit-product" />
-                              </Link>
+                              {this.state.token ? (
+                                 <>
+                                    {this.props.userInfo.payload.role ? (
+                                       <Link to={`/edit-product/${product.id}`} className="img-edit-product">
+                                          <img src={require('../../assets/icon/edit.png')} alt="edit-png" className="img-edit-product" />
+                                       </Link>
+                                    ) : (
+                                       <></>
+                                    )}
+                                 </>
+                              ) : (
+                                 <></>
+                              )}
+
                               <Link to={`/product-details/${product.id}`}>
                                  <img className="imgProduct" src={`${product.pict}`} alt="product-img" />
                               </Link>
