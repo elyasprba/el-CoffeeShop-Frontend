@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import mapStateWithProps from '../../helper/mapStateWithProps';
-// import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import withParams from '../../helper/withParams';
 import Header from '../../components/Product/Header';
 import Footer from '../../components/Footer/Footer';
 
 import '../CreateProduct/createproduct.css';
-import { connect } from 'react-redux';
 
 class EditProduct extends Component {
    constructor(props) {
@@ -21,17 +21,18 @@ class EditProduct extends Component {
          description: '',
          category: '',
          size: '',
-         pict: '',
          stock: 0,
+         pict: '',
+         file: null,
       };
    }
 
    componentDidMount() {
+      window.scrollTo(0, 0);
       const { params } = this.props;
       axios
          .get(`${process.env.REACT_APP_HOST}/products/${params.id}`)
          .then((result) => {
-            console.log(result);
             this.setState({
                product: result.data.data,
                id: result.data.data[0].id,
@@ -39,6 +40,7 @@ class EditProduct extends Component {
                price: result.data.data[0].price,
                description: result.data.data[0].description,
                stock: result.data.data[0].stock,
+               pict: result.data.data[0].pict,
             });
          })
          .catch((error) => {
@@ -55,14 +57,39 @@ class EditProduct extends Component {
             <section className="main-newprod">
                <aside className="left-newprod">
                   <div className="img-newprod-content">
-                     <img src={require('../../assets/products/products-default.png')} alt="img-products" className="img-newprod" />
+                     {!this.state.file ? (
+                        this.state.pict ? (
+                           <img src={`${this.state.pict}`} alt={this.state.product.name} className="img-newprod" />
+                        ) : (
+                           <div className="new-pict-default">
+                              <img src={require('../../assets/products/beef.png')} alt="pict" className="img-newprod" />
+                           </div>
+                        )
+                     ) : (
+                        <img src={this.state.file} alt="preview" className="img-newprod" />
+                     )}
                   </div>
                   <div className="button-newprod">
                      <button type="button" className="take-picture">
                         Take picture
                      </button>
                      <label htmlFor="image-upload" className="choose-from-gallery">
-                        <input type="file" hidden name="image-upload" id="image-upload" />
+                        <input
+                           type="file"
+                           hidden
+                           name="image-upload"
+                           id="image-upload"
+                           onChange={(e) => {
+                              const file = e.target.files[0];
+                              if (file) {
+                                 const reader = new FileReader();
+                                 reader.onload = () => {
+                                    this.setState({ file: reader.result, pict: file });
+                                 };
+                                 reader.readAsDataURL(file);
+                              }
+                           }}
+                        />
                         <div className="input-choose"> Choose from gallery </div>
                      </label>
                   </div>
@@ -229,10 +256,11 @@ class EditProduct extends Component {
                   </div>
                   <div className="save-cancel-newprod">
                      <button type="button" className="save-product-delivery">
-                        <div
+                        <Link
+                           to={'/product'}
                            className="link-save-newprod"
                            onClick={() => {
-                              const { name, price, description, category, size, stock } = this.state;
+                              const { name, price, description, category, size, stock, pict } = this.state;
                               const body = new FormData();
                               body.append('name', name);
                               body.append('price', Number(price));
@@ -240,6 +268,7 @@ class EditProduct extends Component {
                               body.append('category', category);
                               body.append('size', size);
                               body.append('stock', Number(stock));
+                              body.append('pict', pict);
 
                               const { token } = this.props.userInfo.token;
                               const config = { headers: { Authorization: `Bearer ${token}`, 'content-type': 'multipart/form-data' } };
@@ -247,7 +276,6 @@ class EditProduct extends Component {
                                  .patch(`${process.env.REACT_APP_HOST}/products/${this.state.id}`, body, config)
                                  .then((result) => {
                                     console.log(result);
-                                    alert(result.data.msg);
                                  })
                                  .catch((error) => {
                                     console.log(error);
@@ -255,7 +283,7 @@ class EditProduct extends Component {
                            }}
                         >
                            Save Product
-                        </div>
+                        </Link>
                      </button>
                      <button type="button" className="cancel-delivery">
                         Cancel

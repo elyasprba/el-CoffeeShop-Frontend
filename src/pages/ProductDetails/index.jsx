@@ -59,7 +59,7 @@ class ProductDetails extends Component {
                      <div>
                         <p className="favpromos">Favorite & Promo {this.state.product.name}</p>
                      </div>
-                     <img src={`http://localhost:8080${this.state.product.pict}`} alt="product-img" />
+                     <img src={`${process.env.REACT_APP_HOST}${this.state.product.pict}`} alt="product-img" />
                      <p className="info-name-protail">{this.state.product.name}</p>
                      <p className="info-price-protail">IDR. {this.state.product.price}</p>
                      <button
@@ -128,7 +128,7 @@ class ProductDetails extends Component {
                <section className="checkout-protail">
                   <section className="checkout-info-protail">
                      <div className="checkout-img-protail">
-                        <img src={`http://localhost:8080${this.state.product.pict}`} alt="product-img" width={'120px'} height={'120px'} />
+                        <img src={`${process.env.REACT_APP_HOST}${this.state.product.pict}`} alt="product-img" width={'120px'} height={'120px'} />
                      </div>
                      <div className="checkout-name-size">
                         <p className="checkout-name-product-protail">{this.state.product.name}</p>

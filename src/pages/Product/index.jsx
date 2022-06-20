@@ -30,6 +30,7 @@ class Product extends Component {
    }
 
    componentDidMount() {
+      window.scrollTo(0, 0);
       document.title = 'Product';
       this.state.setSearchParams('');
       axios
@@ -97,7 +98,6 @@ class Product extends Component {
    }
 
    render() {
-      console.log(this.state.role);
       return (
          <>
             <Header />
