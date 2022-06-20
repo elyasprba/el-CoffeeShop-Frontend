@@ -13,6 +13,7 @@ class Product extends Component {
    constructor(props) {
       super(props);
       this.state = {
+         token: this.props.userInfo.token,
          product: [],
          categoryActive: 'all',
          doAxios: false,
@@ -25,7 +26,6 @@ class Product extends Component {
          setSearchParams: this.props.setSearchParams.bind(this),
          error: false,
          errMsg: '',
-         role: this.props.userInfo.payload.role,
       };
    }
 
@@ -274,18 +274,23 @@ class Product extends Component {
                         />
                      </section>
                   </div>
-                  {this.state.role !== 'admin' ? (
-                     <></>
+                  {this.state.token ? (
+                     <>
+                        {this.props.userInfo.payload.role !== 'admin' ? (
+                           <></>
+                        ) : (
+                           <button type="button" className="create-newprod">
+                              <Link to={'/new-product'} className="link-newprod">
+                                 Create Product
+                              </Link>
+                           </button>
+                        )}
+                     </>
                   ) : (
-                     <button type="button" className="create-newprod">
-                        <Link to={'/new-product'} className="link-newprod">
-                           Create Product
-                        </Link>
-                     </button>
+                     <></>
                   )}
                </div>
             </main>
-
             <Footer />
          </>
       );
