@@ -6,7 +6,7 @@ export const CardHistory = (props) => {
          <div className="col history-product-card-container">
             <div className="history-product-card">
                <div className="history-product-img-container">
-                  <img src={`${process.env.REACT_APP_HOST}${props.pict}`} alt="coldbrew" className="history-product-img" />
+                  <img src={`${props.pict}`} alt="coldbrew" className="history-product-img" />
                </div>
                <div className="history-product-info">
                   <div className="history-product-name">{props.name}</div>

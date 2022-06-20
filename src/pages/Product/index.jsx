@@ -29,6 +29,12 @@ class Product extends Component {
       };
    }
 
+   setSearchName = (props) => {
+      this.setState({
+         searchName: props,
+      });
+   };
+
    componentDidMount() {
       window.scrollTo(0, 0);
       document.title = 'Product';
@@ -97,10 +103,16 @@ class Product extends Component {
       }
    }
 
+   doAxios = () => {
+      this.setState({
+         doAxios: true,
+      });
+   };
+
    render() {
       return (
          <>
-            <Header />
+            <Header setSearchName={this.setSearchName.bind(this)} doAxios={this.doAxios} />
             <main className="row body">
                <div className="col-sm-4 row sideBar">
                   <div className="promoTitle">

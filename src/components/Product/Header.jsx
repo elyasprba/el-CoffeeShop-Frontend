@@ -9,6 +9,7 @@ class Header extends Component {
       super(props);
       this.state = {
          token: this.props.userInfo.token,
+         setSearchName: props,
          isSearch: true,
       };
    }
@@ -67,8 +68,15 @@ class Header extends Component {
                               }}
                            />
                         ) : (
-                           <input type="text" id="header-search" name="search" className="header-search" placeholder="Search" style={{ borderRadius: '30px', width: '50%', height: '15px' }} />
+                           <input type="text" id="header-search" name="search" className="header-search" placeholder="Search" style={{ borderRadius: '30px', width: '50%', height: '15px' }} onChange={(e) => this.props.setSearchName(e.target.value)} />
                         )}
+                        <img
+                           src={require('../../assets/icon/ceklis.png')}
+                           alt="ceklis-png"
+                           onClick={() => {
+                              this.props.doAxios();
+                           }}
+                        />
                      </div>
                      <div class="message">
                         <div class="messageCount">1</div>
