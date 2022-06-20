@@ -243,7 +243,7 @@ class Product extends Component {
                                  <img src={require('../../assets/icon/edit.png')} alt="edit-png" className="img-edit-product" />
                               </Link>
                               <Link to={`/product-details/${product.id}`}>
-                                 <img className="imgProduct" src={`${process.env.REACT_APP_HOST}${product.pict}`} alt="product-img" />
+                                 <img className="imgProduct" src={`${product.pict}`} alt="product-img" />
                               </Link>
                               <div className="productName">{product.name}</div>
                               <div className="price-product">IDR. {product.price}</div>
