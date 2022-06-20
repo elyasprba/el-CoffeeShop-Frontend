@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import mapStateWithProps from '../../helper/mapStateWithProps';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Product/Header';
@@ -23,7 +24,13 @@ class CreateProduct extends Component {
          file: null,
       };
    }
+
+   componentDidMount() {
+      window.scrollTo(0, 0);
+   }
+
    render() {
+      document.title = 'Create Product';
       return (
          <>
             <Header />
@@ -248,7 +255,9 @@ class CreateProduct extends Component {
                               });
                         }}
                      >
-                        Save Product
+                        <Link to={'/product'} className="link-save-newprod">
+                           Save Product
+                        </Link>
                      </button>
                      <button
                         type="button"

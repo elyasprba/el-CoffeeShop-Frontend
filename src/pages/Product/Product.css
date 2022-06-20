@@ -8,7 +8,7 @@ html {
 
 .sideBar {
    display: flex;
-   height: 1173px;
+   height: 1265px;
    align-items: flex-start;
    justify-content: center;
    border-right: 0.5px solid #9f9f9f;
@@ -196,4 +196,28 @@ html {
    font-weight: 500;
    font-size: 20px;
    margin: 0px 20px;
+}
+
+.create-newprod {
+   height: 40px;
+   width: 30%;
+   background: #6a4029;
+   border-radius: 10px;
+   border: none;
+   color: #ffcb65;
+   margin-top: 17px;
+   font-weight: bold;
+   font-size: 15px;
+   line-height: 25px;
+   margin-bottom: 11px;
+   margin-left: 40px;
+}
+
+.link-newprod {
+   color: #ffffff;
+   text-decoration: none;
+}
+
+.link-newprod:hover {
+   color: #ffffff;
 }

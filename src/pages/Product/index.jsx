@@ -230,6 +230,7 @@ class Product extends Component {
                         )}
                      </div>
                   </div>
+
                   <div className="row favoriteProduct">
                      {this.state.product.map((product) => (
                         <div className="col-md-6  col-lg-3 d-flex flex-column productContainer">
@@ -266,8 +267,14 @@ class Product extends Component {
                         />
                      </section>
                   </div>
+                  <button type="button" className="create-newprod">
+                     <Link to={'/new-product'} className="link-newprod">
+                        Create Product
+                     </Link>
+                  </button>
                </div>
             </main>
+
             <Footer />
          </>
       );

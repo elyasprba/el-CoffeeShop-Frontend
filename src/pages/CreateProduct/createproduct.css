@@ -159,6 +159,15 @@
    margin-bottom: 11px;
 }
 
+.link-save-newprod {
+   color: #ededed;
+   text-decoration: none;
+}
+
+.link-save-newprod:hover {
+   color: #ededed;
+}
+
 .save-product-delivery:hover {
    background: #4f5665;
 }
