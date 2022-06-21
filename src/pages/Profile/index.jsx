@@ -48,7 +48,7 @@ class Profile extends Component {
          body.append('email', this.state.email);
       }
       if (this.state.pict !== '') {
-         body.append('pict', this.state.pict);
+         body.append('photo', this.state.pict);
       }
       if (this.state.address !== '') {
          body.append('address', this.state.address);
