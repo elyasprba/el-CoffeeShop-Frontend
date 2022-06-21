@@ -11,6 +11,8 @@
 
 Repository Frontend - el-Coffee Shop
 
+Demo : [el-CoffeeShop](https://el-coffee-shop.netlify.app)
+
 <br>
 
 ## 📌 How To Install?
@@ -50,6 +52,8 @@ npm install
 -  [React-Router-Dom](https://www.npmjs.com/package/react-router-dom)
 -  [Redux](https://www.npmjs.com/package/redux)
 -  [Redux-Logger](https://www.npmjs.com/package/redux-logger)
+-  [Redux-Persist](https://www.npmjs.com/package/redux-persist)
+-  [Redux-Thunk](https://www.npmjs.com/package/redux-thunk)
 -  [Redux-Promise-Middleware](https://www.npmjs.com/package/redux-promise-middleware)
 
 <br>
