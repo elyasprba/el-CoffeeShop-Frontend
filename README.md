@@ -45,7 +45,7 @@ npm install
 -  [React](https://reactjs.org/docs/getting-started.html)
 -  [React-Bootstrap](https://www.npmjs.com/package/react-bootstrap)
 -  [React-DOM](https://www.npmjs.com/package/react-dom)
--  [React-Icons](https://www.npmjs.com/package/react-icons)
+-  [React-Bootsrap-Icons](https://www.npmjs.com/package/react-bootstrap-icons)
 -  [React-Redux](https://www.npmjs.com/package/react-redux)
 -  [React-Router-Dom](https://www.npmjs.com/package/react-router-dom)
 -  [Redux](https://www.npmjs.com/package/redux)
