@@ -20,23 +20,32 @@ Demo : [el-CoffeeShop](https://el-coffee-shop.netlify.app)
 -  Clone This Repo
 
 ```
-git clone https://github.com/elyasprba/el-CoffeeShop-Frontend.git
+$ git clone https://github.com/elyasprba/el-CoffeeShop-Frontend.git
 ```
 
 -  Go To Folder Repo
 
 ```
-cd el-coffeeshop
+$ cd el-coffeeshop
+```
+
+-  Setup .env
+
+```
+REACT_APP_HOST = "https://el-coffee-shop.herokuapp.com"
 ```
 
 -  Install Module
 
 ```
-npm install
+$ npm install
 ```
 
--  Type `npm run start` To Start The Project
--  Set file .env `http://localhost:8080` from backend
+-  To Start The Project
+
+```
+$ npm run start
+```
 
 <br>
 
@@ -71,8 +80,16 @@ npm install
 
 <br>
 
-## ✍️ el-CoffeeShop - Backend Link
+## ✍️ Related Project
 
 https://github.com/elyasprba/el-coffeShop-backend.git
 
 <br>
+
+## Feature
+
+-  Search
+-  Filter
+-  Sort
+-  Paginasi
+-  Chack Out
