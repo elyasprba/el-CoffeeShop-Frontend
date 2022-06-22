@@ -1,4 +1,4 @@
-import { LOGIN_PENDING, LOGIN_FULFILLED, LOGIN_REJECTED, ADD_USER_INFO, DELETE_USER_INFO, RESET_LOGIN } from '../actionCreator/string/actionSring';
+import { LOGIN_PENDING, LOGIN_FULFILLED, LOGIN_REJECTED, ADD_USER_INFO, DELETE_USER_INFO, RESET_LOGIN, UPDATE_USER_INFO } from '../actionCreator/string/actionSring';
 
 const initial = {
    userInfo: null,
@@ -31,6 +31,8 @@ export const userTokenReducer = (state = { info: {} }, action) => {
    switch (action.type) {
       case ADD_USER_INFO:
          return { ...state, info: action.payload };
+      case UPDATE_USER_INFO:
+         return { ...state, info: { ...state.info, payload: { ...state.info.payload, ...action.payload } } };
       case DELETE_USER_INFO:
          return { ...state, info: {} };
       default:

@@ -10,6 +10,7 @@ export const RESET_LOGIN = 'RESET_LOGIN';
 // User_info
 export const ADD_USER_INFO = 'ADD_USER_INFO';
 export const DELETE_USER_INFO = 'DELETE_USER_INFO';
+export const UPDATE_USER_INFO = 'UPDATE_USER_INFO';
 
 // Cart
 export const ADD_TO_CART = 'ADD_TO_CART';

@@ -5,7 +5,7 @@ import Header from '../../components/Product/Header';
 import Default from '../../assets/icon/default-profile.jpg';
 import { connect } from 'react-redux';
 import mapStateWithProps from '../../helper/mapStateWithProps';
-import { logoutAction } from '../../Redux/actionCreator/login';
+import { logoutAction, updateInfo } from '../../Redux/actionCreator/login';
 import { Modal, Button } from 'react-bootstrap';
 
 import './Profile.css';
@@ -115,6 +115,8 @@ class Profile extends Component {
          axios
             .get(`${process.env.REACT_APP_HOST}/users/profile-detail`, config)
             .then((result) => {
+               const { updateInfo } = this.props;
+               updateInfo(result.data.data[0]);
                this.setState({
                   profile: result.data.data[0],
                });
@@ -354,4 +356,4 @@ class Profile extends Component {
    }
 }
 
-export default connect(mapStateWithProps, { logoutAction })(Profile);
+export default connect(mapStateWithProps, { logoutAction, updateInfo })(Profile);

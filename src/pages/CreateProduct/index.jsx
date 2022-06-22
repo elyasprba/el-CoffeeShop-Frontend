@@ -22,6 +22,7 @@ class CreateProduct extends Component {
          category: '',
          pict: '',
          file: null,
+         //loading false
       };
    }
 
@@ -33,6 +34,7 @@ class CreateProduct extends Component {
       document.title = 'Create Product';
       return (
          <>
+            {/* {loading ? <?>componen loading</> : <></>} */}
             <Header />
             <p className="title-newprod">Favorite & Promo {'>'} Add new product</p>
             <section className="main-newprod">
@@ -228,6 +230,7 @@ class CreateProduct extends Component {
                         type="button"
                         className="save-product-delivery"
                         onClick={() => {
+                           // loading true
                            const { name, price, description, size, stock, category, pict } = this.state;
                            const body = new FormData();
                            body.append('name', name);
@@ -244,12 +247,14 @@ class CreateProduct extends Component {
                            axios
                               .post(`${process.env.REACT_APP_HOST}/products/`, body, config)
                               .then((result) => {
+                                 // loading false
                                  alert(result.data.msg);
                                  this.setState({
                                     product: result.data.data,
                                  });
                               })
                               .catch((error) => {
+                                 // loading false
                                  console.log(error);
                               });
                         }}

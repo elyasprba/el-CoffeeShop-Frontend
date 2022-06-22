@@ -1,4 +1,4 @@
-import { LOGIN_PENDING, LOGIN_REJECTED, LOGIN_FULFILLED, RESET_LOGIN, ADD_USER_INFO, DELETE_USER_INFO } from './string/actionSring';
+import { LOGIN_PENDING, LOGIN_REJECTED, LOGIN_FULFILLED, RESET_LOGIN, ADD_USER_INFO, DELETE_USER_INFO, UPDATE_USER_INFO } from './string/actionSring';
 import axios from 'axios';
 
 export const loginAction = (body) => (dispatch) => {
@@ -25,6 +25,12 @@ export const loginAction = (body) => (dispatch) => {
             payload: error.response.data.err.msg,
          });
       });
+};
+
+export const updateInfo = (data) => (dispatch) => {
+   const { pict } = data;
+   const newData = { pict };
+   dispatch({ type: UPDATE_USER_INFO, payload: newData });
 };
 
 export const resetLogin = () => (dispatch) => {

@@ -70,11 +70,19 @@ $ npm run start
 ## 🔎 Preview Pages
 
   <span>
-	<img src="./src/assets/screenshot/login-page.png" alt="login-page" width="415">
-	<img src="./src/assets/screenshot/regis-page.png"alt="regis-page" width="415">
-  <img src="./src/assets/screenshot/home-page.png"alt="home-page" width="415">
-  <img src="./src/assets/screenshot/product-page.png"alt="product-page" width="415">
-  <img src="./src/assets/screenshot/payment-page.png"alt="payment-page" width="415">
+  <div style="display:flex" >
+	<img src="./src/assets/screenshot/login-page.png" alt="login-page" width="250">
+	<img src="./src/assets/screenshot/regis-page.png"alt="regis-page" width="250">
+  </div>
+  <br>
+  <div style="display:flex" >
+  <img src="./src/assets/screenshot/home-page.png"alt="home-page" width="250">
+  <img src="./src/assets/screenshot/product-page.png"alt="product-page" width="250">
+  </div>
+  <br>
+  <p width="100">
+  <img src="./src/assets/screenshot/payment-page.png"alt="payment-page" width="250">
+  </p>
     <br/>
   </span>
 
