@@ -239,7 +239,7 @@ class CreateProduct extends Component {
                            body.append('size', size);
                            body.append('stock', stock);
                            body.append('category', category);
-                           body.append('pict', pict);
+                           body.append('photo', pict);
 
                            const { token } = this.props.userInfo.token;
                            const config = { headers: { Authorization: `Bearer ${token}`, 'content-type': 'multipart/form-data' } };
