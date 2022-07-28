@@ -25,7 +25,7 @@ class Profile extends Component {
          gender: '',
          birthday_date: '',
          pict: '',
-         image_src: Default,
+         image_src: '',
          use_src: true,
          isLogin: true,
          isUpdate: false,
@@ -82,13 +82,15 @@ class Profile extends Component {
          profile.pict = file;
          this.setState(profile);
          const reader = new FileReader();
-         reader.onload = () => {
-            this.setState({ image_src: reader.result, use_src: false, pict: file }, () => {
+         reader.onload = (e) => {
+            const { result } = e.target;
+            this.setState({ image_src: result, use_src: false, pict: file }, () => {
                //console.log(this.state.image_src);
             });
          };
          reader.readAsDataURL(file);
       }
+      console.log(profile);
    };
 
    componentDidMount() {
@@ -139,6 +141,8 @@ class Profile extends Component {
 
    render() {
       document.title = 'Profile';
+      const profilePicture = this.state.profile.pict ? this.state.profile.pict : Default;
+
       return (
          <>
             <Header />
@@ -147,7 +151,7 @@ class Profile extends Component {
                <div className="profile-container">
                   <div className="profile-info">
                      <div className="profile">
-                        <img src={this.state.profile.pict ? `${this.state.profile.pict}` : this.state.image_src} className="img-profile" alt="img-profile" />
+                        <img src={this.state.image_src ? this.state.image_src : profilePicture} className="img-profile" alt="img-profile" />
                         <div className="profile-username">
                            <h3>{this.state.profile.display_name ? this.state.profile.display_name : 'Display Name'}</h3>
                            <p>{this.state.profile.email}</p>

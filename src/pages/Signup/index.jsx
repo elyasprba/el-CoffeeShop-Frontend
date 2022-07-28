@@ -110,10 +110,10 @@ export default class Signup extends Component {
                            axios
                               .post(`${process.env.REACT_APP_HOST}/auth/register`, body)
                               .then((result) => {
-                                 console.log(result.data.data.msg);
+                                 console.log(result.data.msg);
                                  this.setState({
                                     isSuccess: true,
-                                    successMsg: result.data.data.msg,
+                                    successMsg: result.data.msg,
                                  });
                               })
                               .catch((error) => {
