@@ -110,10 +110,11 @@ export default class Signup extends Component {
                            axios
                               .post(`${process.env.REACT_APP_HOST}/auth/register`, body)
                               .then((result) => {
-                                 console.log(result.data.msg);
+                                 // console.log(result.data.msg);
+                                 console.log(result.data.data.msg);
                                  this.setState({
                                     isSuccess: true,
-                                    successMsg: result.data.msg,
+                                    successMsg: result.data.data.msg,
                                  });
                               })
                               .catch((error) => {
@@ -147,14 +148,7 @@ export default class Signup extends Component {
                         <div class="modal-content">
                            <div class="modal-header">
                               <h5 class="modal-title" id="exampleModalLabel">
-                                 {this.state.isSuccess ? (
-                                    <p className="text-primary">
-                                       {this.state.successMsg}
-                                       {'!'}
-                                    </p>
-                                 ) : (
-                                    <p className="text-danger">{this.state.errorMsg}</p>
-                                 )}
+                                 {this.state.isSuccess ? <p className="text-primary">{this.state.successMsg}</p> : <p className="text-danger">{this.state.errorMsg}</p>}
                               </h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                            </div>

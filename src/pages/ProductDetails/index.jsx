@@ -168,7 +168,6 @@ class ProductDetails extends Component {
                               this.cartHandler();
                            }}
                         >
-                           {' '}
                            Checkout
                         </button>
                      </Link>

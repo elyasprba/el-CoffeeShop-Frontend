@@ -30,6 +30,8 @@ class Profile extends Component {
          isLogin: true,
          isUpdate: false,
          isEdit: false,
+         show: false,
+         msg: '',
       };
       this.inputFile = React.createRef();
    }
@@ -180,9 +182,11 @@ class Profile extends Component {
                                     .patch(`${process.env.REACT_APP_HOST}/users`, body, config)
                                     .then((result) => {
                                        this.setState({
+                                          msg: 'Update succsessfull',
                                           isUpdate: true,
+                                          show: true,
                                        });
-                                       alert(result.data.msg);
+                                       // alert(result.data.msg);
                                     })
                                     .catch((error) => {
                                        console.log(error);
@@ -342,7 +346,7 @@ class Profile extends Component {
                <Modal.Body>Are your sure that you want to sign out?</Modal.Body>
                <Modal.Footer>
                   <Button
-                     variant="primary"
+                     variant="danger"
                      onClick={() => {
                         this.logoutHandler();
                         this.closeModal();
@@ -352,6 +356,25 @@ class Profile extends Component {
                   </Button>
                   <Button variant="secondary" onClick={this.closeModal}>
                      Close
+                  </Button>
+               </Modal.Footer>
+            </Modal>
+            <Modal show={this.state.show}>
+               <Modal.Header>
+                  <Modal.Title>
+                     <div>{this.state.msg}</div>
+                  </Modal.Title>
+               </Modal.Header>
+               <Modal.Footer>
+                  <Button
+                     variant="secondary"
+                     onClick={() => {
+                        this.setState({
+                           show: false,
+                        });
+                     }}
+                  >
+                     Oke
                   </Button>
                </Modal.Footer>
             </Modal>

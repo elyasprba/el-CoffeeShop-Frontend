@@ -49,19 +49,20 @@ function Forgot() {
             navigate('/login');
          }, 2000);
       } catch (error) {
+         setMsg(error.response.data.error);
+         setShow(true);
+         setPage('first');
          console.log(error);
       }
    };
-
+   document.title = 'Forgot Password';
    return (
       <>
          {page === 'first' ? (
             <>
                <div className="container-forgot">
-                  <aside className="aside-img">
-                     <img src={require('../../assets/bg-forgot.png')} alt="bg-forgot" />
-                  </aside>
-                  <section>
+                  <aside className="aside-img">{/* <img src={require('../../assets/bg-forgot.png')} alt="bg-forgot" /> */}</aside>
+                  <section className="forgot-password-new">
                      <section className="main-container-forgot">
                         <section className="main-forgot">
                            <header className="header-forgot">
@@ -142,10 +143,8 @@ function Forgot() {
          ) : (
             <>
                <div className="container-forgot">
-                  <aside className="aside-img">
-                     <img src={require('../../assets/bg-forgot.png')} alt="bg-forgot" />
-                  </aside>
-                  <section>
+                  <aside className="aside-img">{/* <img src={require('../../assets/bg-forgot.png')} alt="bg-forgot" /> */}</aside>
+                  <section className="forgot-password-new">
                      <section className="main-container-forgot">
                         <section className="main-forgot">
                            <header className="header-forgot">

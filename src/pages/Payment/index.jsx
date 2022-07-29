@@ -169,7 +169,9 @@ class Payment extends Component {
                </Modal.Header>
                <Modal.Footer>
                   <Button variant="secondary" onClick={this.closeModal}>
-                     <Link to={'/history'}>Close</Link>
+                     <Link className="magicpayment" to={'/history'}>
+                        Close
+                     </Link>
                   </Button>
                </Modal.Footer>
             </Modal>

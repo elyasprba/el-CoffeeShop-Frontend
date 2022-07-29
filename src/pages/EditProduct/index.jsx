@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import mapStateWithProps from '../../helper/mapStateWithProps';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import axios from 'axios';
 import withParams from '../../helper/withParams';
 import Header from '../../components/Product/Header';
 import Footer from '../../components/Footer/Footer';
+import { Modal, Button } from 'react-bootstrap';
+import { Navigate } from 'react-router-dom';
 
 import '../CreateProduct/createproduct.css';
 
@@ -24,6 +26,9 @@ class EditProduct extends Component {
          stock: 0,
          pict: '',
          file: null,
+         show: false,
+         msg: '',
+         isSuccess: false,
       };
    }
 
@@ -47,7 +52,12 @@ class EditProduct extends Component {
             console.log(error);
          });
    }
+
    render() {
+      if (this.state.isSuccess === true) {
+         return <Navigate to={'/product'} />;
+      }
+
       return (
          <>
             <Header />
@@ -256,8 +266,8 @@ class EditProduct extends Component {
                   </div>
                   <div className="save-cancel-newprod">
                      <button type="button" className="save-product-delivery">
-                        <Link
-                           to={'/product'}
+                        <div
+                           // to={'/product'}
                            className="link-save-newprod"
                            onClick={() => {
                               const { name, price, description, category, size, stock, pict } = this.state;
@@ -276,6 +286,10 @@ class EditProduct extends Component {
                                  .patch(`${process.env.REACT_APP_HOST}/products/${this.state.id}`, body, config)
                                  .then((result) => {
                                     console.log(result);
+                                    this.setState({
+                                       msg: 'Update Successfull',
+                                       show: true,
+                                    });
                                  })
                                  .catch((error) => {
                                     console.log(error);
@@ -283,16 +297,43 @@ class EditProduct extends Component {
                            }}
                         >
                            Save Product
-                        </Link>
+                        </div>
                      </button>
-                     <button type="button" className="cancel-delivery">
+                     <button
+                        type="button"
+                        className="cancel-delivery"
+                        onClick={() => {
+                           this.setState({
+                              isSuccess: true,
+                           });
+                        }}
+                     >
                         Cancel
                      </button>
                   </div>
                </section>
             </section>
-
             <Footer />
+            <Modal show={this.state.show}>
+               <Modal.Header>
+                  <Modal.Title>
+                     <div>{this.state.msg}</div>
+                  </Modal.Title>
+               </Modal.Header>
+               <Modal.Footer>
+                  <Button
+                     variant="secondary"
+                     onClick={() => {
+                        this.setState({
+                           isSuccess: true,
+                           show: false,
+                        });
+                     }}
+                  >
+                     Oke
+                  </Button>
+               </Modal.Footer>
+            </Modal>
          </>
       );
    }

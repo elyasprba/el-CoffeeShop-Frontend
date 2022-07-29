@@ -11,10 +11,17 @@ body {
    display: flex;
 }
 
-.aside-img img {
-   width: 600px;
-   height: 1365px;
-   object-fit: cover;
+.aside-img {
+   /* width: 600px; */
+   /* height: 1365px; */
+   flex: 1;
+   background-size: cover;
+   background-position: 50% 50%;
+   background-image: url('../../assets/bg-forgot.png');
+}
+
+.forgot-password-new {
+   flex: 1;
 }
 
 .main-container-forgot {

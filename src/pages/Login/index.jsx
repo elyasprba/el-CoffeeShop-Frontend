@@ -122,7 +122,7 @@ const Login = () => {
          <Modal show={show} onHide={handleClose}>
             <Modal.Header>
                <Modal.Title>
-                  {isLoading ? <p>Login Success, Loading...</p> : <></>}
+                  {isLoading ? <p>Loading...</p> : <></>}
                   {err ? <div className="text-danger">{err}</div> : <></>}
                </Modal.Title>
             </Modal.Header>

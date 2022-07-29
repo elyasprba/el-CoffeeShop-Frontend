@@ -393,6 +393,11 @@
    background-color: #6a4029;
 }
 
+.magicpayment {
+   text-decoration: none;
+   color: #e9e6e6;
+}
+
 @media (max-width: 840px) {
    .payment-title {
       text-align: center;
